@@ -13,4 +13,8 @@ public class ActiveMQProducer {
         this.jmsTemplate = jmsTemplate;
     }
 
+    public void send(String cola, String message) {
+        jmsTemplate.convertAndSend(cola, message);
+    }
+
 }

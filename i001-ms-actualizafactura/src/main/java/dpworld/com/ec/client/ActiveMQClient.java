@@ -39,10 +39,6 @@ public class ActiveMQClient {
             Factura factura = new Factura();
             factura.setReceivableinvoices(listaReceivableinvoices);
 
-            String request = this.convertirObjetToString(factura);
-
-            System.out.println(request);
-
             iFacturaService.facturaCobrar(factura);
 
         } catch (JSONException je) {
@@ -189,16 +185,6 @@ public class ActiveMQClient {
 
         return lista;
 
-    }
-
-    private String convertirObjetToString(Object conectorAS400Entrada) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        String jsonIn = "";
-        try {
-            return objectMapper.writeValueAsString(conectorAS400Entrada);
-        } catch (JsonProcessingException e) {
-            return jsonIn;
-        }
     }
 
 }
