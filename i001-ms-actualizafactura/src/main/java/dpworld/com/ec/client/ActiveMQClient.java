@@ -55,7 +55,7 @@ public class ActiveMQClient {
 
         Receivableinvoices receivableinvoices = new Receivableinvoices();
 
-        receivableinvoices.setSource("N4");
+        receivableinvoices.setSource(jsonObject.getString("source"));
         receivableinvoices.setRegion("AMR-EC");
         receivableinvoices.setInvoiceCurrencyCode(jsonObject.getString("currency"));
         receivableinvoices.setTrxClass("INV");
@@ -87,23 +87,51 @@ public class ActiveMQClient {
 
         List<Lines> lista = new ArrayList<>();
 
-        JSONObject additional = jsonObject.getJSONObject("additional");
-
         JSONObject details = jsonObject.getJSONObject("details");
-        JSONArray invoiceItems = details.getJSONArray("invoiceItem");
 
-        for (int i = 0; i < invoiceItems.length(); i++) {
+        var invoiceItemTipo = details.get("invoiceItem");
 
-            JSONObject invoiceItem = invoiceItems.getJSONObject(i);
+        if(invoiceItemTipo instanceof JSONArray){
+
+            JSONArray invoiceItems = details.getJSONArray("invoiceItem");
+
+            for (int i = 0; i < invoiceItems.length(); i++) {
+
+                JSONObject invoiceItem = invoiceItems.getJSONObject(i);
+
+                Lines lines = new Lines();
+
+                lines.setLineNumber(String.valueOf(i+1));
+                lines.setDescription(invoiceItem.getString("description"));
+                lines.setQuantity(invoiceItem.getString("quantity"));
+                lines.setUnitSellingPrice(invoiceItem.getString("amount"));
+                lines.setMemoLine(invoiceItem.getString("tariff"));
+                lines.setTaxClassificationCode(invoiceItem.getString("TaxCode"));
+                lines.setLineAmount(invoiceItem.getString("TotalAmount"));
+
+                List<TaxLines> ListaTaxLines = new ArrayList<>();
+                TaxLines taxLines = new TaxLines();
+                ListaTaxLines.add(taxLines);
+
+                lines.setTaxLines(ListaTaxLines);
+                lines.setInvoiceLineDFF(this.obtenerInvoiceLineDFF(jsonObject));
+
+                lista.add(lines);
+            }
+        }
+
+        if(invoiceItemTipo instanceof JSONObject){
+
+            JSONObject invoiceItem = details.getJSONObject("invoiceItem");
 
             Lines lines = new Lines();
 
-            lines.setLineNumber(String.valueOf(i+1));
+            lines.setLineNumber("1");
             lines.setDescription(invoiceItem.getString("description"));
             lines.setQuantity(invoiceItem.getString("quantity"));
             lines.setUnitSellingPrice(invoiceItem.getString("amount"));
             lines.setMemoLine(invoiceItem.getString("tariff"));
-            lines.setTaxClassificationCode(additional.getString("TaxCode"));
+            lines.setTaxClassificationCode(invoiceItem.getString("TaxCode"));
             lines.setLineAmount(invoiceItem.getString("TotalAmount"));
 
             List<TaxLines> ListaTaxLines = new ArrayList<>();
@@ -114,8 +142,8 @@ public class ActiveMQClient {
             lines.setInvoiceLineDFF(this.obtenerInvoiceLineDFF(jsonObject));
 
             lista.add(lines);
-
         }
+
 
         return lista;
     }
