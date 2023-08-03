@@ -62,6 +62,7 @@ public class IFacturaClientRest {
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.add("Authorization", "Basic " + getBasicAuthHeader());
 		httpHeaders.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 		return httpHeaders;
 	}
 
