@@ -55,7 +55,7 @@ public class ActiveMQClient {
 
         Receivableinvoices receivableinvoices = new Receivableinvoices();
 
-        receivableinvoices.setSource(jsonObject.getString("source"));
+        receivableinvoices.setSource("N4");
         receivableinvoices.setRegion("AMR-EC");
         receivableinvoices.setInvoiceCurrencyCode(jsonObject.getString("currency"));
         receivableinvoices.setTrxClass("INV");
