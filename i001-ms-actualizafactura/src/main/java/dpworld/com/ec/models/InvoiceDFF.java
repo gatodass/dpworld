@@ -11,7 +11,6 @@ public class InvoiceDFF {
 	private String InvoiceTransactionsFlexfield_Segment4;
 	private String InvoiceTransactionsFlexfield_Segment5;
 	private String InvoiceTransactionsFlexfield_Segment6;
-	private String InvoiceTransactionsFlexfield_Segment7;
 	private String InvoiceTransactionsFlexfield_Segment8;
 	private String InvoiceTransactionsFlexfield_Segment9;
 	private String InvoiceTransactionsFlexfield_Segment10;
@@ -88,15 +87,6 @@ public class InvoiceDFF {
 
 	public void setInvoiceTransactionsFlexfield_Segment6(String invoiceTransactionsFlexfield_Segment6) {
 		InvoiceTransactionsFlexfield_Segment6 = invoiceTransactionsFlexfield_Segment6;
-	}
-
-	@JsonGetter("InvoiceTransactionsFlexfield_Segment7")
-	public String getInvoiceTransactionsFlexfield_Segment7() {
-		return InvoiceTransactionsFlexfield_Segment7;
-	}
-
-	public void setInvoiceTransactionsFlexfield_Segment7(String invoiceTransactionsFlexfield_Segment7) {
-		InvoiceTransactionsFlexfield_Segment7 = invoiceTransactionsFlexfield_Segment7;
 	}
 
 	@JsonGetter("InvoiceTransactionsFlexfield_Segment8")

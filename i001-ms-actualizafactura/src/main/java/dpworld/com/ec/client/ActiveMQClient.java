@@ -163,7 +163,6 @@ public class ActiveMQClient {
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment5("");
         //TODO PREGUNTAR QUE DATO VA
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment6("");
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment7(additional.getString("address"));
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment8(additional.getString("email"));
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment9(additional.getString("vesselName"));
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment10(additional.getString("vesselVisitId"));
