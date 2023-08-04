@@ -1,0 +1,86 @@
+User: support.dalbuja
+
+Pass: DpW0rld*2023$
+
+
+
+IP: 10.24.3.70
+
+Usuario: itadmin (con privilegios de Administrador)
+
+Password: DpW0rld2023$$
+
+
+portaneir
+https://10.24.3.70:9443
+admin
+DPW0rld!2023
+
+scp /david/repo/dpWorldRepo/servicio-registros/target/springboot-servicio-eureka-server-0.0.1-SNAPSHOT.jar itadmin@10.24.3.70:/dpworld
+
+scp /david/repo/dpWorldRepo/servicio-gateway/target/servicio-gateway-0.0.1-SNAPSHOT.jar itadmin@10.24.3.70:/dpworld
+
+scp /david/repo/dpWorldRepo/i002-ms-gestion-pago/target/i002-ms-gestion-pago-0.0.1-SNAPSHOT.jar itadmin@10.24.3.70:/dpworld
+
+scp /home/david/Documents/GitHub/dpworld/i001-ms-actualizafactura/target/i001-ms-actualizafactura-0.0.1-SNAPSHOT.jar itadmin@10.24.3.70:/dpworld
+
+
+scp /home/david/Documents/GitHub/dpworld/i001-ms-actualizafactura/Dockerfile itadmin@10.24.3.70:/dpworld
+
+
+scp /david/repo/dpRepositorioV1/dpworld/i003-ms-notacredito/target/i003-ms-notacredito-0.0.1-SNAPSHOT.jar itadmin@10.24.3.70:/dpworld
+scp /david/repo/dpRepositorioV1/dpworld/i003-ms-notacredito/Dockerfile itadmin@10.24.3.70:/dpworld
+
+
+CREAR RED
+sudo docker network create dpwLAN
+
+
+CREAR CONTAINER
+sudo docker run -p 8761:8761 --name servicio-registro --network dpwLAN servicio-eureka-server:v1
+
+http://10.24.3.70:8761
+
+sudo docker logs -f servicio-registro
+
+
+CREAR IMAGEN DE GATEWAYY
+sudo docker build -t servicio-gateway:1 .
+sudo docker run -p 9090:9090 --name servicio-gateway  --network dpwLAN servicio-gateway:1
+
+CREAR IMAGEN I002PAGO
+sudo docker build -t i002-gestion-pago:1 .
+sudo docker run -p 6001:6001 --name i002-gestion-pago --network dpwLAN i002-gestion-pago:1
+
+CREAR IMAGEN I001PAGO
+sudo docker build -t i001-actualizafactura:1 .
+sudo docker run -p 5001:5001 --name i001-actualizafactura --network dpwLAN i001-actualizafactura:1
+
+
+CREAR IMAGEN I003notacredito
+sudo docker build -t i003-notacredito:1 .
+sudo docker run -p 5003:5003 --name i003-notacredito --network dpwLAN i003-notacredito:1
+
+GENERAR JAR IGNORANDO
+./mvnw clean package -DskipTests
+
+
+
+
+179.49.14.76ç
+
+
+
+
+zmsapi.consumer
+David.Albuja123
+
+
+
+FIN_1 carga facturas (activeMQ) Prioridad
+FIN_1 carga de notas de crédito (activeMQ))
+FIN_1 XXXXXXXXXXX
+
+FIN_33 pago de facturas desde banco Pacifico
+FIN_34 consulta de facturas especifica desde Banco Pacifico
+FIN_35 reverso de pago de facturas 
