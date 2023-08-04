@@ -1,52 +1,32 @@
 package dpworld.com.ec.service;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
-import java.security.KeyManagementException;
-import java.security.KeyStoreException;
-import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
-import java.util.Base64;
-
-import javax.net.ssl.SSLContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.client.ClientHttpRequestFactory;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.apache.hc.client5.http.classic.HttpClient;
-import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
-import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
-import org.apache.hc.client5.http.socket.ConnectionSocketFactory;
-import org.apache.hc.client5.http.socket.PlainConnectionSocketFactory;
-import org.apache.hc.client5.http.ssl.SSLConnectionSocketFactory;
-import org.apache.hc.core5.http.URIScheme;
-import org.apache.hc.core5.http.config.Registry;
-import org.apache.hc.core5.http.config.RegistryBuilder;
-import org.apache.hc.core5.ssl.SSLContextBuilder;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import dpworld.com.ec.client.ActiveMQProducer;
 import dpworld.com.ec.client.IFacturaClientRest;
 import dpworld.com.ec.models.Factura;
+import dpworld.com.ec.models.Response;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.stereotype.Service;
+
+import java.net.URI;
 
 @Service
 public class FacturaServiceImpl implements IFacturaService{
 
-
-	
 	@Autowired
-	private IFacturaClientRest iFacturaClientRest; 
+	private IFacturaClientRest iFacturaClientRest;
 
-	
+	@Autowired
+	private ActiveMQProducer activeMQProducer;
 	
 	public Factura facturaCobrar(Factura factura) {
-		// TODO Auto-generated method stub
-	
-	
+
+		String request = this.convertirObjetToString(factura);
+		System.out.println(request);
+		activeMQProducer.send("N4CREDITNOTESREQUEST",request);
+
 		URI uri;
 		try {
 			uri = new URI("https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice");
@@ -57,14 +37,29 @@ public class FacturaServiceImpl implements IFacturaService{
 			objEmp.setCity("eeeee");
 	 */
 
-			factura = iFacturaClientRest.restTemplate().postForObject(uri, httpEntity, Factura.class);
-		} catch (URISyntaxException e) {
+			var respuesta = iFacturaClientRest.restTemplate().postForObject(uri, httpEntity, Response[].class);
+
+			System.out.println("respuesta");
+			System.out.println(respuesta);
+			String response = this.convertirObjetToString(respuesta);
+			activeMQProducer.send("N4CREDITNOTESRESPONSE",response);
+
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
+
 		return factura;
 	}
+
+	private String convertirObjetToString(Object conectorAS400Entrada) {
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jsonIn = "";
+		try {
+			return objectMapper.writeValueAsString(conectorAS400Entrada);
+		} catch (JsonProcessingException e) {
+			return jsonIn;
+		}
+	}
+
 }
