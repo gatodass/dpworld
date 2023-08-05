@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e43d9430-232e-4683-aa2d-94a6c939210c" activeEnvironment="Default" name="DpWorldService_1Wrapper" resourceRoot="" soapui-version="5.7.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b1a21997-c4d6-4ffa-a5aa-8448c9b45d29" wsaVersion="NONE" name="DpWorldPortBinding" type="wsdl" bindingName="{http://western.ifc.servicios.western.empresas.externos.bpe/}DpWorldPortBinding" soapVersion="1_1" anonymous="optional" definition="file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1.wsdl"><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1.wsdl</con:url><con:content><![CDATA[<WL5G3N0:definitions name="DpWorldService" targetNamespace="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://western.ifc.servicios.western.empresas.externos.bpe/" schemaLocation="DpWorldService.xsd"/>
+    </xsd:schema>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://peticiones.servicios.common.bpe/" schemaLocation="DpWorldService_1.xsd"/>
+    </xsd:schema>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://respuestas.servicios.common.bpe/" schemaLocation="DpWorldService_1_2.xsd"/>
+    </xsd:schema>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://enumerados.servicios.common.bpe/" schemaLocation="DpWorldService_1_2_3_4_5_6_7.xsd"/>
+    </xsd:schema>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://entidades.servicios.common.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4_5_6_7_8.xsd"/>
+    </xsd:schema>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://enumerados.servicios.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4_5_6_7_8_9.xsd"/>
+    </xsd:schema>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://respuestas.servicios.common.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3.xsd"/>
+    </xsd:schema>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://enumerados.servicios.common.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4_5_6.xsd"/>
+    </xsd:schema>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://peticiones.servicios.varios.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4.xsd"/>
+    </xsd:schema>
+    <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:import namespace="http://peticiones.servicios.common.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4_5.xsd"/>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="consultarPago">
+    <WL5G3N0:part element="WL5G3N1:consultarPago" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="consultarPagoResponse">
+    <WL5G3N0:part element="WL5G3N1:consultarPagoResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="generarOTP">
+    <WL5G3N0:part element="WL5G3N1:generarOTP" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="generarOTPResponse">
+    <WL5G3N0:part element="WL5G3N1:generarOTPResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="realizarPago">
+    <WL5G3N0:part element="WL5G3N1:realizarPago" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="realizarPagoResponse">
+    <WL5G3N0:part element="WL5G3N1:realizarPagoResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="realizarReverso">
+    <WL5G3N0:part element="WL5G3N1:realizarReverso" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="realizarReversoResponse">
+    <WL5G3N0:part element="WL5G3N1:realizarReversoResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="autenticacionExterna">
+    <WL5G3N0:part element="WL5G3N1:autenticacionExterna" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="autenticacionExternaResponse">
+    <WL5G3N0:part element="WL5G3N1:autenticacionExternaResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="generarOrden">
+    <WL5G3N0:part element="WL5G3N1:generarOrden" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="generarOrdenResponse">
+    <WL5G3N0:part element="WL5G3N1:generarOrdenResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="reversarOrden">
+    <WL5G3N0:part element="WL5G3N1:reversarOrden" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="reversarOrdenResponse">
+    <WL5G3N0:part element="WL5G3N1:reversarOrdenResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="DpWorld">
+    <WL5G3N0:operation name="consultarPago">
+      <WL5G3N0:input message="WL5G3N1:consultarPago"/>
+      <WL5G3N0:output message="WL5G3N1:consultarPagoResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="generarOTP">
+      <WL5G3N0:input message="WL5G3N1:generarOTP"/>
+      <WL5G3N0:output message="WL5G3N1:generarOTPResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="realizarPago">
+      <WL5G3N0:input message="WL5G3N1:realizarPago"/>
+      <WL5G3N0:output message="WL5G3N1:realizarPagoResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="realizarReverso">
+      <WL5G3N0:input message="WL5G3N1:realizarReverso"/>
+      <WL5G3N0:output message="WL5G3N1:realizarReversoResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="autenticacionExterna">
+      <WL5G3N0:input message="WL5G3N1:autenticacionExterna"/>
+      <WL5G3N0:output message="WL5G3N1:autenticacionExternaResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="generarOrden">
+      <WL5G3N0:input message="WL5G3N1:generarOrden"/>
+      <WL5G3N0:output message="WL5G3N1:generarOrdenResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="reversarOrden">
+      <WL5G3N0:input message="WL5G3N1:reversarOrden"/>
+      <WL5G3N0:output message="WL5G3N1:reversarOrdenResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="DpWorldPortBinding" type="WL5G3N1:DpWorld">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="consultarPago">
+      <WL5G3N2:operation/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="generarOTP">
+      <WL5G3N2:operation/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="realizarPago">
+      <WL5G3N2:operation/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="realizarReverso">
+      <WL5G3N2:operation/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="autenticacionExterna">
+      <WL5G3N2:operation/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="generarOrden">
+      <WL5G3N2:operation/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="reversarOrden">
+      <WL5G3N2:operation/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="DpWorldService">
+    <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+    <WL5G3N0:port binding="WL5G3N1:DpWorldPortBinding" name="DpWorldPort">
+      <WL5G3N2:address location="http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:ns6="http://entidades.servicios.common.ocpgtw.bpe/" xmlns:ns5="http://enumerados.servicios.common.bpe/" xmlns:ns8="http://enumerados.servicios.common.ocpgtw.bpe/" xmlns:ns7="http://enumerados.servicios.ocpgtw.bpe/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:ns2="http://respuestas.servicios.common.bpe/" xmlns:ns1="http://peticiones.servicios.common.bpe/" xmlns:ns4="http://peticiones.servicios.varios.ocpgtw.bpe/" xmlns:ns3="http://respuestas.servicios.common.ocpgtw.bpe/">
+  <xsd:import schemaLocation="DpWorldService_1.xsd" namespace="http://peticiones.servicios.common.bpe/"/>
+  <xsd:import schemaLocation="DpWorldService_1_2.xsd" namespace="http://respuestas.servicios.common.bpe/"/>
+  <xsd:import schemaLocation="DpWorldService_1_2_3.xsd" namespace="http://respuestas.servicios.common.ocpgtw.bpe/"/>
+  <xsd:import schemaLocation="DpWorldService_1_2_3_4.xsd" namespace="http://peticiones.servicios.varios.ocpgtw.bpe/"/>
+  <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6_7.xsd" namespace="http://enumerados.servicios.common.bpe/"/>
+  <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6_7_8.xsd" namespace="http://entidades.servicios.common.ocpgtw.bpe/"/>
+  <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6_7_8_9.xsd" namespace="http://enumerados.servicios.ocpgtw.bpe/"/>
+  <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6.xsd" namespace="http://enumerados.servicios.common.ocpgtw.bpe/"/>
+  <xsd:complexType name="autenticacionExterna">
+    <xsd:sequence>
+      <xsd:element name="peticion" type="ns0:autenticacionExternaPeticion" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="autenticacionExternaPeticion">
+    <xsd:sequence>
+      <xsd:element name="clave" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="idUsuario" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="maquina" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="reversarOrdenResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:reversaOrdenRespuesta" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="realizarReversoResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:realizaReversoRespuesta" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultaPagoRespuesta">
+    <xsd:complexContent>
+      <xsd:extension base="ns2:respuesta">
+        <xsd:sequence>
+          <xsd:element name="pagos" type="ns0:pago" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="realizaPagoPeticion">
+    <xsd:complexContent>
+      <xsd:extension base="ns1:peticion">
+        <xsd:sequence>
+          <xsd:element name="codigoBanco" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="codigoOTP" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="identificacion" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="monto" type="xsd:decimal" minOccurs="0"/>
+          <xsd:element name="nombreEmpresa" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="numeroCuentaDebito" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="numeroDocumento" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="producto" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="servicio" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="tipoCuenta" type="ns8:tipoCuentaEnum" minOccurs="0"/>
+          <xsd:element name="tipoIdentificacion" type="ns5:tipoIdentificacionEnum" minOccurs="0"/>
+          <xsd:element name="tipoServicio" type="ns0:tipoServicioEnum" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="reversarOrden">
+    <xsd:sequence>
+      <xsd:element name="peticion" type="ns0:reversaOrdenPeticion" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="autenticacionExternaRespuesta">
+    <xsd:sequence>
+      <xsd:element name="codigoError" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="mensajeError" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="token" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="generaOTPPeticion">
+    <xsd:complexContent>
+      <xsd:extension base="ns1:peticion">
+        <xsd:sequence>
+          <xsd:element name="celularCliente" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="identificacion" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="identificadorCanal" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="mailCliente" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="medioOTP" type="ns0:tipoEnvioOTPEnum" minOccurs="0"/>
+          <xsd:element name="tipoIdentificacion" type="ns5:tipoIdentificacionEnum" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="reversaOrdenRespuesta">
+    <xsd:complexContent>
+      <xsd:extension base="ns2:respuesta">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="realizarReverso">
+    <xsd:sequence>
+      <xsd:element name="peticion" type="ns0:realizaReversoPeticion" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="realizaReversoPeticion">
+    <xsd:complexContent>
+      <xsd:extension base="ns4:reversoPeticion">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="realizaPagoRespuesta">
+    <xsd:complexContent>
+      <xsd:extension base="ns3:ocpRespuesta">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="autenticacionExternaResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:autenticacionExternaRespuesta" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="reversaOrdenPeticion">
+    <xsd:complexContent>
+      <xsd:extension base="ns1:peticion">
+        <xsd:sequence>
+          <xsd:element name="idMensajeReverso" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="idTokenBizbank" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="idUsuarioBizbank" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="motivoReverso" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="nombreEmpresa" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="servicio" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="generarOTPResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:generaOTPRespuesta" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="generarOrdenResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:generaOrdenRespuesta" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="generaOTPRespuesta">
+    <xsd:complexContent>
+      <xsd:extension base="ns2:respuesta">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="generarOrden">
+    <xsd:sequence>
+      <xsd:element name="peticion" type="ns0:generaOrdenPeticion" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultarPago">
+    <xsd:sequence>
+      <xsd:element name="peticion" type="ns0:consultaPagoPeticion" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="consultaPagoPeticion">
+    <xsd:complexContent>
+      <xsd:extension base="ns1:peticion">
+        <xsd:sequence>
+          <xsd:element name="nombreEmpresa" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="numeroDocumento" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="nut" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="producto" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="servicio" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="tipoServicio" type="ns0:tipoServicioEnum" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="generarOTP">
+    <xsd:sequence>
+      <xsd:element name="peticion" type="ns0:generaOTPPeticion" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="realizaReversoRespuesta">
+    <xsd:complexContent>
+      <xsd:extension base="ns3:ocpRespuesta">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="realizarPagoResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:realizaPagoRespuesta" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="pago">
+    <xsd:sequence>
+      <xsd:element name="monto" type="xsd:decimal" minOccurs="0"/>
+      <xsd:element name="nut" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="generaOrdenPeticion">
+    <xsd:complexContent>
+      <xsd:extension base="ns1:peticion">
+        <xsd:sequence>
+          <xsd:element name="codigoBanco" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="formasPago" type="ns6:formaPago" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+          <xsd:element name="idTokenBizbank" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="idUsuarioBizbank" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="identificacionCodigoServicio" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="identificacionServicio" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="moneda" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="nombreEmpresa" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="nombreTercero" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="numeroCuenta" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="numeroIdentificacion" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="referencia" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="servicio" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="tipoActividad" type="ns7:tipoActividadEnum" minOccurs="0"/>
+          <xsd:element name="tipoCuenta" type="ns5:tipoCuentaEnum" minOccurs="0"/>
+          <xsd:element name="tipoIdentificacion" type="ns5:tipoIdentificacionEnum" minOccurs="0"/>
+          <xsd:element name="valorBaseImponible" type="xsd:decimal" minOccurs="0"/>
+          <xsd:element name="valorIva" type="xsd:decimal" minOccurs="0"/>
+          <xsd:element name="valorTotal" type="xsd:decimal" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="consultarPagoResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:consultaPagoRespuesta" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="realizarPago">
+    <xsd:sequence>
+      <xsd:element name="peticion" type="ns0:realizaPagoPeticion" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="generaOrdenRespuesta">
+    <xsd:complexContent>
+      <xsd:extension base="ns3:ocpRespuesta">
+        <xsd:sequence/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:element name="autenticacionExterna" type="ns0:autenticacionExterna"/>
+  <xsd:element name="autenticacionExternaResponse" type="ns0:autenticacionExternaResponse"/>
+  <xsd:element name="reversarOrdenResponse" type="ns0:reversarOrdenResponse"/>
+  <xsd:element name="generarOTPResponse" type="ns0:generarOTPResponse"/>
+  <xsd:element name="generarOrdenResponse" type="ns0:generarOrdenResponse"/>
+  <xsd:element name="generarOrden" type="ns0:generarOrden"/>
+  <xsd:element name="consultarPago" type="ns0:consultarPago"/>
+  <xsd:element name="realizarReversoResponse" type="ns0:realizarReversoResponse"/>
+  <xsd:element name="generarOTP" type="ns0:generarOTP"/>
+  <xsd:element name="realizarPagoResponse" type="ns0:realizarPagoResponse"/>
+  <xsd:element name="reversarOrden" type="ns0:reversarOrden"/>
+  <xsd:element name="consultarPagoResponse" type="ns0:consultarPagoResponse"/>
+  <xsd:element name="realizarPago" type="ns0:realizarPago"/>
+  <xsd:element name="realizarReverso" type="ns0:realizarReverso"/>
+  <xsd:simpleType name="tipoEnvioOTPEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="SMS"/>
+      <xsd:enumeration value="MAIL"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="tipoServicioEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="PORTUARIO"/>
+      <xsd:enumeration value="NOPORTUARIO"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://peticiones.servicios.common.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://peticiones.servicios.common.bpe/">
+  <xsd:complexType name="peticion">
+    <xsd:sequence>
+      <xsd:element name="agencia" type="xsd:int"/>
+      <xsd:element name="canal" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="fechaHora" type="xsd:dateTime" minOccurs="0"/>
+      <xsd:element name="hostName" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="idMensaje" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="idUsuario" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ip" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="localidad" type="xsd:int"/>
+      <xsd:element name="macAddress" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="token" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1_2.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://respuestas.servicios.common.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://respuestas.servicios.common.bpe/">
+  <xsd:complexType name="respuesta">
+    <xsd:sequence>
+      <xsd:element name="codigo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="descripcion" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="duracionTarea" type="xsd:long"/>
+      <xsd:element name="idMensaje" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="tipo" type="ns0:tipo" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="tipo">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="EXITO"/>
+      <xsd:enumeration value="ERROR"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1_2_3.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://respuestas.servicios.common.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://respuestas.servicios.common.ocpgtw.bpe/" xmlns:ns1="http://respuestas.servicios.common.bpe/">
+  <xsd:import schemaLocation="DpWorldService_1_2.xsd" namespace="http://respuestas.servicios.common.bpe/"/>
+  <xsd:complexType name="ocpRespuesta" abstract="true">
+    <xsd:complexContent>
+      <xsd:extension base="ns1:respuesta">
+        <xsd:sequence>
+          <xsd:element name="codigoMensajeCore" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="codigoRetornoCore" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="fechaHoraCore" type="xsd:dateTime" minOccurs="0"/>
+          <xsd:element name="nutCore" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1_2_3_4.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://peticiones.servicios.varios.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://peticiones.servicios.varios.ocpgtw.bpe/" xmlns:ns2="http://enumerados.servicios.common.ocpgtw.bpe/" xmlns:ns1="http://peticiones.servicios.common.ocpgtw.bpe/">
+  <xsd:import schemaLocation="DpWorldService_1_2_3_4_5.xsd" namespace="http://peticiones.servicios.common.ocpgtw.bpe/"/>
+  <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6.xsd" namespace="http://enumerados.servicios.common.ocpgtw.bpe/"/>
+  <xsd:complexType name="reversoPeticion">
+    <xsd:complexContent>
+      <xsd:extension base="ns1:ocpPeticion">
+        <xsd:sequence>
+          <xsd:element name="datosDinamicos" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="idMensajeAReversar" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="idMensajeComisionAReversar" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="motivoReverso" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="nutLegadoAReversar" type="xsd:long"/>
+          <xsd:element name="nutLegadoComisionAReversar" type="xsd:long"/>
+          <xsd:element name="tipoReverso" type="ns2:tipoReversoEnum" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1_2_3_4_5.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://peticiones.servicios.common.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://peticiones.servicios.common.ocpgtw.bpe/" xmlns:ns2="http://enumerados.servicios.common.ocpgtw.bpe/" xmlns:ns1="http://peticiones.servicios.common.bpe/">
+  <xsd:import schemaLocation="DpWorldService_1.xsd" namespace="http://peticiones.servicios.common.bpe/"/>
+  <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6.xsd" namespace="http://enumerados.servicios.common.ocpgtw.bpe/"/>
+  <xsd:complexType name="ocpPeticion" abstract="true">
+    <xsd:complexContent>
+      <xsd:extension base="ns1:peticion">
+        <xsd:sequence>
+          <xsd:element name="fechaContable" type="xsd:dateTime" minOccurs="0"/>
+          <xsd:element name="fechaDia" type="xsd:dateTime" minOccurs="0"/>
+          <xsd:element name="numeroCaja" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="nutLegado" type="xsd:long"/>
+          <xsd:element name="producto" type="ns2:productoEnum" minOccurs="0"/>
+          <xsd:element name="tipoTransaccion" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1_2_3_4_5_6.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://enumerados.servicios.common.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://enumerados.servicios.common.ocpgtw.bpe/">
+  <xsd:simpleType name="tipoCuentaEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Corriente"/>
+      <xsd:enumeration value="Ahorros"/>
+      <xsd:enumeration value="TarjetaCredito"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="tipoReversoEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Automatico"/>
+      <xsd:enumeration value="Manual"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="productoEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Administracion"/>
+      <xsd:enumeration value="Facturacion"/>
+      <xsd:enumeration value="Pagos"/>
+      <xsd:enumeration value="Cobros"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1_2_3_4_5_6_7.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://enumerados.servicios.common.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://enumerados.servicios.common.bpe/">
+  <xsd:simpleType name="tipoCuentaEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NoDefinido"/>
+      <xsd:enumeration value="Corriente"/>
+      <xsd:enumeration value="Ahorros"/>
+      <xsd:enumeration value="Exterior"/>
+      <xsd:enumeration value="Lista"/>
+      <xsd:enumeration value="TarjetaCredito"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="tipoIdentificacionEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Cedula"/>
+      <xsd:enumeration value="Ruc"/>
+      <xsd:enumeration value="Pasaporte"/>
+      <xsd:enumeration value="Exterior"/>
+      <xsd:enumeration value="Expediente"/>
+      <xsd:enumeration value="Otro"/>
+      <xsd:enumeration value="Visa"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1_2_3_4_5_6_7_8.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://entidades.servicios.common.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://entidades.servicios.common.ocpgtw.bpe/" xmlns:ns1="http://enumerados.servicios.common.bpe/">
+  <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6_7.xsd" namespace="http://enumerados.servicios.common.bpe/"/>
+  <xsd:complexType name="formaPago">
+    <xsd:sequence>
+      <xsd:element name="codigo" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="codigoBancoCheque" type="xsd:int"/>
+      <xsd:element name="numeroCheque" type="xsd:int"/>
+      <xsd:element name="numeroCuenta" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="numeroCuentaCheque" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="numeroTarjeta" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="referencia" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="tipoCuenta" type="ns1:tipoCuentaEnum" minOccurs="0"/>
+      <xsd:element name="valor" type="xsd:decimal" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/david/repo/dpRepositorioV1/dpworld/InformacionProyecto/archivos%20banco/DpWorldService_1_2_3_4_5_6_7_8_9.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://enumerados.servicios.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://enumerados.servicios.ocpgtw.bpe/">
+  <xsd:simpleType name="tipoActividadEnum">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="Portuaria"/>
+      <xsd:enumeration value="Comercial"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint></con:endpoints><con:operation id="061bc5a7-8173-4a7e-a20b-84dca69f9f7d" isOneWay="false" action="" name="autenticacionExterna" bindingOperationName="autenticacionExterna" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b62ace57-413a-4139-8ee3-64ddb8784f21" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request><![CDATA[<messages>
+   -
+   <InGeneraToken>
+      -
+      <part name="parameters" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         -
+         <autenticacionExterna xmlns="http://western.ifc.servicios.western.empresas.externos.bpe/">
+            -
+            <peticion xmlns="">
+               <clave>Pacifico2019</clave>
+               <idUsuario>USRDPWORLD</idUsuario>
+               <maquina>00-50-56-8E-39-E7</maquina>
+            </peticion>
+         </autenticacionExterna>
+      </part>
+   </InGeneraToken>
+   -
+   <OutGeneraToken>
+      -
+      <part name="parameters" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+         -
+         <tns:autenticacionExternaResponse xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:ns2="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:ns1="http://schemas.datacontract.org/2004/07/WSS_ExtAutenticacion" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns4="http://respuestas.servicios.common.ocpgtw.bpe/" xmlns:ns3="http://www.w3.org/ns/ws-policy" xmlns:ns6="http://respuestas.servicios.common.bpe/" xmlns:ns5="http://enumerados.servicios.common.bpe/" xmlns:ns8="http://peticiones.servicios.common.bpe/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns7="http://enumerados.servicios.common.ocpgtw.bpe/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:ns12="http://peticiones.servicios.varios.ocpgtw.bpe/" xmlns:ns9="http://enumerados.servicios.ocpgtw.bpe/" xmlns:ns11="http://entidades.servicios.common.ocpgtw.bpe/" xmlns:ns10="http://peticiones.servicios.common.ocpgtw.bpe/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/">
+            -
+            <return>
+               <codigoError>0</codigoError>
+               <mensajeError>Ok</mensajeError>
+               <token>2H56HSU7G3KV+CAN5MHP1RFZR+QJB/SV</token>
+            </return>
+         </tns:autenticacionExternaResponse>
+      </part>
+   </OutGeneraToken>
+</messages>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/autenticacionExternaRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="58566e70-875e-4faf-83da-0cd48749b542" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/autenticacionExternaRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d9a33847-aa85-492c-9122-52dd603c26c5" name="Request 3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wes="http://western.ifc.servicios.western.empresas.externos.bpe/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wes:autenticacionExterna>
+         <!--Optional:-->
+         <peticion>
+            <!--Optional:-->
+            <clave>Pacifico2019</clave>
+            <idUsuario>USRDPWORLD</idUsuario>
+            <maquina>00-50-56-8E-39-E7</maquina>
+         </peticion>
+      </wes:autenticacionExterna>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/autenticacionExternaRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="38246477-cf33-47bd-a8c5-e42547c7b4bd" isOneWay="false" action="" name="consultarPago" bindingOperationName="consultarPago" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="c0920c4b-451a-4680-9ce7-f8093bf9f654" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wes="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:pet="http://peticiones.servicios.common.bpe/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wes:consultarPago>
+         <!--Optional:-->
+         <peticion>
+            <pet:agencia>?</pet:agencia>
+            <!--Optional:-->
+            <pet:canal>?</pet:canal>
+            <!--Optional:-->
+            <pet:fechaHora>?</pet:fechaHora>
+            <!--Optional:-->
+            <pet:hostName>?</pet:hostName>
+            <!--Optional:-->
+            <pet:idMensaje>?</pet:idMensaje>
+            <!--Optional:-->
+            <pet:idUsuario>?</pet:idUsuario>
+            <!--Optional:-->
+            <pet:ip>?</pet:ip>
+            <pet:localidad>?</pet:localidad>
+            <!--Optional:-->
+            <pet:macAddress>?</pet:macAddress>
+            <!--Optional:-->
+            <pet:token>?</pet:token>
+            <!--Optional:-->
+            <nombreEmpresa>?</nombreEmpresa>
+            <!--Optional:-->
+            <numeroDocumento>?</numeroDocumento>
+            <!--Optional:-->
+            <nut>?</nut>
+            <!--Optional:-->
+            <producto>?</producto>
+            <!--Optional:-->
+            <servicio>?</servicio>
+            <!--Optional:-->
+            <tipoServicio>?</tipoServicio>
+         </peticion>
+      </wes:consultarPago>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/consultarPagoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="08a93335-0563-40b4-8839-8e09a2c6e04f" isOneWay="false" action="" name="generarOrden" bindingOperationName="generarOrden" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3a912c04-d19a-4b6a-825c-88d6aae57034" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wes="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:pet="http://peticiones.servicios.common.bpe/" xmlns:ent="http://entidades.servicios.common.ocpgtw.bpe/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wes:generarOrden>
+         <!--Optional:-->
+         <peticion>
+            <pet:agencia>?</pet:agencia>
+            <!--Optional:-->
+            <pet:canal>?</pet:canal>
+            <!--Optional:-->
+            <pet:fechaHora>?</pet:fechaHora>
+            <!--Optional:-->
+            <pet:hostName>?</pet:hostName>
+            <!--Optional:-->
+            <pet:idMensaje>?</pet:idMensaje>
+            <!--Optional:-->
+            <pet:idUsuario>?</pet:idUsuario>
+            <!--Optional:-->
+            <pet:ip>?</pet:ip>
+            <pet:localidad>?</pet:localidad>
+            <!--Optional:-->
+            <pet:macAddress>?</pet:macAddress>
+            <!--Optional:-->
+            <pet:token>?</pet:token>
+            <!--Optional:-->
+            <codigoBanco>?</codigoBanco>
+            <!--Zero or more repetitions:-->
+            <formasPago>
+               <!--Optional:-->
+               <ent:codigo>?</ent:codigo>
+               <ent:codigoBancoCheque>?</ent:codigoBancoCheque>
+               <ent:numeroCheque>?</ent:numeroCheque>
+               <!--Optional:-->
+               <ent:numeroCuenta>?</ent:numeroCuenta>
+               <!--Optional:-->
+               <ent:numeroCuentaCheque>?</ent:numeroCuentaCheque>
+               <!--Optional:-->
+               <ent:numeroTarjeta>?</ent:numeroTarjeta>
+               <!--Optional:-->
+               <ent:referencia>?</ent:referencia>
+               <!--Optional:-->
+               <ent:tipoCuenta>?</ent:tipoCuenta>
+               <!--Optional:-->
+               <ent:valor>?</ent:valor>
+            </formasPago>
+            <!--Optional:-->
+            <idTokenBizbank>?</idTokenBizbank>
+            <!--Optional:-->
+            <idUsuarioBizbank>?</idUsuarioBizbank>
+            <!--Optional:-->
+            <identificacionCodigoServicio>?</identificacionCodigoServicio>
+            <!--Optional:-->
+            <identificacionServicio>?</identificacionServicio>
+            <!--Optional:-->
+            <moneda>?</moneda>
+            <!--Optional:-->
+            <nombreEmpresa>?</nombreEmpresa>
+            <!--Optional:-->
+            <nombreTercero>?</nombreTercero>
+            <!--Optional:-->
+            <numeroCuenta>?</numeroCuenta>
+            <!--Optional:-->
+            <numeroIdentificacion>?</numeroIdentificacion>
+            <!--Optional:-->
+            <referencia>?</referencia>
+            <!--Optional:-->
+            <servicio>?</servicio>
+            <!--Optional:-->
+            <tipoActividad>?</tipoActividad>
+            <!--Optional:-->
+            <tipoCuenta>?</tipoCuenta>
+            <!--Optional:-->
+            <tipoIdentificacion>?</tipoIdentificacion>
+            <!--Optional:-->
+            <valorBaseImponible>?</valorBaseImponible>
+            <!--Optional:-->
+            <valorIva>?</valorIva>
+            <!--Optional:-->
+            <valorTotal>?</valorTotal>
+         </peticion>
+      </wes:generarOrden>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/generarOrdenRequest"/></con:call></con:operation><con:operation id="4dc1a61b-d9a7-42d9-8c66-344166ba044f" isOneWay="false" action="" name="generarOTP" bindingOperationName="generarOTP" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="86aba2af-ef52-4142-8283-580f518cc4b8" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wes="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:pet="http://peticiones.servicios.common.bpe/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wes:generarOTP>
+         <!--Optional:-->
+         <peticion>
+            <pet:agencia>?</pet:agencia>
+            <!--Optional:-->
+            <pet:canal>?</pet:canal>
+            <!--Optional:-->
+            <pet:fechaHora>?</pet:fechaHora>
+            <!--Optional:-->
+            <pet:hostName>?</pet:hostName>
+            <!--Optional:-->
+            <pet:idMensaje>?</pet:idMensaje>
+            <!--Optional:-->
+            <pet:idUsuario>?</pet:idUsuario>
+            <!--Optional:-->
+            <pet:ip>?</pet:ip>
+            <pet:localidad>?</pet:localidad>
+            <!--Optional:-->
+            <pet:macAddress>?</pet:macAddress>
+            <!--Optional:-->
+            <pet:token>?</pet:token>
+            <!--Optional:-->
+            <celularCliente>?</celularCliente>
+            <!--Optional:-->
+            <identificacion>?</identificacion>
+            <!--Optional:-->
+            <identificadorCanal>?</identificadorCanal>
+            <!--Optional:-->
+            <mailCliente>?</mailCliente>
+            <!--Optional:-->
+            <medioOTP>?</medioOTP>
+            <!--Optional:-->
+            <tipoIdentificacion>?</tipoIdentificacion>
+         </peticion>
+      </wes:generarOTP>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/generarOTPRequest"/></con:call></con:operation><con:operation id="400de098-7084-44e4-98e3-3d16459e664c" isOneWay="false" action="" name="realizarPago" bindingOperationName="realizarPago" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="154c5643-91ba-49b1-a1f5-51e07aede635" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wes="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:pet="http://peticiones.servicios.common.bpe/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wes:realizarPago>
+         <!--Optional:-->
+         <peticion>
+            <pet:agencia>?</pet:agencia>
+            <!--Optional:-->
+            <pet:canal>?</pet:canal>
+            <!--Optional:-->
+            <pet:fechaHora>?</pet:fechaHora>
+            <!--Optional:-->
+            <pet:hostName>?</pet:hostName>
+            <!--Optional:-->
+            <pet:idMensaje>?</pet:idMensaje>
+            <!--Optional:-->
+            <pet:idUsuario>?</pet:idUsuario>
+            <!--Optional:-->
+            <pet:ip>?</pet:ip>
+            <pet:localidad>?</pet:localidad>
+            <!--Optional:-->
+            <pet:macAddress>?</pet:macAddress>
+            <!--Optional:-->
+            <pet:token>?</pet:token>
+            <!--Optional:-->
+            <codigoBanco>?</codigoBanco>
+            <!--Optional:-->
+            <codigoOTP>?</codigoOTP>
+            <!--Optional:-->
+            <identificacion>?</identificacion>
+            <!--Optional:-->
+            <monto>?</monto>
+            <!--Optional:-->
+            <nombreEmpresa>?</nombreEmpresa>
+            <!--Optional:-->
+            <numeroCuentaDebito>?</numeroCuentaDebito>
+            <!--Optional:-->
+            <numeroDocumento>?</numeroDocumento>
+            <!--Optional:-->
+            <producto>?</producto>
+            <!--Optional:-->
+            <servicio>?</servicio>
+            <!--Optional:-->
+            <tipoCuenta>?</tipoCuenta>
+            <!--Optional:-->
+            <tipoIdentificacion>?</tipoIdentificacion>
+            <!--Optional:-->
+            <tipoServicio>?</tipoServicio>
+         </peticion>
+      </wes:realizarPago>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/realizarPagoRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ceed0dd4-2486-427f-8234-4bba2b48de74" name="Request 2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wes="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:pet="http://peticiones.servicios.common.bpe/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wes:realizarPago>
+         <!--Optional:-->
+         <peticion>
+            <pet:agencia>0</pet:agencia>
+            <!--Optional:-->
+            <pet:canal>?</pet:canal>
+            <!--Optional:-->
+            <pet:fechaHora>?</pet:fechaHora>
+            <!--Optional:-->
+            <pet:hostName>?</pet:hostName>
+            <!--Optional:-->
+            <pet:idMensaje>?</pet:idMensaje>
+            <!--Optional:-->
+            <pet:idUsuario>?</pet:idUsuario>
+            <!--Optional:-->
+            <pet:ip>?</pet:ip>
+            <pet:localidad>?</pet:localidad>
+            <!--Optional:-->
+            <pet:macAddress>?</pet:macAddress>
+            <!--Optional:-->
+            <pet:token>?</pet:token>
+            <!--Optional:-->
+            <codigoBanco>?</codigoBanco>
+            <!--Optional:-->
+            <codigoOTP>?</codigoOTP>
+            <!--Optional:-->
+            <identificacion>?</identificacion>
+            <!--Optional:-->
+            <monto>?</monto>
+            <!--Optional:-->
+            <nombreEmpresa>?</nombreEmpresa>
+            <!--Optional:-->
+            <numeroCuentaDebito>?</numeroCuentaDebito>
+            <!--Optional:-->
+            <numeroDocumento>?</numeroDocumento>
+            <!--Optional:-->
+            <producto>?</producto>
+            <!--Optional:-->
+            <servicio>?</servicio>
+            <!--Optional:-->
+            <tipoCuenta>?</tipoCuenta>
+            <!--Optional:-->
+            <tipoIdentificacion>?</tipoIdentificacion>
+            <!--Optional:-->
+            <tipoServicio>?</tipoServicio>
+         </peticion>
+      </wes:realizarPago>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/realizarPagoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="61c3d1c6-5c40-4d01-9123-460bc2568909" isOneWay="false" action="" name="realizarReverso" bindingOperationName="realizarReverso" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ac15e47c-2478-40f0-a062-a90cd03ecd95" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wes="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:pet="http://peticiones.servicios.common.bpe/" xmlns:pet1="http://peticiones.servicios.common.ocpgtw.bpe/" xmlns:pet2="http://peticiones.servicios.varios.ocpgtw.bpe/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wes:realizarReverso>
+         <!--Optional:-->
+         <peticion>
+            <pet:agencia>?</pet:agencia>
+            <!--Optional:-->
+            <pet:canal>?</pet:canal>
+            <!--Optional:-->
+            <pet:fechaHora>?</pet:fechaHora>
+            <!--Optional:-->
+            <pet:hostName>?</pet:hostName>
+            <!--Optional:-->
+            <pet:idMensaje>?</pet:idMensaje>
+            <!--Optional:-->
+            <pet:idUsuario>?</pet:idUsuario>
+            <!--Optional:-->
+            <pet:ip>?</pet:ip>
+            <pet:localidad>?</pet:localidad>
+            <!--Optional:-->
+            <pet:macAddress>?</pet:macAddress>
+            <!--Optional:-->
+            <pet:token>?</pet:token>
+            <!--Optional:-->
+            <pet1:fechaContable>?</pet1:fechaContable>
+            <!--Optional:-->
+            <pet1:fechaDia>?</pet1:fechaDia>
+            <!--Optional:-->
+            <pet1:numeroCaja>?</pet1:numeroCaja>
+            <pet1:nutLegado>?</pet1:nutLegado>
+            <!--Optional:-->
+            <pet1:producto>?</pet1:producto>
+            <!--Optional:-->
+            <pet1:tipoTransaccion>?</pet1:tipoTransaccion>
+            <!--Optional:-->
+            <pet2:datosDinamicos>?</pet2:datosDinamicos>
+            <!--Optional:-->
+            <pet2:idMensajeAReversar>?</pet2:idMensajeAReversar>
+            <!--Optional:-->
+            <pet2:idMensajeComisionAReversar>?</pet2:idMensajeComisionAReversar>
+            <!--Optional:-->
+            <pet2:motivoReverso>?</pet2:motivoReverso>
+            <pet2:nutLegadoAReversar>?</pet2:nutLegadoAReversar>
+            <pet2:nutLegadoComisionAReversar>?</pet2:nutLegadoComisionAReversar>
+            <!--Optional:-->
+            <pet2:tipoReverso>?</pet2:tipoReverso>
+         </peticion>
+      </wes:realizarReverso>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/realizarReversoRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="80979eb0-1d0c-4abe-aee3-f0c553a9332d" isOneWay="false" action="" name="reversarOrden" bindingOperationName="reversarOrden" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d8d31acf-db82-4dcd-84eb-cdd7f5a494b6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wes="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:pet="http://peticiones.servicios.common.bpe/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wes:reversarOrden>
+         <!--Optional:-->
+         <peticion>
+            <pet:agencia>?</pet:agencia>
+            <!--Optional:-->
+            <pet:canal>?</pet:canal>
+            <!--Optional:-->
+            <pet:fechaHora>?</pet:fechaHora>
+            <!--Optional:-->
+            <pet:hostName>?</pet:hostName>
+            <!--Optional:-->
+            <pet:idMensaje>?</pet:idMensaje>
+            <!--Optional:-->
+            <pet:idUsuario>?</pet:idUsuario>
+            <!--Optional:-->
+            <pet:ip>?</pet:ip>
+            <pet:localidad>?</pet:localidad>
+            <!--Optional:-->
+            <pet:macAddress>?</pet:macAddress>
+            <!--Optional:-->
+            <pet:token>?</pet:token>
+            <!--Optional:-->
+            <idMensajeReverso>?</idMensajeReverso>
+            <!--Optional:-->
+            <idTokenBizbank>?</idTokenBizbank>
+            <!--Optional:-->
+            <idUsuarioBizbank>?</idUsuarioBizbank>
+            <!--Optional:-->
+            <motivoReverso>?</motivoReverso>
+            <!--Optional:-->
+            <nombreEmpresa>?</nombreEmpresa>
+            <!--Optional:-->
+            <servicio>?</servicio>
+         </peticion>
+      </wes:reversarOrden>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/reversarOrdenRequest"/></con:call></con:operation></con:interface><con:mockService id="37f2f671-9051-42af-9de7-a7584ce736b3" port="8080" path="/" host="david-Inspiron-5559" name="MockService 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="autenticacionExterna" id="676e68d9-dd20-492e-af93-df9d0fa81952" interface="DpWorldPortBinding" operation="autenticacionExterna"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="cab5d799-93cd-4785-94ae-000f30d007fd" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wes="http://western.ifc.servicios.western.empresas.externos.bpe/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <wes:autenticacionExternaResponse>
+         <!--Optional:-->
+         <return>
+            <codigoError>0</codigoError>
+            <mensajeError>Ok</mensajeError>
+            <token>2H56HSU7G3KV+CAN5MHP1RFZR+QJB/SV</token>
+         </return>
+      </wes:autenticacionExternaResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://western.ifc.servicios.western.empresas.externos.bpe/DpWorld/autenticacionExternaResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
