@@ -179,7 +179,7 @@ public class ActiveMQClient {
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment4("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment5("");
         //TODO PREGUNTAR QUE DATO VA
-        invoiceDFF.setInvoiceTransactionsFlexfield_Number_Segment1("96823");
+        invoiceDFF.setInvoiceTransactionsFlexfield_Number_Segment1("69822");
 
         lista.add(invoiceDFF);
 
@@ -193,7 +193,7 @@ public class ActiveMQClient {
 
         InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
         invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("41");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("47");
         //TODO PREGUNTAR A PABLO
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("300001441855607");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
