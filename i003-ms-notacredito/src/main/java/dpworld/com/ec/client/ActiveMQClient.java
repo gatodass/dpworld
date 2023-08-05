@@ -193,7 +193,7 @@ public class ActiveMQClient {
 
         InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
         invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("41");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("47");
         //TODO PREGUNTAR A PABLO
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("300001441855607");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
