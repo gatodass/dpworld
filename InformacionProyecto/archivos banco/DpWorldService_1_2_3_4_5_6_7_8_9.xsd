@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://enumerados.servicios.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://enumerados.servicios.ocpgtw.bpe/">
+   <xsd:simpleType name="tipoActividadEnum">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Portuaria"/>
+         <xsd:enumeration value="Comercial"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>

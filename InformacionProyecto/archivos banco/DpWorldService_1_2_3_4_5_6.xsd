@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://enumerados.servicios.common.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://enumerados.servicios.common.ocpgtw.bpe/">
+   <xsd:simpleType name="tipoCuentaEnum">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Corriente"/>
+         <xsd:enumeration value="Ahorros"/>
+         <xsd:enumeration value="TarjetaCredito"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="tipoReversoEnum">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Automatico"/>
+         <xsd:enumeration value="Manual"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="productoEnum">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Administracion"/>
+         <xsd:enumeration value="Facturacion"/>
+         <xsd:enumeration value="Pagos"/>
+         <xsd:enumeration value="Cobros"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>

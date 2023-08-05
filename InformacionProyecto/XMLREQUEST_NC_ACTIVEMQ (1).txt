@@ -1,0 +1,63 @@
+<invoice>
+	<draftId>6306</draftId>
+	<InvoiceType>6204_EC_FA_E_IMPEXP</InvoiceType>
+	<create>2023-08-03</create>
+	<BusinessUnit>ECPSJ - DP World Posorja</BusinessUnit>
+	<facility>PSJ</facility>
+	<customerId>0990326606001</customerId>
+	<additional>
+		<address>Av. Francisco de Orellana y Miguel H Alc&#237;var. Centro Empresa</address>
+		<email>tanya.cumbicos@dpworld.com</email>
+		<vesselName/>
+		<vesselVisitId/>
+		<DaeDai/>
+		<Notes>ANULACION REEMP FACT 9630</Notes>
+		<NaveReferencia/>
+		<CustomsId>002-101-000009604</CustomsId>
+		<TaxCode>IVA_12%_CDT</TaxCode>
+	</additional>
+	<vesselArrival>2023-07-28</vesselArrival>
+	<totalCharges>0.00</totalCharges>
+	<discounts>0.00</discounts>
+	<total>0.00</total>
+	<source>N4</source>
+	<currency>USD</currency>
+	<details>
+		<invoiceItem>
+			<description>RECEPCION/DESPACHO DE CONTENEDORES (CITA)</description>
+			<tariff>40.FULL.ALM</tariff>
+			<quantity>1.00</quantity>
+			<amount>40.00</amount>
+			<TotalAmount>40.00</TotalAmount>
+			<TaxCode>IVA_12%_CDT</TaxCode>
+			<Segment1>6167</Segment1>
+			<Segment2>0000</Segment2>
+			<Segment3>492103</Segment3>
+			<Segment4>00000</Segment4>
+			<Segment5>0000</Segment5>
+			<Segment6>000000</Segment6>
+			<Segment7>000000</Segment7>
+			<Segment8>0000</Segment8>
+			<Segment9>000</Segment9>
+			<Segment10>000</Segment10>
+		</invoiceItem>
+		<invoiceItem>
+			<description>RECEPCION/DESPACHO DE CONTENEDORES (CITA)</description>
+			<tariff>POR.CNTRS</tariff>
+			<quantity>1.00</quantity>
+			<amount>30.00</amount>
+			<TotalAmount>30.00</TotalAmount>
+			<TaxCode>IVA_12%_CDT</TaxCode>
+			<Segment1>6167</Segment1>
+			<Segment2>0000</Segment2>
+			<Segment3>492103</Segment3>
+			<Segment4>00000</Segment4>
+			<Segment5>0000</Segment5>
+			<Segment6>000000</Segment6>
+			<Segment7>000000</Segment7>
+			<Segment8>0000</Segment8>
+			<Segment9>000</Segment9>
+			<Segment10>000</Segment10>
+		</invoiceItem>		
+	</details>
+</invoice>

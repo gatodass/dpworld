@@ -81,6 +81,25 @@ FIN_1 carga facturas (activeMQ) Prioridad
 FIN_1 carga de notas de crédito (activeMQ))
 FIN_1 XXXXXXXXXXX
 
+
+-----COLAS DPWORDL
+TEST ACTIVE MQ
+
+IP = 10.24.3.69
+
+Usuario = admin
+
+password = admin
+
+ 
+
+PRODUCCION
+
+IP= 10.24.1.67
+
+Usuario = admin
+
+password = admin
 FIN_33 pago de facturas desde banco Pacifico
 FIN_34 consulta de facturas especifica desde Banco Pacifico
 FIN_35 reverso de pago de facturas 

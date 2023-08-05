@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:ns6="http://entidades.servicios.common.ocpgtw.bpe/" xmlns:ns5="http://enumerados.servicios.common.bpe/" xmlns:ns8="http://enumerados.servicios.common.ocpgtw.bpe/" xmlns:ns7="http://enumerados.servicios.ocpgtw.bpe/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:ns2="http://respuestas.servicios.common.bpe/" xmlns:ns1="http://peticiones.servicios.common.bpe/" xmlns:ns4="http://peticiones.servicios.varios.ocpgtw.bpe/" xmlns:ns3="http://respuestas.servicios.common.ocpgtw.bpe/">
+   <xsd:import schemaLocation="DpWorldService_1.xsd" namespace="http://peticiones.servicios.common.bpe/"/>
+   <xsd:import schemaLocation="DpWorldService_1_2.xsd" namespace="http://respuestas.servicios.common.bpe/"/>
+   <xsd:import schemaLocation="DpWorldService_1_2_3.xsd" namespace="http://respuestas.servicios.common.ocpgtw.bpe/"/>
+   <xsd:import schemaLocation="DpWorldService_1_2_3_4.xsd" namespace="http://peticiones.servicios.varios.ocpgtw.bpe/"/>
+   <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6_7.xsd" namespace="http://enumerados.servicios.common.bpe/"/>
+   <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6_7_8.xsd" namespace="http://entidades.servicios.common.ocpgtw.bpe/"/>
+   <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6_7_8_9.xsd" namespace="http://enumerados.servicios.ocpgtw.bpe/"/>
+   <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6.xsd" namespace="http://enumerados.servicios.common.ocpgtw.bpe/"/>
+   <xsd:complexType name="autenticacionExterna">
+      <xsd:sequence>
+         <xsd:element name="peticion" type="ns0:autenticacionExternaPeticion" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="autenticacionExternaPeticion">
+      <xsd:sequence>
+         <xsd:element name="clave" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="idUsuario" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="maquina" type="xsd:string" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="reversarOrdenResponse">
+      <xsd:sequence>
+         <xsd:element name="return" type="ns0:reversaOrdenRespuesta" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="realizarReversoResponse">
+      <xsd:sequence>
+         <xsd:element name="return" type="ns0:realizaReversoRespuesta" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="consultaPagoRespuesta">
+      <xsd:complexContent>
+         <xsd:extension base="ns2:respuesta">
+            <xsd:sequence>
+               <xsd:element name="pagos" type="ns0:pago" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="realizaPagoPeticion">
+      <xsd:complexContent>
+         <xsd:extension base="ns1:peticion">
+            <xsd:sequence>
+               <xsd:element name="codigoBanco" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="codigoOTP" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="identificacion" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="monto" type="xsd:decimal" minOccurs="0"/>
+               <xsd:element name="nombreEmpresa" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="numeroCuentaDebito" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="numeroDocumento" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="producto" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="servicio" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="tipoCuenta" type="ns8:tipoCuentaEnum" minOccurs="0"/>
+               <xsd:element name="tipoIdentificacion" type="ns5:tipoIdentificacionEnum" minOccurs="0"/>
+               <xsd:element name="tipoServicio" type="ns0:tipoServicioEnum" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="reversarOrden">
+      <xsd:sequence>
+         <xsd:element name="peticion" type="ns0:reversaOrdenPeticion" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="autenticacionExternaRespuesta">
+      <xsd:sequence>
+         <xsd:element name="codigoError" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="mensajeError" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="token" type="xsd:string" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="generaOTPPeticion">
+      <xsd:complexContent>
+         <xsd:extension base="ns1:peticion">
+            <xsd:sequence>
+               <xsd:element name="celularCliente" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="identificacion" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="identificadorCanal" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="mailCliente" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="medioOTP" type="ns0:tipoEnvioOTPEnum" minOccurs="0"/>
+               <xsd:element name="tipoIdentificacion" type="ns5:tipoIdentificacionEnum" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="reversaOrdenRespuesta">
+      <xsd:complexContent>
+         <xsd:extension base="ns2:respuesta">
+            <xsd:sequence/>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="realizarReverso">
+      <xsd:sequence>
+         <xsd:element name="peticion" type="ns0:realizaReversoPeticion" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="realizaReversoPeticion">
+      <xsd:complexContent>
+         <xsd:extension base="ns4:reversoPeticion">
+            <xsd:sequence/>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="realizaPagoRespuesta">
+      <xsd:complexContent>
+         <xsd:extension base="ns3:ocpRespuesta">
+            <xsd:sequence/>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="autenticacionExternaResponse">
+      <xsd:sequence>
+         <xsd:element name="return" type="ns0:autenticacionExternaRespuesta" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="reversaOrdenPeticion">
+      <xsd:complexContent>
+         <xsd:extension base="ns1:peticion">
+            <xsd:sequence>
+               <xsd:element name="idMensajeReverso" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="idTokenBizbank" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="idUsuarioBizbank" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="motivoReverso" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="nombreEmpresa" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="servicio" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="generarOTPResponse">
+      <xsd:sequence>
+         <xsd:element name="return" type="ns0:generaOTPRespuesta" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="generarOrdenResponse">
+      <xsd:sequence>
+         <xsd:element name="return" type="ns0:generaOrdenRespuesta" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="generaOTPRespuesta">
+      <xsd:complexContent>
+         <xsd:extension base="ns2:respuesta">
+            <xsd:sequence/>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="generarOrden">
+      <xsd:sequence>
+         <xsd:element name="peticion" type="ns0:generaOrdenPeticion" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="consultarPago">
+      <xsd:sequence>
+         <xsd:element name="peticion" type="ns0:consultaPagoPeticion" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="consultaPagoPeticion">
+      <xsd:complexContent>
+         <xsd:extension base="ns1:peticion">
+            <xsd:sequence>
+               <xsd:element name="nombreEmpresa" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="numeroDocumento" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="nut" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="producto" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="servicio" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="tipoServicio" type="ns0:tipoServicioEnum" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="generarOTP">
+      <xsd:sequence>
+         <xsd:element name="peticion" type="ns0:generaOTPPeticion" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="realizaReversoRespuesta">
+      <xsd:complexContent>
+         <xsd:extension base="ns3:ocpRespuesta">
+            <xsd:sequence/>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="realizarPagoResponse">
+      <xsd:sequence>
+         <xsd:element name="return" type="ns0:realizaPagoRespuesta" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="pago">
+      <xsd:sequence>
+         <xsd:element name="monto" type="xsd:decimal" minOccurs="0"/>
+         <xsd:element name="nut" type="xsd:string" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="generaOrdenPeticion">
+      <xsd:complexContent>
+         <xsd:extension base="ns1:peticion">
+            <xsd:sequence>
+               <xsd:element name="codigoBanco" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="formasPago" type="ns6:formaPago" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+               <xsd:element name="idTokenBizbank" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="idUsuarioBizbank" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="identificacionCodigoServicio" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="identificacionServicio" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="moneda" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="nombreEmpresa" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="nombreTercero" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="numeroCuenta" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="numeroIdentificacion" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="referencia" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="servicio" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="tipoActividad" type="ns7:tipoActividadEnum" minOccurs="0"/>
+               <xsd:element name="tipoCuenta" type="ns5:tipoCuentaEnum" minOccurs="0"/>
+               <xsd:element name="tipoIdentificacion" type="ns5:tipoIdentificacionEnum" minOccurs="0"/>
+               <xsd:element name="valorBaseImponible" type="xsd:decimal" minOccurs="0"/>
+               <xsd:element name="valorIva" type="xsd:decimal" minOccurs="0"/>
+               <xsd:element name="valorTotal" type="xsd:decimal" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:complexType name="consultarPagoResponse">
+      <xsd:sequence>
+         <xsd:element name="return" type="ns0:consultaPagoRespuesta" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="realizarPago">
+      <xsd:sequence>
+         <xsd:element name="peticion" type="ns0:realizaPagoPeticion" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="generaOrdenRespuesta">
+      <xsd:complexContent>
+         <xsd:extension base="ns3:ocpRespuesta">
+            <xsd:sequence/>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   <xsd:element name="autenticacionExterna" type="ns0:autenticacionExterna"/>
+   <xsd:element name="autenticacionExternaResponse" type="ns0:autenticacionExternaResponse"/>
+   <xsd:element name="reversarOrdenResponse" type="ns0:reversarOrdenResponse"/>
+   <xsd:element name="generarOTPResponse" type="ns0:generarOTPResponse"/>
+   <xsd:element name="generarOrdenResponse" type="ns0:generarOrdenResponse"/>
+   <xsd:element name="generarOrden" type="ns0:generarOrden"/>
+   <xsd:element name="consultarPago" type="ns0:consultarPago"/>
+   <xsd:element name="realizarReversoResponse" type="ns0:realizarReversoResponse"/>
+   <xsd:element name="generarOTP" type="ns0:generarOTP"/>
+   <xsd:element name="realizarPagoResponse" type="ns0:realizarPagoResponse"/>
+   <xsd:element name="reversarOrden" type="ns0:reversarOrden"/>
+   <xsd:element name="consultarPagoResponse" type="ns0:consultarPagoResponse"/>
+   <xsd:element name="realizarPago" type="ns0:realizarPago"/>
+   <xsd:element name="realizarReverso" type="ns0:realizarReverso"/>
+   <xsd:simpleType name="tipoEnvioOTPEnum">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="SMS"/>
+         <xsd:enumeration value="MAIL"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="tipoServicioEnum">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="PORTUARIO"/>
+         <xsd:enumeration value="NOPORTUARIO"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>

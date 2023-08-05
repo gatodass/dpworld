@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<WL5G3N0:definitions name="DpWorldService" targetNamespace="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+   <WL5G3N0:types>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://western.ifc.servicios.western.empresas.externos.bpe/" schemaLocation="DpWorldService.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://peticiones.servicios.common.bpe/" schemaLocation="DpWorldService_1.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://respuestas.servicios.common.bpe/" schemaLocation="DpWorldService_1_2.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://enumerados.servicios.common.bpe/" schemaLocation="DpWorldService_1_2_3_4_5_6_7.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://entidades.servicios.common.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4_5_6_7_8.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://enumerados.servicios.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4_5_6_7_8_9.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://respuestas.servicios.common.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://enumerados.servicios.common.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4_5_6.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://peticiones.servicios.varios.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4.xsd"/>
+      </xsd:schema>
+      <xsd:schema xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+         <xsd:import namespace="http://peticiones.servicios.common.ocpgtw.bpe/" schemaLocation="DpWorldService_1_2_3_4_5.xsd"/>
+      </xsd:schema>
+   </WL5G3N0:types>
+   <WL5G3N0:message name="consultarPago">
+      <WL5G3N0:part element="WL5G3N1:consultarPago" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="consultarPagoResponse">
+      <WL5G3N0:part element="WL5G3N1:consultarPagoResponse" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="generarOTP">
+      <WL5G3N0:part element="WL5G3N1:generarOTP" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="generarOTPResponse">
+      <WL5G3N0:part element="WL5G3N1:generarOTPResponse" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="realizarPago">
+      <WL5G3N0:part element="WL5G3N1:realizarPago" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="realizarPagoResponse">
+      <WL5G3N0:part element="WL5G3N1:realizarPagoResponse" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="realizarReverso">
+      <WL5G3N0:part element="WL5G3N1:realizarReverso" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="realizarReversoResponse">
+      <WL5G3N0:part element="WL5G3N1:realizarReversoResponse" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="autenticacionExterna">
+      <WL5G3N0:part element="WL5G3N1:autenticacionExterna" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="autenticacionExternaResponse">
+      <WL5G3N0:part element="WL5G3N1:autenticacionExternaResponse" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="generarOrden">
+      <WL5G3N0:part element="WL5G3N1:generarOrden" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="generarOrdenResponse">
+      <WL5G3N0:part element="WL5G3N1:generarOrdenResponse" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="reversarOrden">
+      <WL5G3N0:part element="WL5G3N1:reversarOrden" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:message name="reversarOrdenResponse">
+      <WL5G3N0:part element="WL5G3N1:reversarOrdenResponse" name="parameters"/>
+   </WL5G3N0:message>
+   <WL5G3N0:portType name="DpWorld">
+      <WL5G3N0:operation name="consultarPago">
+         <WL5G3N0:input message="WL5G3N1:consultarPago"/>
+         <WL5G3N0:output message="WL5G3N1:consultarPagoResponse"/>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="generarOTP">
+         <WL5G3N0:input message="WL5G3N1:generarOTP"/>
+         <WL5G3N0:output message="WL5G3N1:generarOTPResponse"/>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="realizarPago">
+         <WL5G3N0:input message="WL5G3N1:realizarPago"/>
+         <WL5G3N0:output message="WL5G3N1:realizarPagoResponse"/>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="realizarReverso">
+         <WL5G3N0:input message="WL5G3N1:realizarReverso"/>
+         <WL5G3N0:output message="WL5G3N1:realizarReversoResponse"/>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="autenticacionExterna">
+         <WL5G3N0:input message="WL5G3N1:autenticacionExterna"/>
+         <WL5G3N0:output message="WL5G3N1:autenticacionExternaResponse"/>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="generarOrden">
+         <WL5G3N0:input message="WL5G3N1:generarOrden"/>
+         <WL5G3N0:output message="WL5G3N1:generarOrdenResponse"/>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="reversarOrden">
+         <WL5G3N0:input message="WL5G3N1:reversarOrden"/>
+         <WL5G3N0:output message="WL5G3N1:reversarOrdenResponse"/>
+      </WL5G3N0:operation>
+   </WL5G3N0:portType>
+   <WL5G3N0:binding name="DpWorldPortBinding" type="WL5G3N1:DpWorld">
+      <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <WL5G3N0:operation name="consultarPago">
+         <WL5G3N2:operation/>
+         <WL5G3N0:input>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:input>
+         <WL5G3N0:output>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:output>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="generarOTP">
+         <WL5G3N2:operation/>
+         <WL5G3N0:input>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:input>
+         <WL5G3N0:output>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:output>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="realizarPago">
+         <WL5G3N2:operation/>
+         <WL5G3N0:input>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:input>
+         <WL5G3N0:output>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:output>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="realizarReverso">
+         <WL5G3N2:operation/>
+         <WL5G3N0:input>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:input>
+         <WL5G3N0:output>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:output>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="autenticacionExterna">
+         <WL5G3N2:operation/>
+         <WL5G3N0:input>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:input>
+         <WL5G3N0:output>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:output>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="generarOrden">
+         <WL5G3N2:operation/>
+         <WL5G3N0:input>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:input>
+         <WL5G3N0:output>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:output>
+      </WL5G3N0:operation>
+      <WL5G3N0:operation name="reversarOrden">
+         <WL5G3N2:operation/>
+         <WL5G3N0:input>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:input>
+         <WL5G3N0:output>
+            <WL5G3N2:body use="literal"/>
+         </WL5G3N0:output>
+      </WL5G3N0:operation>
+   </WL5G3N0:binding>
+   <WL5G3N0:service name="DpWorldService">
+      <WL5G3N0:documentation>OSB Service</WL5G3N0:documentation>
+      <WL5G3N0:port binding="WL5G3N1:DpWorldPortBinding" name="DpWorldPort">
+         <WL5G3N2:address location="http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService"/>
+      </WL5G3N0:port>
+   </WL5G3N0:service>
+</WL5G3N0:definitions>

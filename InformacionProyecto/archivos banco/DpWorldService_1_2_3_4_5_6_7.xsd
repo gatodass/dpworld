@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://enumerados.servicios.common.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://enumerados.servicios.common.bpe/">
+   <xsd:simpleType name="tipoCuentaEnum">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="NoDefinido"/>
+         <xsd:enumeration value="Corriente"/>
+         <xsd:enumeration value="Ahorros"/>
+         <xsd:enumeration value="Exterior"/>
+         <xsd:enumeration value="Lista"/>
+         <xsd:enumeration value="TarjetaCredito"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+   <xsd:simpleType name="tipoIdentificacionEnum">
+      <xsd:restriction base="xsd:string">
+         <xsd:enumeration value="Cedula"/>
+         <xsd:enumeration value="Ruc"/>
+         <xsd:enumeration value="Pasaporte"/>
+         <xsd:enumeration value="Exterior"/>
+         <xsd:enumeration value="Expediente"/>
+         <xsd:enumeration value="Otro"/>
+         <xsd:enumeration value="Visa"/>
+      </xsd:restriction>
+   </xsd:simpleType>
+</xsd:schema>

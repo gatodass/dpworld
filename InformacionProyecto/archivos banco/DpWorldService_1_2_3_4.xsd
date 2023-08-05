@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://peticiones.servicios.varios.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://peticiones.servicios.varios.ocpgtw.bpe/" xmlns:ns2="http://enumerados.servicios.common.ocpgtw.bpe/" xmlns:ns1="http://peticiones.servicios.common.ocpgtw.bpe/">
+   <xsd:import schemaLocation="DpWorldService_1_2_3_4_5.xsd" namespace="http://peticiones.servicios.common.ocpgtw.bpe/"/>
+   <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6.xsd" namespace="http://enumerados.servicios.common.ocpgtw.bpe/"/>
+   <xsd:complexType name="reversoPeticion">
+      <xsd:complexContent>
+         <xsd:extension base="ns1:ocpPeticion">
+            <xsd:sequence>
+               <xsd:element name="datosDinamicos" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="idMensajeAReversar" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="idMensajeComisionAReversar" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="motivoReverso" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="nutLegadoAReversar" type="xsd:long"/>
+               <xsd:element name="nutLegadoComisionAReversar" type="xsd:long"/>
+               <xsd:element name="tipoReverso" type="ns2:tipoReversoEnum" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+</xsd:schema>

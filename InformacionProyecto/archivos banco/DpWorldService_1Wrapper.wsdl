@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="DpWorldService" targetNamespace="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable" xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype" xmlns:WL5G3N1="http://western.ifc.servicios.western.empresas.externos.bpe/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+   <plnk:partnerLinkType name="BancoPacifico">
+      <plnk:role name="DpWorld" portType="WL5G3N1:DpWorld"/>
+   </plnk:partnerLinkType>
+   <wsdl:import namespace="http://western.ifc.servicios.western.empresas.externos.bpe/" location="../Schemas/DpWorldService_1.wsdl"/>
+</wsdl:definitions>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://respuestas.servicios.common.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://respuestas.servicios.common.ocpgtw.bpe/" xmlns:ns1="http://respuestas.servicios.common.bpe/">
+   <xsd:import schemaLocation="DpWorldService_1_2.xsd" namespace="http://respuestas.servicios.common.bpe/"/>
+   <xsd:complexType name="ocpRespuesta" abstract="true">
+      <xsd:complexContent>
+         <xsd:extension base="ns1:respuesta">
+            <xsd:sequence>
+               <xsd:element name="codigoMensajeCore" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="codigoRetornoCore" type="xsd:string" minOccurs="0"/>
+               <xsd:element name="fechaHoraCore" type="xsd:dateTime" minOccurs="0"/>
+               <xsd:element name="nutCore" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+</xsd:schema>

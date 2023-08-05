@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://peticiones.servicios.common.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://peticiones.servicios.common.bpe/">
+   <xsd:complexType name="peticion">
+      <xsd:sequence>
+         <xsd:element name="agencia" type="xsd:int"/>
+         <xsd:element name="canal" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="fechaHora" type="xsd:dateTime" minOccurs="0"/>
+         <xsd:element name="hostName" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="idMensaje" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="idUsuario" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="ip" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="localidad" type="xsd:int"/>
+         <xsd:element name="macAddress" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="token" type="xsd:string" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

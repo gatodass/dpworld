@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema targetNamespace="http://entidades.servicios.common.ocpgtw.bpe/" elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://entidades.servicios.common.ocpgtw.bpe/" xmlns:ns1="http://enumerados.servicios.common.bpe/">
+   <xsd:import schemaLocation="DpWorldService_1_2_3_4_5_6_7.xsd" namespace="http://enumerados.servicios.common.bpe/"/>
+   <xsd:complexType name="formaPago">
+      <xsd:sequence>
+         <xsd:element name="codigo" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="codigoBancoCheque" type="xsd:int"/>
+         <xsd:element name="numeroCheque" type="xsd:int"/>
+         <xsd:element name="numeroCuenta" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="numeroCuentaCheque" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="numeroTarjeta" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="referencia" type="xsd:string" minOccurs="0"/>
+         <xsd:element name="tipoCuenta" type="ns1:tipoCuentaEnum" minOccurs="0"/>
+         <xsd:element name="valor" type="xsd:decimal" minOccurs="0"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>
