@@ -179,7 +179,7 @@ public class ActiveMQClient {
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment4("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment5("");
         //TODO PREGUNTAR QUE DATO VA
-        invoiceDFF.setInvoiceTransactionsFlexfield_Number_Segment1("96823");
+        invoiceDFF.setInvoiceTransactionsFlexfield_Number_Segment1("69822");
 
         lista.add(invoiceDFF);
 
