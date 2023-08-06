@@ -1,4 +1,4 @@
-package dpworld.com.ec;
+package dpworld.com.ec.boton.pago;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
