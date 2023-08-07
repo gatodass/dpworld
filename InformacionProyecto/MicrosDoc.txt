@@ -22,7 +22,7 @@ scp /david/repo/dpWorldRepo/servicio-gateway/target/servicio-gateway-0.0.1-SNAPS
 
 scp /david/repo/dpWorldRepo/i002-ms-gestion-pago/target/i002-ms-gestion-pago-0.0.1-SNAPSHOT.jar itadmin@10.24.3.70:/dpworld
 
-scp /home/david/Documents/GitHub/dpworld/i001-ms-actualizafactura/target/i001-ms-actualizafactura-0.0.1-SNAPSHOT.jar itadmin@10.24.3.70:/dpworld
+scp /david/repo/dpRepositorioV1/dpworld/i001-ms-actualizafactura/target/i001-ms-actualizafactura-0.0.1-SNAPSHOT.jar itadmin@10.24.3.70:/dpworld
 
 
 scp /home/david/Documents/GitHub/dpworld/i001-ms-actualizafactura/Dockerfile itadmin@10.24.3.70:/dpworld

@@ -55,16 +55,16 @@ public class ActiveMQClient {
 
         Receivableinvoices receivableinvoices = new Receivableinvoices();
 
-        receivableinvoices.setSource(jsonObject.getString("source"));
+        receivableinvoices.setSource(jsonObject.getString("Source"));
         receivableinvoices.setRegion("AMR-EC");
         receivableinvoices.setInvoiceCurrencyCode(jsonObject.getString("currency"));
         receivableinvoices.setTrxClass("INV");
         receivableinvoices.setTransactionDate(jsonObject.getString("create"));
         receivableinvoices.setTransactionType(jsonObject.getString("InvoiceType"));
 
-        if(jsonObject.getString("source").equals("N4")){
+        if(jsonObject.getString("Source").equals("N4")){
             receivableinvoices.setTransactionSource("EC_N4_BILLING");
-        } else if (jsonObject.getString("source").equals("GEKO")) {
+        } else if (jsonObject.getString("Source").equals("GEKO")) {
             receivableinvoices.setTransactionSource("EC_GEKO_BILLING");
         }
 
