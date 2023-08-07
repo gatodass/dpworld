@@ -47,7 +47,7 @@ public class PagosServiceImpl implements IPagosService {
 
 				ResponseRealizarPagoPacifico responseRealizarPagoPacifico = realizarPagoPacifico.ejecutarPago(requestEmision, soapEndpointUrl);
 
-				if(responseRealizarPagoPacifico.getCodigo().equals("0") && requestEmision.getIdentificacionTipo().equalsIgnoreCase("N")){
+				if(responseRealizarPagoPacifico.getCodigo().equals("0") && requestEmision.getTipoTransaccion().equalsIgnoreCase("N")){
 
 					ejecucionCobroFactura(requestEmision, responseEmision, responseRealizarPagoPacifico);
 				}
