@@ -3,6 +3,7 @@ package dpworld.com.ec.boton.pago.controller;
 import dpworld.com.ec.boton.pago.models.RequestEmision;
 import dpworld.com.ec.boton.pago.models.ResponseEmision;
 import dpworld.com.ec.boton.pago.service.IPagosService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,8 +21,8 @@ public class PagoController {
 	
 	
 	@PostMapping("/emision")
-	public ResponseEmision emitirCobro(@RequestBody RequestEmision requestEmision) {
-	return 	iPagosService.emitirCobro(requestEmision);
+	public ResponseEmision emitirCobro(@Valid @RequestBody RequestEmision requestEmision) {
+		return 	iPagosService.emitirCobro(requestEmision);
 	}
 	
 }

@@ -1,9 +1,13 @@
 package dpworld.com.ec.boton.pago.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 public class RequestEmision {
 
+	@NotNull(message = "El campo TipoTransaccion es requerido")
+	@Size(max=1,message="El campo TipoTransaccion es mayor a 1 caracter")
 	private String TipoTransaccion;
 	private String FechaPago;
 	private String FacturaNumero;
@@ -15,8 +19,12 @@ public class RequestEmision {
 	private String MacAdress;
 	private String IdMensaje;
 	private String Monto;
+	@Size(max=1,message="El campo IdentificacionTipo es mayor a 1 caracter")
 	private String IdentificacionTipo;
+	@Size(max=20,message="El campo IdentificacionTipo es mayor a 20 caracteres")
 	private String IdentificacionNumero;
+	@NotNull(message = "El campo BancoCodigo es requerido")
+	@Size(max=2,message="El campo BancoCodigo es mayor a 2 caracteres")
 	private String BancoCodigo;
 	private String CuentaTipo;
 	private String CuentaNumero;
