@@ -7,8 +7,8 @@ import dpworld.com.ec.client.ActiveMQProducerLogger;
 
 @SpringBootApplication
 public class CommonLoggerApplication {
-	@Autowired
-	private ActiveMQProducerLogger activeMQProducer;
+//	@Autowired
+//	private ActiveMQProducerLogger activeMQProducer;
 	
 //	public static void main(String[] args) {
 //		SpringApplication.run(CommonLoggerApplication.class, args);
