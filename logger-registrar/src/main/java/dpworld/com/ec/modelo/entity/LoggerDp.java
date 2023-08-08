@@ -1,0 +1,59 @@
+package dpworld.com.ec.modelo.entity;
+
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="log")
+public class LoggerDp implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	private Long uuid;
+	private String timeStand;
+	private String mensaje;
+	private String peticion;
+	private String url;
+	private String nombrecomponente;
+	
+	public String getNombrecomponente() {
+		return nombrecomponente;
+	}
+	public void setNombrecomponente(String nombrecomponente) {
+		this.nombrecomponente = nombrecomponente;
+	}
+	public Long getUuid() {
+		return uuid;
+	}
+	public void setUuid(Long uuid) {
+		this.uuid = uuid;
+	}
+	public String getTimeStand() {
+		return timeStand;
+	}
+	public void setTimeStand(String timeStand) {
+		this.timeStand = timeStand;
+	}
+	public String getMensaje() {
+		return mensaje;
+	}
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+	public String getPeticion() {
+		return peticion;
+	}
+	public void setPeticion(String peticion) {
+		this.peticion = peticion;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+}

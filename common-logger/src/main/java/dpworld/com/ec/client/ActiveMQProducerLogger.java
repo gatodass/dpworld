@@ -20,7 +20,7 @@ public class ActiveMQProducerLogger {
 
 	private final JmsTemplate jmsTemplate;
 
-	@Value("${dpworld.logger.mq:loggerMicroservice}")
+	@Value("${dpworld.logger.mq}")
 	private String colaLogger;
 
 	@Autowired
@@ -45,7 +45,7 @@ public class ActiveMQProducerLogger {
 		 
 
 
-		jmsTemplate.convertAndSend(colaLogger, mensaje);
+		jmsTemplate.convertAndSend(colaLogger, new Gson().toJson(loggerDp));
 	}
 
 }
