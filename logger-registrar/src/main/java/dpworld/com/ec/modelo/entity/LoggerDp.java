@@ -2,6 +2,7 @@ package dpworld.com.ec.modelo.entity;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -12,8 +13,9 @@ public class LoggerDp implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	private Long uuid;
+	private String uuid;
 	private String timeStand;
+	@Column(length = 10000)
 	private String mensaje;
 	private String peticion;
 	private String url;
@@ -25,10 +27,10 @@ public class LoggerDp implements Serializable{
 	public void setNombrecomponente(String nombrecomponente) {
 		this.nombrecomponente = nombrecomponente;
 	}
-	public Long getUuid() {
+	public String getUuid() {
 		return uuid;
 	}
-	public void setUuid(Long uuid) {
+	public void setUuid(String uuid) {
 		this.uuid = uuid;
 	}
 	public String getTimeStand() {

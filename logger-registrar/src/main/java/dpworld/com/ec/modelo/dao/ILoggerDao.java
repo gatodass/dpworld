@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import dpworld.com.ec.modelo.entity.LoggerDp;
 
-public interface ILoggerDao extends CrudRepository<LoggerDp, Long>{
+public interface ILoggerDao extends CrudRepository<LoggerDp, String>{
 	
 	
 

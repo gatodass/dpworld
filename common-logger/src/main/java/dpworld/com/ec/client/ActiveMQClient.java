@@ -13,7 +13,7 @@ public class ActiveMQClient {
 	@JmsListener(destination = "loggersend")
 	public void processMessage(String content) {
 
-		activeMQProducer.sendLogger("","","ERROR");
+		activeMQProducer.sendLogger("", "ERROR", "", "", "");
 
 	}
 

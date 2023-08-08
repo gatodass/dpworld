@@ -1,9 +1,7 @@
 package dpworld.com.ec.client;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,24 +26,27 @@ public class ActiveMQProducerLogger {
 		this.jmsTemplate = jmsTemplate;
 	}
 
-	public void sendLogger(String uuid, String origen, String mensaje) {
+	public void sendLogger(String uuid, String mensaje, String url, String nombreComponente, String peticion) {
 
+		try{
 
-		
-		 Date date = new Date();
-		 Timestamp timestamp2 = new Timestamp(date.getTime());
+			Date date = new Date();
+			Timestamp timestamp = new Timestamp(date.getTime());
 
-		
-		LoggerDp loggerDp = new LoggerDp("38400000-8cf0-11bd-b23e-10b96e4ef00d",timestamp2.toString(),
-				"{ \"tipotransaccion\": \"P\", \"facturaNumero\": \"120129\", \"fechaFactura\": \"2023-04-20\", \"fechaPago\": \"2023-04-20\", \"monto\": \"123\", \"identificacionNumero\": \"1790870073001\", \"numeroTrx\": \"5051752\", \"comentario\": \"PAGO\", \"empresa\": \"6167\" }",
-				"REQUEST","http://localhos","i001_est");
+			LoggerDp loggerDp = new LoggerDp(uuid,timestamp.toString(), mensaje, peticion, url, nombreComponente);
 
-	       System.out.println(new Gson().toJson(loggerDp));    
+			String jsonLog = new Gson().toJson(loggerDp);
 
-		 
+			System.out.println(jsonLog);
 
+			jmsTemplate.convertAndSend(colaLogger, jsonLog);
 
-		jmsTemplate.convertAndSend(colaLogger, new Gson().toJson(loggerDp));
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+		} finally {
+			System.out.println("Error");
+		}
+
 	}
 
 }

@@ -13,9 +13,8 @@ public class LoggerServiceImpl implements ILoggerService {
 	
 	@Autowired
 	private ILoggerDao iLoggerDao;
-	
-	@Transactional
-	public LoggerDp findById(Long id) {
+
+	public LoggerDp findById(String id) {
 		// TODO Auto-generated method stub
 		return iLoggerDao.findById(id).orElse(null);
 	}
