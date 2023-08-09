@@ -21,12 +21,15 @@ public class ActiveMQProducerLogger {
 	@Value("${dpworld.logger.mq}")
 	private String colaLogger;
 
+	@Value("${spring.application.name}")
+	private String componente;
+
 	@Autowired
 	public ActiveMQProducerLogger(JmsTemplate jmsTemplate) {
 		this.jmsTemplate = jmsTemplate;
 	}
 
-	public void sendLogger(String uuid, String mensaje, String url, String nombreComponente, String peticion) {
+	public void sendLogger(String uuid, String mensaje, String url, String peticion) {
 
 		try {
 
@@ -34,7 +37,7 @@ public class ActiveMQProducerLogger {
 
 			Timestamp timestamp = new Timestamp(date.getTime());
 
-			LoggerDp loggerDp = new LoggerDp(uuid, timestamp.toString(), mensaje, peticion, url, nombreComponente);
+			LoggerDp loggerDp = new LoggerDp(uuid, timestamp.toString(), mensaje, peticion, url, componente);
 
 			String jsonLog = new Gson().toJson(loggerDp);
 

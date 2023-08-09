@@ -2,10 +2,7 @@ package dpworld.com.ec.gestion.pago.controller;
 
 import java.util.UUID;
 
-import org.apache.activemq.ActiveMQConnectionFactory;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,44 +29,50 @@ public class PagoController {
 	@Autowired
 	ActiveMQProducerLogger activeMQProducerLogger;
 	
-	@Value("${spring.application.name}")
-	private String componente;
-	
 
 	@PostMapping("/consulta")
 	public ConsultaResponse facturaCobrar(@RequestBody Consulta consulta) {
-		String uuid = UUID.randomUUID().toString();
-		consulta.setUuid("");
-		
-		try {
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(consulta), "/api/pago/consulta", componente, "REQUEST");
 
-		} catch (Exception e) {
-			// TODO: handle exception
-			System.err.println(e);
-		}
+		String uuid = UUID.randomUUID().toString();
+		consulta.setUuid(uuid);
+
+		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(consulta), "/api/pago/consulta", "REQUEST");
 		
 		ConsultaResponse consultaResponse = iPagosService.facturaCobrar(consulta);
-		
-		try {
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(consultaResponse), "/api/pago/consulta", componente, "RESPONSE");
 
-		}
+		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(consultaResponse), "/api/pago/consulta", "RESPONSE");
 				
 		return consultaResponse;
 	}
 
 	@PostMapping("/crea")
 	public PagoResponse facturaPago(@RequestBody Pago pago) {
-		return iPagosService.facturaPago(pago);
+
+		String uuid = UUID.randomUUID().toString();
+		pago.setUuid(uuid);
+
+		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(pago), "/api/pago/crea", "REQUEST");
+
+		PagoResponse pagoResponse = iPagosService.facturaPago(pago);
+
+		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(pagoResponse), "/api/pago/crea", "RESPONSE");
+
+		return pagoResponse;
 	}
 
 	@PostMapping("/reverso")
 	public ReversoResponse facturaReverso(@RequestBody Reverso reverso) {
-		return iPagosService.facturaReverso(reverso);
+
+		String uuid = UUID.randomUUID().toString();
+		reverso.setUuid(uuid);
+
+		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(reverso), "/api/pago/reverso", "REQUEST");
+
+		ReversoResponse reversoResponse = iPagosService.facturaReverso(reverso);
+
+		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(reversoResponse), "/api/pago/reverso", "RESPONSE");
+
+		return reversoResponse;
 	}
 
 }

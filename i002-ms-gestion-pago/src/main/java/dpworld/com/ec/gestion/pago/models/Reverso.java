@@ -8,7 +8,8 @@ public class Reverso {
 	private String comentario;
 	private String facturaNumero;
 	private String empresa;
-	
+	private String uuid;
+
 	
 		
 	public String getNumeroTrx() {
@@ -42,7 +43,12 @@ public class Reverso {
 		this.empresa = empresa;
 	}
 
-	
-	
-	
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
 }
