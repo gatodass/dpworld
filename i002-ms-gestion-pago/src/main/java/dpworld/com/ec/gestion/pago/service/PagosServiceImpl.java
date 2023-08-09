@@ -25,7 +25,7 @@ public class PagosServiceImpl implements IPagosService {
 	ClienteConsulta clienteConsulta;
 
 	private static String soapEndpointUrlConsulta = "https://fapidev.dpworld.com/amrlatmec/bdp/fin/QueryARInvoice";
-	private static String soapEndpointUrlPago = "https://fapidev.dpworld.com/amrlatmec/bdp/fin/CreateApplyReceipt";
+	private static String soapEndpointUrlPago = "https://fapidev.dpworld.com/amrlatmec/bdp/fin/CreateApplyRecepts";
 	private static String soapEndpointUrlReverso = "https://fapidev.dpworld.com/amrlatmec/bdp/fin/ReverseReceipt";
 
 	@Override
@@ -41,7 +41,7 @@ public class PagosServiceImpl implements IPagosService {
 				+ "</con:item>" + "</con:values></con:item>" + "</con:parameterNameValues><con:reportAbsolutePath/>"
 				+ "</con:reportRequest><con:userID/><" + "con:password/></con:runReport>" + "</soapenv:Body>"
 				+ "</soapenv:Envelope>";
-
+		System.out.println(soapRequest);
 		String responseF = ClienteConsulta.llamarSOAPString(soapRequest, soapEndpointUrlConsulta);
 
 		responseF = responseF.substring(responseF.indexOf("<nstrgmpr:runReportReturn>"),
@@ -96,7 +96,7 @@ public class PagosServiceImpl implements IPagosService {
 				+ pago.getNumeroTrx() + "</i007:numeroTrx><" + "i007:comentario>" + pago.getComentario()
 				+ "</i007:comentario>" + "<i007:empresa>" + pago.getEmpresa() + "</i007:empresa>"
 				+ "</i007:cobrarFactura>" + "</soapenv:Body></soapenv:Envelope>";
-
+		System.out.println(soapRequest);
 		String responseF = ClienteConsulta.llamarSOAPString(soapRequest, soapEndpointUrlPago);
 		PagoResponse pagoResponse = new PagoResponse();
 
@@ -123,12 +123,11 @@ public class PagosServiceImpl implements IPagosService {
 			pagoResponse.setBaseImponible(
 					doc.getElementsByTagName("nstrgmpr:baseImponible").item(0).getTextContent() == null ? ""
 							: doc.getElementsByTagName("nstrgmpr:baseImponible").item(0).getTextContent());
-			pagoResponse
-					.setIvaBienes(doc.getElementsByTagName("nstrgmpr:ivaBienes").item(0).getTextContent() == null ? ""
-							: doc.getElementsByTagName("nstrgmpr:ivaBienes").item(0).getTextContent());
-			pagoResponse.setIvaServicios(
-					doc.getElementsByTagName("nstrgmpr:ivaServicios").item(0).getTextContent() == null ? ""
-							: doc.getElementsByTagName("nstrgmpr:ivaServicios").item(0).getTextContent());
+
+			pagoResponse.setIvaBienes(doc.getElementsByTagName("nstrgmpr:ivaBienes").item(0) == null ? ""
+					: doc.getElementsByTagName("nstrgmpr:ivaBienes").item(0).getTextContent());
+			pagoResponse.setIvaServicios(doc.getElementsByTagName("nstrgmpr:ivaServicios").item(0) == null ? ""
+					: doc.getElementsByTagName("nstrgmpr:ivaServicios").item(0).getTextContent());
 
 		} catch (Exception e) {
 			System.err.println("i002-ms-gestion-pago  " + e);
@@ -148,7 +147,7 @@ public class PagosServiceImpl implements IPagosService {
 				+ reverso.getComentario() + "</rev:comentario>" + "<rev:facturaNumero>" + reverso.getFacturaNumero()
 				+ "</rev:facturaNumero>" + "<rev:empresa>" + reverso.getEmpresa() + "</rev:empresa>"
 				+ "</rev:reversarFacturas></soapenv:Body></soapenv:Envelope>";
-
+		System.out.println(soapRequest);
 		String responseF = ClienteConsulta.llamarSOAPString(soapRequest, soapEndpointUrlReverso);
 		ReversoResponse reversoResponse = new ReversoResponse();
 
@@ -176,8 +175,6 @@ public class PagosServiceImpl implements IPagosService {
 		} catch (Exception e) {
 			System.err.println("i002-ms-gestion-pago  " + e);
 		}
-
-
 
 		return reversoResponse;
 	}
