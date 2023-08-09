@@ -11,6 +11,7 @@ public class RequestPago {
 	private String numeroTrx;
 	private String comentario;
 	private String empresa;
+	private String uuid;
 	
 	public String getTipotransaccion() {
 		return tipotransaccion;
@@ -67,5 +68,11 @@ public class RequestPago {
 		this.empresa = empresa;
 	}
 
+	public String getUuid() {
+		return uuid;
+	}
 
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
 }
