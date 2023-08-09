@@ -29,7 +29,8 @@ public class PagosServiceImpl implements IPagosService {
 	@Autowired
 	GenerarOrdenInterbancaria generarOrdenInterbancaria;
 
-	private static String soapEndpointUrl = "http://localhost:8080/bpdig/empresas/dpworld/proxy/DpWorldService";
+//	private static String soapEndpointUrl = "http://localhost:8080/bpdig/empresas/dpworld/proxy/DpWorldService";
+	private static String soapEndpointUrl = "http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService";
 
 	@Override
 	public ResponseEmision emitirCobro(RequestEmision requestEmision) {
@@ -40,7 +41,7 @@ public class PagosServiceImpl implements IPagosService {
 			responseEmision.setCodigoRespuesta("0");
 			responseEmision.setMensajeError("SE APLICO EL PAGO EN DPWORLD");
 
-			ResponseToken responseToken = tokenPacifico.ejecutarToken(soapEndpointUrl);
+			ResponseToken responseToken = tokenPacifico.ejecutarToken(requestEmision, soapEndpointUrl);
 
 			if(!responseToken.getCodigoError().equals("0")){
 				System.err.println("i004-ms-botonpago  " + "Error en obtener Token - " + responseToken.getCodigoError() + " - " + responseToken.getMensajeError());
@@ -107,17 +108,25 @@ public class PagosServiceImpl implements IPagosService {
 		RequestPago requestPago = new RequestPago();
 	    requestPago.setTipotransaccion(requestEmision.getTipoTransaccion());
 	    requestPago.setFacturaNumero(requestEmision.getFacturaNumero());
-	    requestPago.setFechaFactura(requestEmision.getFechaFactura());
+
+		String fecha = requestEmision.getFechaPago();
+		if(requestEmision.getFechaPago().contains("T")){
+			String[] fechaTimeStamp = requestEmision.getFechaPago().split("T");
+			fecha = fechaTimeStamp[0];
+		}
+	    requestPago.setFechaFactura(fecha);
+
 	    requestPago.setFechaPago(requestEmision.getFechaPago());
 	    requestPago.setMonto(requestEmision.getMonto());
 	    requestPago.setIdentificacionNumero(requestEmision.getIdentificacionNumero());
 		requestPago.setNumeroTrx("");
 		requestPago.setComentario("");
 		if(responseRealizarPagoPacifico != null){
-			requestPago.setNumeroTrx(responseRealizarPagoPacifico.getIdMensaje());
+			requestPago.setNumeroTrx(responseRealizarPagoPacifico.getNutCore());
 			requestPago.setComentario(responseRealizarPagoPacifico.getDescripcion());
 		}
 	    requestPago.setEmpresa(requestEmision.getEmpresa());
+	    requestPago.setUuid(requestEmision.getUuid());
 
 		return requestPago;
 

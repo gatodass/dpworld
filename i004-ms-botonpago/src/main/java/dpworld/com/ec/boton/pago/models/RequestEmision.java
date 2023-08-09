@@ -32,6 +32,7 @@ public class RequestEmision {
 	private String codigoOtp;
 	private String Nombre;
 	private String empresa;
+	private String uuid;
 
 	@JsonGetter("TipoTransaccion")
 	public String getTipoTransaccion() {
@@ -211,5 +212,13 @@ public class RequestEmision {
 
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
+	}
+
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 }

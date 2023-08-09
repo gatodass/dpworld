@@ -2,6 +2,7 @@ package dpworld.com.ec.boton.pago.clientes;
 
 import dpworld.com.ec.boton.pago.models.RequestEmision;
 import dpworld.com.ec.boton.pago.models.ResponseGenerarOrden;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -20,12 +21,16 @@ import java.util.Base64;
 @Component
 public class GenerarOrdenInterbancaria {
 
+	@Autowired
+	ActiveMQProducerLogger activeMQProducerLogger;
+
 	public GenerarOrdenInterbancaria() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public ResponseGenerarOrden ejecutarOrdenInterbancaria(RequestEmision requestEmision, String soapEndpointUrl) throws Exception {
 
+		//TODO REVISAR identificacionCodigoServicio	DOCUMENTONUMERO
 		String crearOrden = "<soapenv:Envelope\n" +
 				"    xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\n" +
 				"    xmlns:wes=\"http://western.ifc.servicios.western.empresas.externos.bpe/\"\n" +
@@ -36,41 +41,48 @@ public class GenerarOrdenInterbancaria {
 				"        <wes:generarOrden>\n" +
 				"            <peticion>\n" +
 				"                <pet:agencia>0</pet:agencia>\n" +
-				"                <pet:canal>WEB</pet:canal>\n" +
+				"                <pet:canal>INT</pet:canal>\n" +
 				"                <pet:fechaHora>" + requestEmision.getFechaPago() + "</pet:fechaHora>\n" +
 				"                <pet:hostName>" + requestEmision.getHostname() + "</pet:hostName>\n" +
-				"                <pet:idMensaje>" + requestEmision.getIdMensaje() + "</pet:idMensaje>\n" +
-				"                <pet:idUsuario>" + requestEmision.getUsuario() + "</pet:idUsuario>\n" +
-				"                <pet:ip>" + requestEmision.getIp() + "</pet:ip>\n" +
-				"                <pet:localidad>" + requestEmision.getLocalidad() + "</pet:localidad>\n" +
-				"                <pet:macAddress>" + requestEmision.getMacAdress() + "</pet:macAddress>\n" +
+				"                <pet:idMensaje>" + this.obtenerIdMensaje(requestEmision.getFechaPago()) + "</pet:idMensaje>\n" +
+				"                <pet:idUsuario>" + (requestEmision.getUsuario().isEmpty() ? "USRDPWORLD" : requestEmision.getUsuario()) + "</pet:idUsuario>\n" +
+				"                <pet:ip>" + "10.24.1.189" + "</pet:ip>\n" +
+				"                <pet:localidad>" + "1" + "</pet:localidad>\n" +
+				"                <pet:macAddress>" + "00-50-56-8E-39-E7" + "</pet:macAddress>\n" +
 				"                <pet:token>" + requestEmision.getTokenTransaccional() + "</pet:token>\n" +
 				"                <codigoBanco>" + requestEmision.getBancoCodigo() + "</codigoBanco>\n" +
 				"                <formasPago>\n" +
-				"                    <ent:codigo/>\n" +
-				"                    <ent:codigoBancoCheque/>\n" +
-				"                    <ent:numeroCheque/>\n" +
-				"                    <ent:numeroCuenta/>\n" +
-				"                    <ent:numeroCuentaCheque/>\n" +
-				"                    <ent:numeroTarjeta/>\n" +
-				"                    <ent:referencia/>\n" +
-				"                    <ent:tipoCuenta/>\n" +
-				"                    <ent:valor>" + requestEmision.getMonto() + "</ent:valor>\n" +
+				"                    <ent:codigo>CU</ent:codigo>\n" +
+				"                    <ent:codigoBancoCheque>NULL</ent:codigoBancoCheque>\n" +
+				"                    <ent:numeroCheque>NULL</ent:numeroCheque>\n" +
+				"                    <ent:numeroCuenta>" + requestEmision.getCuentaNumero() + "</ent:numeroCuenta>\n" +
+				"                    <ent:referencia>Pago Interbancario</ent:referencia>\n" +
+				"                    <ent:tipoCuenta>" + requestEmision.getCuentaTipo() + "</ent:tipoCuenta>\n" +
 				"                </formasPago>\n" +
-				"                <moneda/>\n" +
-				"                <nombreEmpresa>" + this.obtenerNombreEmpresa(requestEmision.getTipoTransaccion()) + "</nombreEmpresa>\n" +
-				"                <nombreTercero/>\n" +
+				"                <identificacionCodigoServicio>" + "" + "</identificacionCodigoServicio>\n" +
+				"                <identificacionServicio>" + requestEmision.getIdentificacionNumero() + "</identificacionServicio>\n" +
+				"                <moneda>USD</moneda>\n" +
+				"                <nombreEmpresa>" + this.obtenerNombreEmpresa(requestEmision.getEmpresa()) + "</nombreEmpresa>\n" +
+				"                <nombreTercero>" + requestEmision.getNombre() + "</nombreTercero>\n" +
 				"                <numeroCuenta>" + requestEmision.getCuentaNumero() + "</numeroCuenta>\n" +
 				"                <numeroIdentificacion>" + requestEmision.getIdentificacionNumero() + "</numeroIdentificacion>\n" +
-				"                <servicio>" + this.obtenerServicio(requestEmision.getTipoTransaccion()) + "</servicio>\n" +
+				"                <servicio>" + "CI" + "</servicio>\n" +
+				"                <tipoActividad>" + this.obtenerTipoActividad(requestEmision.getCuentaTipo()) + "</tipoActividad>\n" +
 				"                <tipoCuenta>" + requestEmision.getCuentaTipo() + "</tipoCuenta>\n" +
 				"                <tipoIdentificacion>" + requestEmision.getIdentificacionTipo() + "</tipoIdentificacion>\n" +
+				"                <valorBaseImponible>" + requestEmision.getMonto() + "</valorBaseImponible>\n" +
+				"                <valorIva>" + "0" + "</valorIva>\n" +
+				"                <valorTotal>" + requestEmision.getMonto() + "</valorTotal>\n" +
 				"            </peticion>\n" +
 				"        </wes:generarOrden>\n" +
 				"    </soapenv:Body>\n" +
 				"</soapenv:Envelope>";
 
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), crearOrden, soapEndpointUrl, "REQUEST GENERAR ORDEN PAGO");
+
 		String responseF = llamarSOAPString(crearOrden, soapEndpointUrl);
+
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), responseF, soapEndpointUrl, "RESPONSE GENERAR ORDEN PAGO");
 
 		responseF = responseF.substring(responseF.indexOf("<wes:generarOrdenResponse>"),
 				responseF.indexOf("</soapenv:Body>"));
@@ -101,7 +113,10 @@ public class GenerarOrdenInterbancaria {
 			return responseGenerarOrden;
 
 		} catch (Exception e) {
+
+			activeMQProducerLogger.sendLogger(requestEmision.getUuid(), e.getMessage(), soapEndpointUrl, "ERROR GENERAR ORDEN PAGO");
 			throw new Exception(e.getMessage());
+
 		}
 
 	}
@@ -149,25 +164,38 @@ public class GenerarOrdenInterbancaria {
 	    }   
 	}
 
-	private String obtenerServicioTipo(String tipoTransaccion){
+	private String obtenerTipoActividad(String tipoTransaccion){
 		if(tipoTransaccion.equalsIgnoreCase("P")){
-			return "01";
+			return "Portuaria";
 		}
-		return "02";
+		return "Comercial";
 	}
 
-	private String obtenerNombreEmpresa(String tipoTransaccion){
-		if(tipoTransaccion.equalsIgnoreCase("P")){
-			return "CAE";
+	private String obtenerNombreEmpresa(String empresa){
+		switch (empresa){
+			case "6204":
+				return "DPWORDLD";
+			case "6210":
+				return "CENTROLOGD";
+			case "6224":
+				return "DP WORLD LOG";
+			case "6209":
+				return "DURANPORT";
+			default:
+				return "DPWORDLD";
 		}
-		return "DPWORLD";
 	}
 
-	private String obtenerServicio(String tipoTransaccion){
-		if(tipoTransaccion.equalsIgnoreCase("P")){
-			return "ZF";
+	private String obtenerIdMensaje(String fechaPago){
+
+		String idMensaje = fechaPago.replace("-","").replace("T","").replace(":","");
+
+		try{
+			return idMensaje.substring(0,14);
+		}catch (Exception e){
+			return idMensaje;
 		}
-		return "DX";
+
 	}
 
 }

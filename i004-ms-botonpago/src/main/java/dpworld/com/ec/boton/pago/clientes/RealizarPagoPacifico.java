@@ -2,6 +2,7 @@ package dpworld.com.ec.boton.pago.clientes;
 
 import dpworld.com.ec.boton.pago.models.RequestEmision;
 import dpworld.com.ec.boton.pago.models.ResponseRealizarPagoPacifico;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -19,6 +20,9 @@ import java.util.Base64;
 
 @Component
 public class RealizarPagoPacifico {
+
+	@Autowired
+	ActiveMQProducerLogger activeMQProducerLogger;
 
 	public RealizarPagoPacifico() {
 		// TODO Auto-generated constructor stub
@@ -58,7 +62,11 @@ public class RealizarPagoPacifico {
 				"   </soapenv:Body>\n" +
 				"</soapenv:Envelope>";
 
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), soapRequest, soapEndpointUrl, "REQUEST REALIZAR PAGO PACIFICO");
+
 		String responseF = llamarSOAPString(soapRequest, soapEndpointUrl);
+
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), responseF, soapEndpointUrl, "RESPONSE REALIZAR PAGO PACIFICO");
 
 		responseF = responseF.substring(responseF.indexOf("<wes:realizarPagoResponse>"),
 				responseF.indexOf("</soapenv:Body>"));
@@ -89,7 +97,10 @@ public class RealizarPagoPacifico {
 			return responseRealizarPagoPacifico;
 
 		} catch (Exception e) {
+
+			activeMQProducerLogger.sendLogger(requestEmision.getUuid(), e.getMessage(), soapEndpointUrl, "ERROR REALIZAR PAGO PACIFICO");
 			throw new Exception(e.getMessage());
+
 		}
 
 	}
@@ -153,9 +164,9 @@ public class RealizarPagoPacifico {
 
 	private String obtenerServicio(String tipoTransaccion){
 		if(tipoTransaccion.equalsIgnoreCase("P")){
-			return "ZF";
+			return "DX";
 		}
-		return "DX";
+		return "ZF";
 	}
 
 }

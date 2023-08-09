@@ -1,6 +1,8 @@
 package dpworld.com.ec.boton.pago.clientes;
 
+import dpworld.com.ec.boton.pago.models.RequestEmision;
 import dpworld.com.ec.boton.pago.models.ResponseToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
@@ -19,11 +21,14 @@ import java.util.Base64;
 @Component
 public class TokenPacifico {
 
+	@Autowired
+	ActiveMQProducerLogger activeMQProducerLogger;
+
 	public TokenPacifico() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ResponseToken ejecutarToken(String soapEndpointUrl) throws Exception {
+	public ResponseToken ejecutarToken(RequestEmision requestEmision, String soapEndpointUrl) throws Exception {
 
 		String soapRequest = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:wes=\"http://western.ifc.servicios.western.empresas.externos.bpe/\">\n" +
 				"   <soapenv:Header/>\n" +
@@ -38,7 +43,11 @@ public class TokenPacifico {
 				"   </soapenv:Body>\n" +
 				"</soapenv:Envelope>";
 
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), soapRequest, soapEndpointUrl, "REQUEST TOKEN");
+
 		String responseF = llamarSOAPString(soapRequest, soapEndpointUrl);
+
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), responseF, soapEndpointUrl, "RESPONSE TOKEN");
 
 		responseF = responseF.substring(responseF.indexOf("<wes:autenticacionExternaResponse>"),
 				responseF.indexOf("</soapenv:Body>"));
@@ -61,7 +70,10 @@ public class TokenPacifico {
 			token = doc.getElementsByTagName("token").item(0).getTextContent();
 
 		} catch (Exception e) {
+
+			activeMQProducerLogger.sendLogger(requestEmision.getUuid(), e.getMessage(), soapEndpointUrl, "ERROR TOKEN");
 			throw new Exception(e.getMessage());
+
 		}
 
 		ResponseToken consultaReponse = new ResponseToken();
