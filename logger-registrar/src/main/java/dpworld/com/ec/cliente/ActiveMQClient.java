@@ -21,7 +21,7 @@ public class ActiveMQClient {
 	@JmsListener(destination = "loggerMicroservice")
 	public void processMessage(String content) throws JSONException {
 
-		System.out.println(content);
+		System.out.println("MENSAJE:"+content);
 
 		JSONObject jsonObject= new JSONObject(content);
 
