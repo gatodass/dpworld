@@ -98,7 +98,7 @@ public class PagosServiceImpl implements IPagosService {
 				+ "xmlns:i007=\"http://www.dpworld.com/I007_GestionFactura\">"
 				+ "<soapenv:Header/><soapenv:Body><i007:cobrarFactura>" + "<i007:tipoTransaccion>"
 				+ pago.getTipotransaccion() + "</i007:tipoTransaccion>"
-				+ "<i007:metodo_recibo>RECAUDACION</i007:metodo_recibo>" + "<i007:facturaNumero>"
+				+ "<i007:facturaNumero>"
 				+ pago.getFacturaNumero() + "</i007:facturaNumero>" + "<i007:fechaFactura>" + pago.getFechaFactura()
 				+ "</i007:fechaFactura>" + "<i007:fechaPago>" + pago.getFechaPago() + "</i007:fechaPago>"
 				+ "<i007:monto>" + pago.getMonto() + "</i007:monto>" + "<i007:identificacionNumero>"
