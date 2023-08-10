@@ -53,11 +53,8 @@ public class TokenPacifico {
 
 		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), responseF, soapEndpointUrl, "RESPONSE TOKEN", "200", String.valueOf(watch.taken()));
 
-		responseF = responseF.substring(responseF.indexOf("<wes:autenticacionExternaResponse>"),
-				responseF.indexOf("</soapenv:Body>"));
-
 		responseF = responseF.substring(responseF.indexOf("<return>"),
-				responseF.indexOf("</wes:autenticacionExternaResponse>"));
+				responseF.indexOf("</tns:autenticacionExternaResponse>"));
 
 		String codigo = null;
 		String mensaje = null;
