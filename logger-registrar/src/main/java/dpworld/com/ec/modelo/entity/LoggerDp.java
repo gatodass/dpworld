@@ -19,6 +19,8 @@ public class LoggerDp implements Serializable{
 	private String mensaje;
 	private String peticion;
 	private String url;
+	private String status;
+	private String tiempoEjecucion;
 	private String nombrecomponente;
 	
 	public String getNombrecomponente() {
@@ -58,4 +60,19 @@ public class LoggerDp implements Serializable{
 		this.url = url;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getTiempoEjecucion() {
+		return tiempoEjecucion;
+	}
+
+	public void setTiempoEjecucion(String tiempoEjecucion) {
+		this.tiempoEjecucion = tiempoEjecucion;
+	}
 }

@@ -31,6 +31,8 @@ public class ActiveMQClient {
 		loggerDp.setTimeStand(jsonObject.getString("timeStand"));
 		loggerDp.setPeticion(jsonObject.getString("peticion"));
 		loggerDp.setUrl(jsonObject.getString("url"));
+		loggerDp.setStatus(jsonObject.getString("status"));
+		loggerDp.setTiempoEjecucion(jsonObject.getString("tiempoEjecucion"));
 
 		LoggerDp loggerDpfind = iLoggerService.findById(jsonObject.getString("uuid"));
 
@@ -49,6 +51,8 @@ public class ActiveMQClient {
 			mensaje.put("timestamp", jsonObject.getString("timeStand"));
 			mensaje.put("url", jsonObject.getString("url"));
 			mensaje.put("mensaje", jsonObject.getString("mensaje"));
+			mensaje.put("status", jsonObject.getString("status"));
+			mensaje.put("tiempoEjecucion", jsonObject.getString("tiempoEjecucion"));
 
 			log.put(jsonObject.getString("peticion"), mensaje);
 
@@ -65,6 +69,8 @@ public class ActiveMQClient {
 			mensaje.put("timestamp", jsonObject.getString("timeStand"));
 			mensaje.put("url", jsonObject.getString("url"));
 			mensaje.put("mensaje", jsonObject.getString("mensaje"));
+			mensaje.put("status", jsonObject.getString("status"));
+			mensaje.put("tiempoEjecucion", jsonObject.getString("tiempoEjecucion"));
 
 			log.put(jsonObject.getString("peticion"), mensaje);
 

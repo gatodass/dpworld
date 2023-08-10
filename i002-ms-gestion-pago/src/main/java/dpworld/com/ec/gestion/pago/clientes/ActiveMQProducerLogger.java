@@ -29,7 +29,7 @@ public class ActiveMQProducerLogger {
 		this.jmsTemplate = jmsTemplate;
 	}
 
-	public void sendLogger(String uuid, String mensaje, String url, String peticion) {
+	public void sendLogger(String uuid, String mensaje, String url, String peticion, String status, String tiempoEjecucion) {
 
 		try {
 
@@ -37,7 +37,7 @@ public class ActiveMQProducerLogger {
 
 			Timestamp timestamp = new Timestamp(date.getTime());
 
-			LoggerDp loggerDp = new LoggerDp(uuid, timestamp.toString(), mensaje, peticion, url, componente);
+			LoggerDp loggerDp = new LoggerDp(uuid, timestamp.toString(), mensaje, peticion, url, componente, status, tiempoEjecucion);
 
 			String jsonLog = new Gson().toJson(loggerDp);
 
