@@ -39,7 +39,7 @@ public class TokenPacifico {
 				"   <soapenv:Body>\n" +
 				"      <wes:autenticacionExterna>\n" +
 				"         <peticion>\n" +
-				"            <clave>Pacifico2019</clave>\n" +
+				"            <clave>BPdpworld19</clave>\n" +
 				"            <idUsuario>USRDPWORLD</idUsuario>\n" +
 				"            <maquina>00-50-56-8E-39-E7</maquina>\n" +
 				"         </peticion>\n" +
