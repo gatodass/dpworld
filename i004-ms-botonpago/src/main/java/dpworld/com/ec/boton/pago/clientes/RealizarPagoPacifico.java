@@ -2,6 +2,7 @@ package dpworld.com.ec.boton.pago.clientes;
 
 import dpworld.com.ec.boton.pago.models.RequestEmision;
 import dpworld.com.ec.boton.pago.models.ResponseRealizarPagoPacifico;
+import org.apache.activemq.util.StopWatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
@@ -29,6 +30,9 @@ public class RealizarPagoPacifico {
 	}
 
 	public ResponseRealizarPagoPacifico ejecutarPago(RequestEmision requestEmision, String soapEndpointUrl) throws Exception {
+
+		StopWatch watch = new StopWatch();
+		watch.restart();
 
 		String soapRequest = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:wes=\"http://western.ifc.servicios.western.empresas.externos.bpe/\" xmlns:pet=\"http://peticiones.servicios.common.bpe/\">\n" +
 				"   <soapenv:Header/>\n" +
@@ -62,11 +66,11 @@ public class RealizarPagoPacifico {
 				"   </soapenv:Body>\n" +
 				"</soapenv:Envelope>";
 
-		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), soapRequest, soapEndpointUrl, "REQUEST REALIZAR PAGO PACIFICO");
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), soapRequest, soapEndpointUrl, "REQUEST REALIZAR PAGO PACIFICO", "200", "0");
 
 		String responseF = llamarSOAPString(soapRequest, soapEndpointUrl);
 
-		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), responseF, soapEndpointUrl, "RESPONSE REALIZAR PAGO PACIFICO");
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), responseF, soapEndpointUrl, "RESPONSE REALIZAR PAGO PACIFICO", "200", String.valueOf(watch.taken()));
 
 		responseF = responseF.substring(responseF.indexOf("<wes:realizarPagoResponse>"),
 				responseF.indexOf("</soapenv:Body>"));
@@ -98,7 +102,7 @@ public class RealizarPagoPacifico {
 
 		} catch (Exception e) {
 
-			activeMQProducerLogger.sendLogger(requestEmision.getUuid(), e.getMessage(), soapEndpointUrl, "ERROR REALIZAR PAGO PACIFICO");
+			activeMQProducerLogger.sendLogger(requestEmision.getUuid(), e.getMessage(), soapEndpointUrl, "ERROR REALIZAR PAGO PACIFICO", "400", String.valueOf(watch.taken()));
 			throw new Exception(e.getMessage());
 
 		}

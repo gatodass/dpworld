@@ -6,6 +6,7 @@ import dpworld.com.ec.boton.pago.models.RequestEmision;
 import dpworld.com.ec.boton.pago.models.ResponseEmision;
 import dpworld.com.ec.boton.pago.service.IPagosService;
 import jakarta.validation.Valid;
+import org.apache.activemq.util.StopWatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,14 +29,17 @@ public class PagoController {
 	@PostMapping("/emision")
 	public ResponseEmision emitirCobro(@Valid @RequestBody RequestEmision requestEmision) {
 
+		StopWatch watch = new StopWatch();
+		watch.restart();
+
 		String uuid = UUID.randomUUID().toString();
 		requestEmision.setUuid(uuid);
 
-		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(requestEmision), "/api/emision", "REQUEST");
+		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(requestEmision), "/api/emision", "REQUEST", "200", "0");
 
 		ResponseEmision responseEmision = iPagosService.emitirCobro(requestEmision);
 
-		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(responseEmision), "/api/pago/consulta", "RESPONSE");
+		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(responseEmision), "/api/pago/consulta", "RESPONSE", "200", String.valueOf(watch.taken()));
 
 		return responseEmision;
 	}

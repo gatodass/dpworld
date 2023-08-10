@@ -3,6 +3,7 @@ package dpworld.com.ec.boton.pago.clientes;
 import com.google.gson.Gson;
 import dpworld.com.ec.boton.pago.models.RequestPago;
 import dpworld.com.ec.boton.pago.models.ResponsePago;
+import org.apache.activemq.util.StopWatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -25,7 +26,10 @@ public class CobroFactura {
 
 	public ResponsePago ejecutarCobroFactura(RequestPago requestPago) throws Exception {
 
-		activeMQProducerLogger.sendLogger(requestPago.getUuid(), new Gson().toJson(requestPago), url, "REQUEST GESTION PAGO");
+		StopWatch watch = new StopWatch();
+		watch.restart();
+
+		activeMQProducerLogger.sendLogger(requestPago.getUuid(), new Gson().toJson(requestPago), url, "REQUEST GESTION PAGO", "200", "0");
 
 		URI uri;
 
@@ -35,7 +39,7 @@ public class CobroFactura {
 
 			var respuesta = IFacturaClientRest.restTemplate().postForObject(uri, httpEntity, ResponsePago.class);
 
-			activeMQProducerLogger.sendLogger(requestPago.getUuid(), new Gson().toJson(respuesta), url, "RESPONSE GESTION PAGO");
+			activeMQProducerLogger.sendLogger(requestPago.getUuid(), new Gson().toJson(respuesta), url, "RESPONSE GESTION PAGO", "200", String.valueOf(watch.taken()));
 
 			System.out.println("respuesta");
 			System.out.println(respuesta);
@@ -47,7 +51,7 @@ public class CobroFactura {
 			return respuesta;
 
 		} catch (Exception e) {
-			activeMQProducerLogger.sendLogger(requestPago.getUuid(), e.getMessage(), url, "ERROR GESTION PAGO");
+			activeMQProducerLogger.sendLogger(requestPago.getUuid(), e.getMessage(), url, "ERROR GESTION PAGO", "400", String.valueOf(watch.taken()));
 			throw new Exception(e.getMessage());
 		}
 

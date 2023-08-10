@@ -2,6 +2,7 @@ package dpworld.com.ec.boton.pago.clientes;
 
 import dpworld.com.ec.boton.pago.models.RequestEmision;
 import dpworld.com.ec.boton.pago.models.ResponseGenerarOrden;
+import org.apache.activemq.util.StopWatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
@@ -29,6 +30,9 @@ public class GenerarOrdenInterbancaria {
 	}
 
 	public ResponseGenerarOrden ejecutarOrdenInterbancaria(RequestEmision requestEmision, String soapEndpointUrl) throws Exception {
+
+		StopWatch watch = new StopWatch();
+		watch.restart();
 
 		//TODO REVISAR identificacionCodigoServicio	DOCUMENTONUMERO
 		String crearOrden = "<soapenv:Envelope\n" +
@@ -78,11 +82,11 @@ public class GenerarOrdenInterbancaria {
 				"    </soapenv:Body>\n" +
 				"</soapenv:Envelope>";
 
-		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), crearOrden, soapEndpointUrl, "REQUEST GENERAR ORDEN PAGO");
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), crearOrden, soapEndpointUrl, "REQUEST GENERAR ORDEN PAGO", "200", "0");
 
 		String responseF = llamarSOAPString(crearOrden, soapEndpointUrl);
 
-		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), responseF, soapEndpointUrl, "RESPONSE GENERAR ORDEN PAGO");
+		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), responseF, soapEndpointUrl, "RESPONSE GENERAR ORDEN PAGO", "200", String.valueOf(watch.taken()));
 
 		responseF = responseF.substring(responseF.indexOf("<wes:generarOrdenResponse>"),
 				responseF.indexOf("</soapenv:Body>"));
@@ -114,7 +118,7 @@ public class GenerarOrdenInterbancaria {
 
 		} catch (Exception e) {
 
-			activeMQProducerLogger.sendLogger(requestEmision.getUuid(), e.getMessage(), soapEndpointUrl, "ERROR GENERAR ORDEN PAGO");
+			activeMQProducerLogger.sendLogger(requestEmision.getUuid(), e.getMessage(), soapEndpointUrl, "ERROR GENERAR ORDEN PAGO", "400", String.valueOf(watch.taken()));
 			throw new Exception(e.getMessage());
 
 		}
