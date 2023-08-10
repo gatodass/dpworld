@@ -5,6 +5,6 @@ import dpworld.com.ec.models.Receivableinvoices;
 
 public interface IFacturaService {
 	
-public Factura facturaCobrar(Factura factura);
+public Factura facturaCobrar(Factura factura, String uuid);
 
 }

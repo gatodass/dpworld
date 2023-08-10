@@ -1,6 +1,7 @@
 package dpworld.com.ec.client;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import dpworld.com.ec.models.Factura;
 import dpworld.com.ec.models.InvoiceDFF;
 import dpworld.com.ec.models.InvoiceLineDFF;
@@ -18,12 +19,18 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class ActiveMQClient {
 
     @Autowired
     private IFacturaService iFacturaService;
+
+    @Autowired
+    ActiveMQProducerLogger activeMQProducerLogger;
+
+    private final String uuid = UUID.randomUUID().toString();
 
 	@JmsListener(destination = "N4INVOICES")
 	public void processMessage(String content) {
@@ -34,16 +41,19 @@ public class ActiveMQClient {
 
             JSONObject invoice = xmlJSONObj.getJSONObject("invoice");
 
+            activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4INVOICES", "REQUEST");
+
             List<Receivableinvoices> listaReceivableinvoices = this.obtenerReceivableinvoices(invoice);
 
             Factura factura = new Factura();
             factura.setReceivableinvoices(listaReceivableinvoices);
 
-            iFacturaService.facturaCobrar(factura);
+            iFacturaService.facturaCobrar(factura, uuid);
 
-        } catch (JSONException je) {
+        } catch (JSONException e) {
 
-            System.out.println(je.toString());
+            activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES");
+            System.out.println(e.getMessage());
 
         }
 

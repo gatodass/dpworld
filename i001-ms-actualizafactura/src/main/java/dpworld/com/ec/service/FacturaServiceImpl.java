@@ -4,7 +4,9 @@ import java.net.URI;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import dpworld.com.ec.client.ActiveMQProducer;
+import dpworld.com.ec.client.ActiveMQProducerLogger;
 import dpworld.com.ec.models.Factura;
 import dpworld.com.ec.models.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,11 @@ public class FacturaServiceImpl implements IFacturaService{
 
 	@Autowired
 	private ActiveMQProducer activeMQProducer;
+
+	@Autowired
+	ActiveMQProducerLogger activeMQProducerLogger;
 	
-	public Factura facturaCobrar(Factura factura) {
+	public Factura facturaCobrar(Factura factura, String uuid) {
 
 		String request = this.convertirObjetToString(factura);
 		System.out.println(request);
@@ -30,6 +35,9 @@ public class FacturaServiceImpl implements IFacturaService{
 
 		URI uri;
 		try {
+
+			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "REQUEST N4INVOICES");
+
 			uri = new URI("https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice");
 			HttpEntity<Factura> httpEntity = new HttpEntity<>(factura, iFacturaClientRest.httpHeaders());
 	/*
@@ -40,6 +48,8 @@ public class FacturaServiceImpl implements IFacturaService{
 
 			var respuesta = iFacturaClientRest.restTemplate().postForObject(uri, httpEntity, Response[].class);
 
+			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "RESPONSE");
+
 			System.out.println("respuesta");
 			System.out.println(respuesta);
 			String response = this.convertirObjetToString(respuesta);
@@ -48,6 +58,8 @@ public class FacturaServiceImpl implements IFacturaService{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES");
+
 		}
 
 		return factura;
