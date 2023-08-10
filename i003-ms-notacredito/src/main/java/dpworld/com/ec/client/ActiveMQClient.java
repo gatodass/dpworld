@@ -1,5 +1,6 @@
 package dpworld.com.ec.client;
 
+import com.google.gson.Gson;
 import dpworld.com.ec.models.Factura;
 import dpworld.com.ec.models.InvoiceDFF;
 import dpworld.com.ec.models.InvoiceLineDFF;
@@ -7,6 +8,7 @@ import dpworld.com.ec.models.Lines;
 import dpworld.com.ec.models.Receivableinvoices;
 import dpworld.com.ec.models.TaxLines;
 import dpworld.com.ec.service.IFacturaService;
+import org.apache.activemq.util.StopWatch;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class ActiveMQClient {
@@ -24,8 +27,16 @@ public class ActiveMQClient {
     @Autowired
     private IFacturaService iFacturaService;
 
+    @Autowired
+    ActiveMQProducerLogger activeMQProducerLogger;
+
+    private final String uuid = UUID.randomUUID().toString();
+
 	@JmsListener(destination = "N4CREDITNOTES")
-	public void processMessage(String content) {
+    public void processMessage(String content) {
+
+        StopWatch watch = new StopWatch();
+        watch.restart();
 
         try {
 
@@ -33,20 +44,23 @@ public class ActiveMQClient {
 
             JSONObject invoice = xmlJSONObj.getJSONObject("invoice");
 
+            activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4CREDITNOTES", "REQUEST", "200", "0");
+
             List<Receivableinvoices> listaReceivableinvoices = this.obtenerReceivableinvoices(invoice);
 
             Factura factura = new Factura();
             factura.setReceivableinvoices(listaReceivableinvoices);
 
-            iFacturaService.facturaCobrar(factura);
+            iFacturaService.facturaCobrar(factura, uuid);
 
-        } catch (JSONException je) {
+        } catch (JSONException e) {
 
-            System.out.println(je.toString());
+            activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
+            System.out.println(e.getMessage());
 
         }
 
-	}
+    }
 
     private List<Receivableinvoices> obtenerReceivableinvoices(JSONObject jsonObject){
 

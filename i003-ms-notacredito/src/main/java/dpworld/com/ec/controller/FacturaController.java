@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dpworld.com.ec.service.IFacturaService;
 
+import java.util.UUID;
+
 @RestController
 public class FacturaController {
 	@Autowired
@@ -17,7 +19,8 @@ public class FacturaController {
 	
 	@PostMapping("/api/nota/creacion")
 	public Factura facturaCobrar(@RequestBody Factura factura) {
-	return 	facturaService.facturaCobrar(factura);
+		String uuid = UUID.randomUUID().toString();
+		return 	facturaService.facturaCobrar(factura, uuid);
 	}
 	
 }

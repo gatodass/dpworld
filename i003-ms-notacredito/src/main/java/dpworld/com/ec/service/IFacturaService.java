@@ -4,6 +4,6 @@ import dpworld.com.ec.models.Factura;
 
 public interface IFacturaService {
 	
-public Factura facturaCobrar(Factura factura);
+public Factura facturaCobrar(Factura factura, String uuid);
 
 }
