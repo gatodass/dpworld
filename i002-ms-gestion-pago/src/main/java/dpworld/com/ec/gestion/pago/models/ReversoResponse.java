@@ -1,11 +1,13 @@
 package dpworld.com.ec.gestion.pago.models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 public class ReversoResponse {
 	
 	private String codRespuesta;
 	private String mensajeRespuesta;
 	
-	
+	@JsonGetter("CodigoRespuesta")
 	public String getCodRespuesta() {
 		return codRespuesta;
 	}
