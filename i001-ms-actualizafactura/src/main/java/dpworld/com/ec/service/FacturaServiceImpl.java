@@ -9,6 +9,7 @@ import dpworld.com.ec.client.ActiveMQProducer;
 import dpworld.com.ec.client.ActiveMQProducerLogger;
 import dpworld.com.ec.models.Factura;
 import dpworld.com.ec.models.Response;
+import org.apache.activemq.util.StopWatch;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,9 @@ public class FacturaServiceImpl implements IFacturaService{
 	
 	public Factura facturaCobrar(Factura factura, String uuid) {
 
+		StopWatch watch = new StopWatch();
+		watch.restart();
+
 		String request = this.convertirObjetToString(factura);
 		System.out.println(request);
 		activeMQProducer.send("N4INVOICESREQUEST",request);
@@ -36,7 +40,7 @@ public class FacturaServiceImpl implements IFacturaService{
 		URI uri;
 		try {
 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "REQUEST N4INVOICES");
+			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "REQUEST N4INVOICES", "200", "0");
 
 			uri = new URI("https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice");
 			HttpEntity<Factura> httpEntity = new HttpEntity<>(factura, iFacturaClientRest.httpHeaders());
@@ -48,7 +52,7 @@ public class FacturaServiceImpl implements IFacturaService{
 
 			var respuesta = iFacturaClientRest.restTemplate().postForObject(uri, httpEntity, Response[].class);
 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "RESPONSE");
+			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "RESPONSE", "200", String.valueOf(watch.taken()));
 
 			System.out.println("respuesta");
 			System.out.println(respuesta);
@@ -58,7 +62,7 @@ public class FacturaServiceImpl implements IFacturaService{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES");
+			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
 
 		}
 

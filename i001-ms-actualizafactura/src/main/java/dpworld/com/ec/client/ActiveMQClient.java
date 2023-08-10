@@ -9,6 +9,7 @@ import dpworld.com.ec.models.Lines;
 import dpworld.com.ec.models.Receivableinvoices;
 import dpworld.com.ec.models.TaxLines;
 import dpworld.com.ec.service.IFacturaService;
+import org.apache.activemq.util.StopWatch;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,13 +36,16 @@ public class ActiveMQClient {
 	@JmsListener(destination = "N4INVOICES")
 	public void processMessage(String content) {
 
+        StopWatch watch = new StopWatch();
+        watch.restart();
+
         try {
 
             JSONObject xmlJSONObj = XML.toJSONObject(content, true);
 
             JSONObject invoice = xmlJSONObj.getJSONObject("invoice");
 
-            activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4INVOICES", "REQUEST");
+            activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4INVOICES", "REQUEST", "200", "0");
 
             List<Receivableinvoices> listaReceivableinvoices = this.obtenerReceivableinvoices(invoice);
 
@@ -52,7 +56,7 @@ public class ActiveMQClient {
 
         } catch (JSONException e) {
 
-            activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES");
+            activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
             System.out.println(e.getMessage());
 
         }
