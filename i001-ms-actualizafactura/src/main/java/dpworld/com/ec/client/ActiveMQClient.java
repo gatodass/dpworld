@@ -61,6 +61,8 @@ public class ActiveMQClient {
             activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
             System.out.println(e.getMessage());
 
+        } finally {
+            System.out.println("Error");
         }
 
 	}
