@@ -64,6 +64,8 @@ public class FacturaServiceImpl implements IFacturaService{
 			e.printStackTrace();
 			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
 
+		} finally {
+			System.out.println("Error");
 		}
 
 		return factura;
