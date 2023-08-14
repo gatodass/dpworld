@@ -36,7 +36,9 @@ public class ActiveMQClient {
 	@JmsListener(destination = "N4INVOICES")
 	public void processMessage(String content) {
 
+		activeMQProducerLogger.sendLogger(uuid, content, "IN_N4INVOICE", "REQUESTXML", "200", "0");
         StopWatch watch = new StopWatch();
+        
         watch.restart();
 
         try {
