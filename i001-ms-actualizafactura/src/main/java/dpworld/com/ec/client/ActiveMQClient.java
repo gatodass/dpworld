@@ -1,6 +1,4 @@
 package dpworld.com.ec.client;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import dpworld.com.ec.models.Factura;
 import dpworld.com.ec.models.InvoiceDFF;
@@ -87,7 +85,7 @@ public class ActiveMQClient {
         }
 
         receivableinvoices.setBillToCustomerNumber(jsonObject.getString("customerId"));
-        receivableinvoices.setBusinessUnit(jsonObject.getString("BusinessUnit"));
+        receivableinvoices.setBusinessUnit(this.obtenerBusinessUnit(jsonObject.getString("InvoiceType")));
         receivableinvoices.setAccountingDate(jsonObject.getString("create"));
         receivableinvoices.setDefaultTaxationCountry("EC");
         receivableinvoices.setRemitToAddress("");
@@ -230,6 +228,23 @@ public class ActiveMQClient {
 
         return lista;
 
+    }
+
+    private String obtenerBusinessUnit(String invoiceType){
+
+        String[] parts = invoiceType.split("_");
+        String valorBusiness = parts[0];
+
+        return switch (valorBusiness) {
+            case "6204" -> "ECPSJ - DP World Posorja";
+            case "6244" -> "ECGYE - DP World SOLUCAI";
+            case "6209" -> "ECDUN - Duranports";
+            case "6243" -> "ECGYE - Soltrans";
+            case "6224" -> "ECDUN - DP World Logistics Duran";
+            case "6210" -> "ECDUN - CentroLog Duran";
+            case "6225" -> "ECGYE - DP World NVOCC & 3PL";
+            default -> "";
+        };
     }
 
 }
