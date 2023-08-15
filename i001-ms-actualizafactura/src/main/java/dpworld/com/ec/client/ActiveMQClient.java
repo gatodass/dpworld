@@ -30,7 +30,7 @@ public class ActiveMQClient {
 
     private final String uuid = UUID.randomUUID().toString();
 
-	@JmsListener(destination = "INVOICESMICRO")
+	@JmsListener(destination = "N4INVOICESFSG")
 	public void processMessage(String content) {
 
 		activeMQProducerLogger.sendLogger(uuid, content, "IN_N4INVOICE", "REQUESTXML", "200", "0");
