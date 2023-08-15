@@ -24,7 +24,7 @@ public class FacturaServiceImpl implements IFacturaService{
 
 		try {
 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "REQUEST N4INVOICES", "200", "0");
+			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "REQUEST N4CREDITNOTES", "200", "0");
 
 			var respuesta = WebClient.builder()
 					.defaultHeaders(header -> header.setBasicAuth("zmsapi.consumer", "Dubai@2o21$"))
@@ -41,7 +41,7 @@ public class FacturaServiceImpl implements IFacturaService{
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
+			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4CREDITNOTES", "400", String.valueOf(watch.taken()));
 
 		}
 

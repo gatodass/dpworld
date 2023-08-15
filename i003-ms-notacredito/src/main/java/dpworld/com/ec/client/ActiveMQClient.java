@@ -1,5 +1,4 @@
 package dpworld.com.ec.client;
-
 import com.google.gson.Gson;
 import dpworld.com.ec.models.Factura;
 import dpworld.com.ec.models.InvoiceDFF;
@@ -10,7 +9,6 @@ import dpworld.com.ec.models.TaxLines;
 import dpworld.com.ec.service.IFacturaService;
 import org.apache.activemq.util.StopWatch;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +28,14 @@ public class ActiveMQClient {
     @Autowired
     ActiveMQProducerLogger activeMQProducerLogger;
 
-    private final String uuid = UUID.randomUUID().toString();
-
-	@JmsListener(destination = "N4CREDITNOTESFSG")
+    @JmsListener(destination = "N4CREDITNOTES")
     public void processMessage(String content) {
 
+        String uuid = UUID.randomUUID().toString();
+
+        activeMQProducerLogger.sendLogger(uuid, content, "IN_N4CREDITNOTES", "REQUESTXML", "200", "0");
         StopWatch watch = new StopWatch();
+
         watch.restart();
 
         try {
@@ -53,9 +53,9 @@ public class ActiveMQClient {
 
             iFacturaService.facturaCobrar(factura, uuid);
 
-        } catch (JSONException e) {
+        } catch (Exception e) {
 
-            activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
+            activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4CREDITNOTES", "400", String.valueOf(watch.taken()));
             System.out.println(e.getMessage());
 
         }
@@ -68,16 +68,16 @@ public class ActiveMQClient {
 
         Receivableinvoices receivableinvoices = new Receivableinvoices();
 
-        receivableinvoices.setSource(jsonObject.getString("source"));
+        receivableinvoices.setSource(jsonObject.getString("Source"));
         receivableinvoices.setRegion("AMR-EC");
         receivableinvoices.setInvoiceCurrencyCode(jsonObject.getString("currency"));
         receivableinvoices.setTrxClass("CM");
         receivableinvoices.setTransactionDate(jsonObject.getString("create"));
         receivableinvoices.setTransactionType(jsonObject.getString("InvoiceType"));
 
-        if(jsonObject.getString("source").equals("N4")){
+        if(jsonObject.getString("Source").equals("N4")){
             receivableinvoices.setTransactionSource("EC_N4_BILLING");
-        } else if (jsonObject.getString("source").equals("GEKO")) {
+        } else if (jsonObject.getString("Source").equals("GEKO")) {
             receivableinvoices.setTransactionSource("EC_GEKO_BILLING");
         }
 
@@ -85,7 +85,7 @@ public class ActiveMQClient {
         receivableinvoices.setAmountApplied(jsonObject.getString("total"));
         receivableinvoices.setApplyDate(jsonObject.getString("create"));
         receivableinvoices.setBillToCustomerNumber(jsonObject.getString("customerId"));
-        receivableinvoices.setBusinessUnit(jsonObject.getString("BusinessUnit"));
+        receivableinvoices.setBusinessUnit(this.obtenerBusinessUnit(jsonObject.getString("InvoiceType")));
         receivableinvoices.setAccountingDate(jsonObject.getString("create"));
         receivableinvoices.setDefaultTaxationCountry("EC");
         receivableinvoices.setRemitToAddress("");
@@ -193,7 +193,7 @@ public class ActiveMQClient {
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment4("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment5("");
         //TODO PREGUNTAR QUE DATO VA
-        invoiceDFF.setInvoiceTransactionsFlexfield_Number_Segment1("69822");
+        invoiceDFF.setInvoiceTransactionsFlexfield_Number_Segment1(jsonObject.getString("draftId"));
 
         lista.add(invoiceDFF);
 
@@ -209,7 +209,7 @@ public class ActiveMQClient {
         invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("47");
         //TODO PREGUNTAR A PABLO
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("300001441855607");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("0993054720001");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment4("");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment5("");
@@ -228,6 +228,23 @@ public class ActiveMQClient {
 
         return lista;
 
+    }
+
+    private String obtenerBusinessUnit(String invoiceType){
+
+        String[] parts = invoiceType.split("_");
+        String valorBusiness = parts[0];
+
+        return switch (valorBusiness) {
+            case "6204" -> "ECPSJ - DP World Posorja";
+            case "6244" -> "ECGYE - DP World SOLUCAI";
+            case "6209" -> "ECDUN - Duranports";
+            case "6243" -> "ECGYE - Soltrans";
+            case "6224" -> "ECDUN - DP World Logistics Duran";
+            case "6210" -> "ECDUN - CentroLog Duran";
+            case "6225" -> "ECGYE - DP World NVOCC & 3PL";
+            default -> "";
+        };
     }
 
 }
