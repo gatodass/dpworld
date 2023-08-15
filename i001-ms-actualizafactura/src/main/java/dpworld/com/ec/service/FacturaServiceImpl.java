@@ -5,7 +5,6 @@ import java.net.URI;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import dpworld.com.ec.client.ActiveMQProducer;
 import dpworld.com.ec.client.ActiveMQProducerLogger;
 import dpworld.com.ec.models.Factura;
 import dpworld.com.ec.models.Response;
@@ -21,9 +20,6 @@ public class FacturaServiceImpl implements IFacturaService{
 
 	@Autowired
 	private IFacturaClientRest iFacturaClientRest;
-
-	@Autowired
-	private ActiveMQProducer activeMQProducer;
 
 	@Autowired
 	ActiveMQProducerLogger activeMQProducerLogger;

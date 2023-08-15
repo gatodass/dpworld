@@ -9,7 +9,6 @@ import dpworld.com.ec.models.TaxLines;
 import dpworld.com.ec.service.IFacturaService;
 import org.apache.activemq.util.StopWatch;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.XML;
 import org.springframework.beans.factory.annotation.Autowired;
