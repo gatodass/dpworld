@@ -43,9 +43,8 @@ public class ActiveMQProducerLogger {
 			jmsTemplate.convertAndSend(colaLogger, jsonLog);
 
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		} finally {
-			System.out.println("Error");
+			System.out.println("ERRRROOOORRRRRRRRR");
+			System.out.println(e);
 		}
 
 	}

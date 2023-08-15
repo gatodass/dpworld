@@ -31,10 +31,10 @@ public class ActiveMQClient {
 
     private final String uuid = UUID.randomUUID().toString();
 
-	@JmsListener(destination = "N4INVOICES")
+	@JmsListener(destination = "N4INVOICESPRUEBA")
 	public void processMessage(String content) {
 
-		activeMQProducerLogger.sendLogger(uuid, content, "IN_N4INVOICE", "REQUESTXML", "200", "0");
+		//activeMQProducerLogger.sendLogger(uuid, content, "IN_N4INVOICE", "REQUESTXML", "200", "0");
         StopWatch watch = new StopWatch();
         
         watch.restart();
@@ -45,7 +45,7 @@ public class ActiveMQClient {
 
             JSONObject invoice = xmlJSONObj.getJSONObject("invoice");
 
-            activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4INVOICES", "REQUEST", "200", "0");
+            //activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4INVOICES", "REQUEST", "200", "0");
 
             List<Receivableinvoices> listaReceivableinvoices = this.obtenerReceivableinvoices(invoice);
 
@@ -54,13 +54,11 @@ public class ActiveMQClient {
 
             iFacturaService.facturaCobrar(factura, uuid);
 
-        } catch (JSONException e) {
+        } catch (Exception e) {
 
-            activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
+            //activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
             System.out.println(e.getMessage());
 
-        } finally {
-            System.out.println("Error");
         }
 
 	}

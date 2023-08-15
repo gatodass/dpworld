@@ -35,12 +35,11 @@ public class FacturaServiceImpl implements IFacturaService{
 
 		String request = this.convertirObjetToString(factura);
 		System.out.println(request);
-		activeMQProducer.send("N4INVOICESREQUEST",request);
 
 		URI uri;
 		try {
 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "REQUEST N4INVOICES", "200", "0");
+			//activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "REQUEST N4INVOICES", "200", "0");
 
 			uri = new URI("https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice");
 			HttpEntity<Factura> httpEntity = new HttpEntity<>(factura, iFacturaClientRest.httpHeaders());
@@ -52,20 +51,16 @@ public class FacturaServiceImpl implements IFacturaService{
 
 			var respuesta = iFacturaClientRest.restTemplate().postForObject(uri, httpEntity, Response[].class);
 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "RESPONSE", "200", String.valueOf(watch.taken()));
+			//activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "RESPONSE", "200", String.valueOf(watch.taken()));
 
 			System.out.println("respuesta");
 			System.out.println(respuesta);
-			String response = this.convertirObjetToString(respuesta);
-			activeMQProducer.send("N4INVOICESRESPONSE",response);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
+			//activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
 
-		} finally {
-			System.out.println("Error");
 		}
 
 		return factura;
