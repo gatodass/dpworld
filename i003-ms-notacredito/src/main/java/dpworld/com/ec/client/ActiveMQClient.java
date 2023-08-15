@@ -32,7 +32,7 @@ public class ActiveMQClient {
 
     private final String uuid = UUID.randomUUID().toString();
 
-	@JmsListener(destination = "N4CREDITNOTES")
+	@JmsListener(destination = "N4CREDITNOTESFSG")
     public void processMessage(String content) {
 
         StopWatch watch = new StopWatch();
