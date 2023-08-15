@@ -28,7 +28,7 @@ public class ActiveMQClient {
     @Autowired
     ActiveMQProducerLogger activeMQProducerLogger;
 
-	@JmsListener(destination = "N4INVOICESFSG")
+	@JmsListener(destination = "N4INVOICES")
 	public void processMessage(String content) {
 
         String uuid = UUID.randomUUID().toString();
