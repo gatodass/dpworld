@@ -1,6 +1,5 @@
 package dpworld.com.ec.service;
 
-import java.time.Duration;
 import java.util.Arrays;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -44,7 +43,6 @@ public class FacturaServiceImpl implements IFacturaService{
 					.body(Mono.just(factura), Factura.class)
 					.retrieve()
 					.bodyToMono(Response[].class)
-//					.timeout(Duration.ofMillis(5))
 					.block();
 
 			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "RESPONSE", "200", String.valueOf(watch.taken()));
@@ -53,7 +51,7 @@ public class FacturaServiceImpl implements IFacturaService{
 			System.out.println(Arrays.toString(respuesta));
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
 
