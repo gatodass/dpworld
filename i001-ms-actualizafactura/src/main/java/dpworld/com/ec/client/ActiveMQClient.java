@@ -28,10 +28,10 @@ public class ActiveMQClient {
     @Autowired
     ActiveMQProducerLogger activeMQProducerLogger;
 
-    private final String uuid = UUID.randomUUID().toString();
-
 	@JmsListener(destination = "N4INVOICESFSG")
 	public void processMessage(String content) {
+
+        String uuid = UUID.randomUUID().toString();
 
 		activeMQProducerLogger.sendLogger(uuid, content, "IN_N4INVOICE", "REQUESTXML", "200", "0");
         StopWatch watch = new StopWatch();
