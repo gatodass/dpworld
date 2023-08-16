@@ -179,13 +179,13 @@ public class ActiveMQClient {
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment5("");
         //TODO PREGUNTAR QUE DATO VA
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment6("");
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment8(additional.getString("email"));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment8(additional.getString("vesselArrival"));
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment9(additional.getString("vesselName"));
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment10(additional.getString("vesselVisitId"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment11(additional.getString("vesselArrival"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment12(additional.getString("DaeDai"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment13(additional.getString("Notes"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment14(additional.getString("NaveReferencia"));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment11(additional.getString("DaeDai"));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment12(additional.getString("Notes"));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment13(additional.getString("NaveReferencia"));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment14(additional.getString(""));
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment15("Y");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment1(additional.getString("vesselArrival"));
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment2("");
