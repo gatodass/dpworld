@@ -127,8 +127,7 @@ public class ActiveMQClient {
                 ListaTaxLines.add(taxLines);
 
                 lines.setTaxLines(ListaTaxLines);
-                //TODO ESTO PIDIO HENRY EL 24/08
-                //lines.setInvoiceLineDFF(this.obtenerInvoiceLineDFF(jsonObject));
+                lines.setInvoiceLineDFF(this.obtenerInvoiceLineDFF(jsonObject));
 
                 lista.add(lines);
             }
@@ -153,8 +152,7 @@ public class ActiveMQClient {
             ListaTaxLines.add(taxLines);
 
             lines.setTaxLines(ListaTaxLines);
-            //TODO ESTO PIDIO HENRY EL 24/08
-            //lines.setInvoiceLineDFF(this.obtenerInvoiceLineDFF(jsonObject));
+            lines.setInvoiceLineDFF(this.obtenerInvoiceLineDFF(jsonObject));
 
             lista.add(lines);
         }
