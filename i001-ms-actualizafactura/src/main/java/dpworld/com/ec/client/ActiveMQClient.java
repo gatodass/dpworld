@@ -127,7 +127,8 @@ public class ActiveMQClient {
                 ListaTaxLines.add(taxLines);
 
                 lines.setTaxLines(ListaTaxLines);
-                lines.setInvoiceLineDFF(this.obtenerInvoiceLineDFF(jsonObject));
+                //TODO ESTO PIDIO HENRY EL 24/08
+                //lines.setInvoiceLineDFF(this.obtenerInvoiceLineDFF(jsonObject));
 
                 lista.add(lines);
             }
