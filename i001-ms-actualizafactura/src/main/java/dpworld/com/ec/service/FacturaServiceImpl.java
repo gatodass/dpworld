@@ -32,20 +32,20 @@ public class FacturaServiceImpl implements IFacturaService{
 
 		try {
 																				 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapiuat.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "REQUEST N4INVOICES", "200", "0");
+			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "REQUEST N4INVOICES", "200", "0");
 
 			var respuesta = WebClient.builder()
 					.defaultHeaders(header -> header.setBasicAuth("amrlmsapi.consumer", "LLB@D5fpzs#b"))
 					.defaultHeaders(httpHeaders -> httpHeaders.setContentType(MediaType.APPLICATION_JSON))
 					.build()
 					.post()
-					.uri("https://fapiuat.dpworld.com/amrlatmec/n4/fin/CreateARInvoice")
+					.uri("https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice")
 					.body(Mono.just(factura), Factura.class)
 					.retrieve()
 					.bodyToMono(Response[].class)
 					.block();
 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapiuat.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "RESPONSE", "200", String.valueOf(watch.taken()));
+			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "RESPONSE", "200", String.valueOf(watch.taken()));
 
 			System.out.println("respuesta");
 			System.out.println(Arrays.toString(respuesta));
@@ -53,7 +53,7 @@ public class FacturaServiceImpl implements IFacturaService{
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapiuat.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
+			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
 
 		}
 
