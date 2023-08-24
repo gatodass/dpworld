@@ -98,7 +98,7 @@ public class ClienteConsulta {
 	}
 
 	private static String getBasicAuthHeader() {
-		String credentials = "zmsapi.consumer:Dubai@2o21$";
+		String credentials = "amrlmsapi.consumer:LLB@D5fpzs#b";
 
 		byte[] message = credentials.getBytes(StandardCharsets.UTF_8);
 		return Base64.getEncoder().encodeToString(message);
