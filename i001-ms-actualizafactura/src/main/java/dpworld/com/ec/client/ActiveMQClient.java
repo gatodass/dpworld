@@ -206,7 +206,7 @@ public class ActiveMQClient {
         invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("41");
         //TODO PREGUNTAR A PABLO
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("0993054720001");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment4("");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment5("");
