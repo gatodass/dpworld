@@ -124,7 +124,7 @@ public class ActiveMQClient {
                 lines.setUnitSellingPrice(invoiceItem.getString("amount"));
                 lines.setMemoLine(invoiceItem.getString("tariff"));
                 lines.setTaxClassificationCode(invoiceItem.getString("TaxCode"));
-                lines.setLineAmount(invoiceItem.getString("TotalAmount"));
+                lines.setLineAmount("");
 
                 List<TaxLines> ListaTaxLines = new ArrayList<>();
                 TaxLines taxLines = new TaxLines();
@@ -149,7 +149,7 @@ public class ActiveMQClient {
             lines.setUnitSellingPrice(invoiceItem.getString("amount"));
             lines.setMemoLine(invoiceItem.getString("tariff"));
             lines.setTaxClassificationCode(invoiceItem.getString("TaxCode"));
-            lines.setLineAmount(invoiceItem.getString("TotalAmount"));
+            lines.setLineAmount("");
 
             List<TaxLines> ListaTaxLines = new ArrayList<>();
             TaxLines taxLines = new TaxLines();
