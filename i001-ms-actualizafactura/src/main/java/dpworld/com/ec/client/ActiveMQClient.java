@@ -204,9 +204,10 @@ public class ActiveMQClient {
 
         InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
         invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
+        //08-25-2023 Validar el campo en base a la reunión puede ser variable
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("41");
         //TODO PREGUNTAR A PABLO
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("0993054720001");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment4("");
         invoiceLineDFF.setInvoiceLinesFlexfield_Segment5("");
