@@ -64,6 +64,8 @@ public class ActiveMQClient {
 
     private List<Receivableinvoices> obtenerReceivableinvoices(JSONObject jsonObject){
 
+        JSONObject additional = jsonObject.getJSONObject("additional");
+
         List<Receivableinvoices> lista = new ArrayList<>();
 
         Receivableinvoices receivableinvoices = new Receivableinvoices();
@@ -72,6 +74,8 @@ public class ActiveMQClient {
         receivableinvoices.setRegion("AMR-EC");
         receivableinvoices.setInvoiceCurrencyCode(jsonObject.getString("currency"));
         receivableinvoices.setTrxClass("CM");
+        receivableinvoices.setTransactionNumber("");
+        receivableinvoices.setComments(additional.getString("email"));
         receivableinvoices.setTransactionDate(jsonObject.getString("create"));
         receivableinvoices.setTransactionType(jsonObject.getString("InvoiceType"));
 
@@ -123,7 +127,7 @@ public class ActiveMQClient {
                 lines.setUnitSellingPrice(invoiceItem.getString("amount"));
                 lines.setMemoLine(invoiceItem.getString("tariff"));
                 lines.setTaxClassificationCode(invoiceItem.getString("TaxCode"));
-                lines.setLineAmount(invoiceItem.getString("TotalAmount"));
+                lines.setLineAmount("");
 
                 List<TaxLines> ListaTaxLines = new ArrayList<>();
                 TaxLines taxLines = new TaxLines();
@@ -148,7 +152,7 @@ public class ActiveMQClient {
             lines.setUnitSellingPrice(invoiceItem.getString("amount"));
             lines.setMemoLine(invoiceItem.getString("tariff"));
             lines.setTaxClassificationCode(invoiceItem.getString("TaxCode"));
-            lines.setLineAmount(invoiceItem.getString("TotalAmount"));
+            lines.setLineAmount("");
 
             List<TaxLines> ListaTaxLines = new ArrayList<>();
             TaxLines taxLines = new TaxLines();
@@ -172,27 +176,25 @@ public class ActiveMQClient {
 
         InvoiceDFF invoiceDFF = new InvoiceDFF();
         invoiceDFF.setInvoiceTransactionsFlexfield_Context("Ecuador");
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment1(jsonObject.getString("draftId"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment2("SENT");
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment1("");
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment2("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment3("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment4("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment5("");
-        //TODO PREGUNTAR QUE DATO VA
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment6("");
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment8(additional.getString("vesselArrival"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment9(additional.getString("vesselName"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment10(additional.getString("vesselVisitId"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment11(additional.getString("DaeDai"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment12(additional.getString("Notes"));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment13(additional.getString("NaveReferencia"));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment8(this.recortarPalabra(additional.getString("vesselArrival")));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment9(this.recortarPalabra(additional.getString("vesselName")));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment10(this.recortarPalabra(additional.getString("NaveReferencia")));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment11(this.recortarPalabra(additional.getString("DaeDai")));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment12(this.recortarPalabra(additional.getString("Notes")));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment13(this.recortarPalabra(additional.getString("vesselVisitId")));
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment14("");
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment15("Y");
-        invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment1(additional.getString("vesselArrival"));
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment15("");
+        invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment1("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment2("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment3("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment4("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment5("");
-        //TODO PREGUNTAR QUE DATO VA
         invoiceDFF.setInvoiceTransactionsFlexfield_Number_Segment1(jsonObject.getString("draftId"));
 
         lista.add(invoiceDFF);
@@ -205,26 +207,91 @@ public class ActiveMQClient {
 
         List<InvoiceLineDFF> lista = new ArrayList<>();
 
-        InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
-        invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("47");
-        //TODO PREGUNTAR A PABLO
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("0993054720001");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment4("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment5("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment6("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment7("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment8("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment9("593");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment10("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment11("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment12("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment13("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment14("");
-        invoiceLineDFF.setInvoiceLinesFlexfield_Segment15("");
+        if(!jsonObject.getString("InvoiceType").contains("REEMBOLSO")){
 
-        lista.add(invoiceLineDFF);
+            InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
+            invoiceLineDFF.setInvoiceLinesFlexfield_Context("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment4("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment5("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment6("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment7("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment8("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment9("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment10("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment11("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment12("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment13("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment14("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment15("");
+
+            lista.add(invoiceLineDFF);
+
+            return lista;
+        }
+
+        JSONObject reembolsos = jsonObject.getJSONObject("reembolsos");
+
+        var invoicesTipo = reembolsos.get("invoices");
+
+        if(invoicesTipo instanceof JSONArray){
+
+            JSONArray invoices = reembolsos.getJSONArray("invoices");
+
+            for (int i = 0; i < invoices.length(); i++) {
+
+                JSONObject invoice = invoices.getJSONObject(i);
+
+                InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
+
+                invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("01");
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment2(invoice.getString("identificacionProveedorReembolso"));
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment4(invoice.getString("estabDocReembolso"));
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment5(invoice.getString("ptoEmiDocReembolso"));
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment6(invoice.getString("secuencialDocReembolso"));
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment7(invoice.getString("numeroautorizacionDocReemb"));
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment8(invoice.getString("fechaEmisionDocReembolso"));
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment9(invoice.getString("codPaisPagoProveedorReembolso"));
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment10("");
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment11("");
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment12("");
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment13("");
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment14("");
+                invoiceLineDFF.setInvoiceLinesFlexfield_Segment15("");
+
+                lista.add(invoiceLineDFF);
+            }
+        }
+
+        if(invoicesTipo instanceof JSONObject){
+
+            JSONObject invoice = reembolsos.getJSONObject("invoices");
+
+            InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
+
+            invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("01");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment2(invoice.getString("identificacionProveedorReembolso"));
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment4(invoice.getString("estabDocReembolso"));
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment5(invoice.getString("ptoEmiDocReembolso"));
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment6(invoice.getString("secuencialDocReembolso"));
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment7(invoice.getString("numeroautorizacionDocReemb"));
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment8(invoice.getString("fechaEmisionDocReembolso"));
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment9(invoice.getString("codPaisPagoProveedorReembolso"));
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment10("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment11("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment12("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment13("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment14("");
+            invoiceLineDFF.setInvoiceLinesFlexfield_Segment15("");
+
+            lista.add(invoiceLineDFF);
+        }
 
         return lista;
 
@@ -245,6 +312,14 @@ public class ActiveMQClient {
             case "6225" -> "ECGYE - DP World NVOCC & 3PL";
             default -> "";
         };
+    }
+
+    private String recortarPalabra(String campo){
+        try {
+            return campo.substring(0, 30);
+        } catch (Exception e){
+            return campo;
+        }
     }
 
 }
