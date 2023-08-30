@@ -7,6 +7,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import dpworld.com.ec.gestion.pago.clientes.ActiveMQProducerLogger;
 import org.apache.activemq.util.StopWatch;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
@@ -22,6 +24,8 @@ import dpworld.com.ec.gestion.pago.models.ReversoResponse;
 
 @Service
 public class PagosServiceImpl implements IPagosService {
+
+	Logger logger = LoggerFactory.getLogger(PagosServiceImpl.class);
 
 	@Autowired
 	ClienteConsulta clienteConsulta;
@@ -54,9 +58,13 @@ public class PagosServiceImpl implements IPagosService {
 
 		activeMQProducerLogger.sendLogger(consulta.getUuid(), soapRequest, soapEndpointUrlConsulta, "REQUEST SOAP", "200", "0");
 
+		logger.info("REQUEST SOAP: " + soapRequest);
+
 		String responseF = ClienteConsulta.llamarSOAPString(soapRequest, soapEndpointUrlConsulta);
 
 		activeMQProducerLogger.sendLogger(consulta.getUuid(), responseF, soapEndpointUrlConsulta, "RESPONSE SOAP", "200", String.valueOf(watch.taken()));
+
+		logger.info("RESPONSE SOAP: " + responseF);
 
 		responseF = responseF.substring(responseF.indexOf("<nstrgmpr:runReportReturn>"),
 				responseF.indexOf("</runReportResponse>"));
@@ -78,8 +86,11 @@ public class PagosServiceImpl implements IPagosService {
 			nombre = doc.getElementsByTagName("nstrgmpr:NombreCliente").item(0).getTextContent();
 
 		} catch (Exception e) {
-			System.err.println("i002-ms-gestion-pago  " + e);
+
 			activeMQProducerLogger.sendLogger(consulta.getUuid(), e.getMessage(), soapEndpointUrlConsulta, "ERROR SOAP", "400", String.valueOf(watch.taken()));
+
+			logger.error("ERROR SOAP: " + e.getMessage());
+
 		}
 
 		ConsultaResponse consultaReponse = new ConsultaResponse();
@@ -119,9 +130,13 @@ public class PagosServiceImpl implements IPagosService {
 
 		activeMQProducerLogger.sendLogger(pago.getUuid(), soapRequest, soapEndpointUrlPago, "REQUEST SOAP", "200", "0");
 
+		logger.info("REQUEST SOAP: " + soapRequest);
+
 		String responseF = ClienteConsulta.llamarSOAPString(soapRequest, soapEndpointUrlPago);
 
 		activeMQProducerLogger.sendLogger(pago.getUuid(), responseF, soapEndpointUrlPago, "RESPONSE SOAP", "200", String.valueOf(watch.taken()));
+
+		logger.info("RESPONSE SOAP: " + responseF);
 
 		PagoResponse pagoResponse = new PagoResponse();
 
@@ -155,8 +170,11 @@ public class PagosServiceImpl implements IPagosService {
 					: doc.getElementsByTagName("nstrgmpr:ivaServicios").item(0).getTextContent());
 
 		} catch (Exception e) {
-			System.err.println("i002-ms-gestion-pago  " + e);
+
 			activeMQProducerLogger.sendLogger(pago.getUuid(), e.getMessage(), soapEndpointUrlPago, "ERROR SOAP", "400", String.valueOf(watch.taken()));
+
+			logger.error("ERROR SOAP: " + e.getMessage());
+
 		}
 
 		return pagoResponse;
@@ -181,9 +199,13 @@ public class PagosServiceImpl implements IPagosService {
 
 		activeMQProducerLogger.sendLogger(reverso.getUuid(), soapRequest, soapEndpointUrlReverso, "REQUEST SOAP", "200", "0");
 
+		logger.info("REQUEST SOAP: " + soapRequest);
+
 		String responseF = ClienteConsulta.llamarSOAPString(soapRequest, soapEndpointUrlReverso);
 
 		activeMQProducerLogger.sendLogger(reverso.getUuid(), responseF, soapEndpointUrlReverso, "RESPONSE SOAP", "200", String.valueOf(watch.taken()));
+
+		logger.info("RESPONSE SOAP: " + responseF);
 
 		ReversoResponse reversoResponse = new ReversoResponse();
 
@@ -209,8 +231,11 @@ public class PagosServiceImpl implements IPagosService {
 							: doc.getElementsByTagName("nstrgmpr:MensajeRespuesta").item(0).getTextContent());
 
 		} catch (Exception e) {
-			System.err.println("i002-ms-gestion-pago  " + e);
+
 			activeMQProducerLogger.sendLogger(reverso.getUuid(), e.getMessage(), soapEndpointUrlReverso, "ERROR SOAP", "400", String.valueOf(watch.taken()));
+
+			logger.error("ERROR SOAP: " + e.getMessage());
+
 		}
 
 		return reversoResponse;

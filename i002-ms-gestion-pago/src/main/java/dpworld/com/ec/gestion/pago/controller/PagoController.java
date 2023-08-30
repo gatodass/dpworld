@@ -3,6 +3,8 @@ package dpworld.com.ec.gestion.pago.controller;
 import java.util.UUID;
 
 import org.apache.activemq.util.StopWatch;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +26,8 @@ import dpworld.com.ec.gestion.pago.service.IPagosService;
 @RequestMapping("/api/pago")
 public class PagoController {
 
+	Logger logger = LoggerFactory.getLogger(PagoController.class);
+
 	@Autowired
 	private IPagosService iPagosService;
 
@@ -41,10 +45,14 @@ public class PagoController {
 		consulta.setUuid(uuid);
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(consulta), "/api/pago/consulta", "REQUEST", "200", "0");
-		
+
+		logger.info("REQUEST: " + new Gson().toJson(consulta));
+
 		ConsultaResponse consultaResponse = iPagosService.facturaCobrar(consulta);
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(consultaResponse), "/api/pago/consulta", "RESPONSE", "200", String.valueOf(watch.taken()));
+
+		logger.info("RESPONSE: " + new Gson().toJson(consultaResponse));
 				
 		return consultaResponse;
 	}
@@ -60,9 +68,13 @@ public class PagoController {
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(pago), "/api/pago/crea", "REQUEST", "200", "0");
 
+		logger.info("REQUEST: " + new Gson().toJson(pago));
+
 		PagoResponse pagoResponse = iPagosService.facturaPago(pago);
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(pagoResponse), "/api/pago/crea", "RESPONSE", "200", String.valueOf(watch.taken()));
+
+		logger.info("RESPONSE: " + new Gson().toJson(pagoResponse));
 
 		return pagoResponse;
 	}
@@ -78,9 +90,13 @@ public class PagoController {
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(reverso), "/api/pago/reverso", "REQUEST", "200", "0");
 
+		logger.info("REQUEST: " + new Gson().toJson(reverso));
+
 		ReversoResponse reversoResponse = iPagosService.facturaReverso(reverso);
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(reversoResponse), "/api/pago/reverso", "RESPONSE", "200", String.valueOf(watch.taken()));
+
+		logger.info("RESPONSE: " + new Gson().toJson(reversoResponse));
 
 		return reversoResponse;
 	}
