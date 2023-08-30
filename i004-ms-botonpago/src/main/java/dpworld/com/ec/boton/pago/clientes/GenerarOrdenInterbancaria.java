@@ -3,6 +3,8 @@ package dpworld.com.ec.boton.pago.clientes;
 import dpworld.com.ec.boton.pago.models.RequestEmision;
 import dpworld.com.ec.boton.pago.models.ResponseGenerarOrden;
 import org.apache.activemq.util.StopWatch;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
@@ -21,6 +23,8 @@ import java.util.Base64;
 
 @Component
 public class GenerarOrdenInterbancaria {
+
+	Logger logger = LoggerFactory.getLogger(GenerarOrdenInterbancaria.class);
 
 	@Autowired
 	ActiveMQProducerLogger activeMQProducerLogger;
@@ -84,9 +88,13 @@ public class GenerarOrdenInterbancaria {
 
 		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), crearOrden, soapEndpointUrl, "REQUEST GENERAR ORDEN PAGO", "200", "0");
 
+		logger.info("REQUEST GENERAR ORDEN PAGO: " + crearOrden);
+
 		String responseF = llamarSOAPString(crearOrden, soapEndpointUrl);
 
 		activeMQProducerLogger.sendLogger(requestEmision.getUuid(), responseF, soapEndpointUrl, "RESPONSE GENERAR ORDEN PAGO", "200", String.valueOf(watch.taken()));
+
+		logger.info("RESPONSE GENERAR ORDEN PAGO: " + responseF);
 
 		responseF = responseF.substring(responseF.indexOf("<wes:generarOrdenResponse>"),
 				responseF.indexOf("</soapenv:Body>"));
@@ -119,6 +127,9 @@ public class GenerarOrdenInterbancaria {
 		} catch (Exception e) {
 
 			activeMQProducerLogger.sendLogger(requestEmision.getUuid(), e.getMessage(), soapEndpointUrl, "ERROR GENERAR ORDEN PAGO", "400", String.valueOf(watch.taken()));
+
+			logger.error("ERROR GENERAR ORDEN PAGO: " + e.getMessage());
+
 			throw new Exception(e.getMessage());
 
 		}
