@@ -84,7 +84,11 @@ public class ActiveMQClient {
         receivableinvoices.setInvoiceCurrencyCode(jsonObject.getString("currency"));
         receivableinvoices.setTrxClass("CM");
         receivableinvoices.setTransactionNumber("");
-        receivableinvoices.setComments(additional.getString("email"));
+        try{
+            receivableinvoices.setComments(additional.getString("email"));
+        } catch (Exception e){
+            receivableinvoices.setComments("");
+        }
         receivableinvoices.setTransactionDate(jsonObject.getString("create"));
         receivableinvoices.setTransactionType(jsonObject.getString("InvoiceType"));
 
@@ -94,7 +98,11 @@ public class ActiveMQClient {
             receivableinvoices.setTransactionSource("EC_GEKO_BILLING");
         }
 
-        receivableinvoices.setParentInvoiceTrxNumber(jsonObject.getJSONObject("additional").getString("CustomsId"));
+        try{
+            receivableinvoices.setParentInvoiceTrxNumber(jsonObject.getJSONObject("additional").getString("CustomsId"));
+        } catch (Exception e){
+            receivableinvoices.setParentInvoiceTrxNumber("");
+        }
         receivableinvoices.setAmountApplied(jsonObject.getString("total"));
         receivableinvoices.setApplyDate(jsonObject.getString("create"));
         receivableinvoices.setBillToCustomerNumber(jsonObject.getString("customerId"));
@@ -192,11 +200,32 @@ public class ActiveMQClient {
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment5("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment6("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment8(this.recortarPalabra(additional.getString("vesselArrival")));
+        try{
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment9(this.recortarPalabra(additional.getString("vesselName")));
+        } catch (Exception e){
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment9("");
+        }
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment9(this.recortarPalabra(additional.getString("vesselName")));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment10(this.recortarPalabra(additional.getString("NaveReferencia")));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment11(this.recortarPalabra(additional.getString("DaeDai")));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment12(this.recortarPalabra(additional.getString("Notes")));
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment13(this.recortarPalabra(additional.getString("vesselVisitId")));
+        try{
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment10(this.recortarPalabra(additional.getString("NaveReferencia")));
+        } catch (Exception e){
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment10("");
+        }
+        try{
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment11(this.recortarPalabra(additional.getString("DaeDai")));
+        } catch (Exception e){
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment11("");
+        }
+        try{
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment12(this.recortarPalabra(additional.getString("Notes")));
+        } catch (Exception e){
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment12("");
+        }
+        try{
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment13(this.recortarPalabra(additional.getString("vesselVisitId")));
+        } catch (Exception e){
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment13("");
+        }
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment14("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment15("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment1("");
