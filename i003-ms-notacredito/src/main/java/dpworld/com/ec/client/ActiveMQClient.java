@@ -199,7 +199,11 @@ public class ActiveMQClient {
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment4("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment5("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment6("");
-        invoiceDFF.setInvoiceTransactionsFlexfield_Segment8(this.recortarPalabra(additional.getString("vesselArrival")));
+        try{
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment8(this.recortarPalabra(additional.getString("vesselArrival")));
+        } catch (Exception e){
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment8("");
+        }
         try{
             invoiceDFF.setInvoiceTransactionsFlexfield_Segment9(this.recortarPalabra(additional.getString("vesselName")));
         } catch (Exception e){
