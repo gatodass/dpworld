@@ -11,6 +11,8 @@ import org.apache.activemq.util.StopWatch;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,8 @@ import java.util.UUID;
 
 @Component
 public class ActiveMQClient {
+
+    Logger logger = LoggerFactory.getLogger(ActiveMQClient.class);
 
     @Autowired
     private IFacturaService iFacturaService;

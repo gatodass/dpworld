@@ -11,6 +11,8 @@ import org.apache.activemq.util.StopWatch;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
@@ -21,6 +23,8 @@ import java.util.UUID;
 
 @Component
 public class ActiveMQClient {
+
+    Logger logger = LoggerFactory.getLogger(ActiveMQClient.class);
 
     @Autowired
     private IFacturaService iFacturaService;
@@ -36,8 +40,7 @@ public class ActiveMQClient {
 		activeMQProducerLogger.sendLogger(uuid, content, "IN_N4INVOICE", "REQUESTXML", "200", "0");
         StopWatch watch = new StopWatch();
 
-        System.out.println("REQUEST XML");
-        System.out.println(content);
+        logger.info("REQUEST XML: " + content);
 
         watch.restart();
 
@@ -49,8 +52,7 @@ public class ActiveMQClient {
 
             activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4INVOICES", "REQUEST MAPEADA", "200", "0");
 
-            System.out.println("REQUEST MAPEADA");
-            System.out.println(new Gson().toJson(xmlJSONObj));
+            logger.info("REQUEST MAPEADA: " + new Gson().toJson(xmlJSONObj));
 
             List<Receivableinvoices> listaReceivableinvoices = this.obtenerReceivableinvoices(invoice);
 
@@ -63,8 +65,7 @@ public class ActiveMQClient {
 
             activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
 
-            System.out.println("ERROR N4INVOICES");
-            System.out.println(e.getMessage());
+            logger.error("ERROR N4INVOICES: " + e.getMessage());
 
         }
 
