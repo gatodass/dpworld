@@ -7,6 +7,8 @@ import dpworld.com.ec.client.ActiveMQProducerLogger;
 import dpworld.com.ec.models.Factura;
 import dpworld.com.ec.models.Response;
 import org.apache.activemq.util.StopWatch;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ import reactor.core.publisher.Mono;
 @Service
 public class FacturaServiceImpl implements IFacturaService{
 
+	Logger logger = LoggerFactory.getLogger(FacturaServiceImpl.class);
+
 	@Autowired
 	ActiveMQProducerLogger activeMQProducerLogger;
 
@@ -24,12 +28,11 @@ public class FacturaServiceImpl implements IFacturaService{
 		StopWatch watch = new StopWatch();
 		watch.restart();
 
-		String request = this.convertirObjetToString(factura);
-		System.out.println(request);
-
 		try {
 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "REQUEST N4INVOICES", "200", "0");
+			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "REQUEST N4CREDITNOTES", "200", "0");
+
+			logger.info("REQUEST N4CREDITNOTES: " + new Gson().toJson(factura));
 
 			var respuesta = WebClient.builder()
 					.defaultHeaders(header -> header.setBasicAuth("amrlmsapi.consumer", "LLB@D5fpzs#b"))
@@ -44,13 +47,13 @@ public class FacturaServiceImpl implements IFacturaService{
 
 			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "RESPONSE", "200", String.valueOf(watch.taken()));
 
-			System.out.println("respuesta");
-			System.out.println(new Gson().toJson(respuesta));
+			logger.info("RESPONSE: " + new Gson().toJson(respuesta));
 
 		} catch (Exception e) {
 
-			e.printStackTrace();
 			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
+
+			logger.error("ERROR N4CREDITNOTES: " + e.getMessage());
 
 		}
 

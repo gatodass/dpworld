@@ -37,9 +37,11 @@ public class ActiveMQClient {
 
         String uuid = UUID.randomUUID().toString();
 
-        activeMQProducerLogger.sendLogger(uuid, content, "IN_N4CREDITNOTES", "REQUESTXML", "200", "0");
-        StopWatch watch = new StopWatch();
+        activeMQProducerLogger.sendLogger(uuid, content, "IN_N4CREDITNOTES", "REQUEST XML", "200", "0");
 
+        logger.info("REQUEST XML: " + content);
+
+        StopWatch watch = new StopWatch();
         watch.restart();
 
         try {
@@ -49,6 +51,8 @@ public class ActiveMQClient {
             JSONObject invoice = xmlJSONObj.getJSONObject("invoice");
 
             activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4CREDITNOTES", "REQUEST", "200", "0");
+
+            logger.info("REQUEST MAPEADO: " + new Gson().toJson(xmlJSONObj));
 
             List<Receivableinvoices> listaReceivableinvoices = this.obtenerReceivableinvoices(invoice);
 
@@ -60,7 +64,8 @@ public class ActiveMQClient {
         } catch (Exception e) {
 
             activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4CREDITNOTES", "400", String.valueOf(watch.taken()));
-            System.out.println(e.getMessage());
+
+            logger.error("ERROR N4CREDITNOTES: " + e.getMessage());
 
         }
 
