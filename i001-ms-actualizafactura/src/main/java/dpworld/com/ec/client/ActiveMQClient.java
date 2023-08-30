@@ -35,7 +35,10 @@ public class ActiveMQClient {
 
 		activeMQProducerLogger.sendLogger(uuid, content, "IN_N4INVOICE", "REQUESTXML", "200", "0");
         StopWatch watch = new StopWatch();
-        
+
+        System.out.println("REQUEST XML");
+        System.out.println(content);
+
         watch.restart();
 
         try {
@@ -44,7 +47,10 @@ public class ActiveMQClient {
 
             JSONObject invoice = xmlJSONObj.getJSONObject("invoice");
 
-            activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4INVOICES", "REQUEST", "200", "0");
+            activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(xmlJSONObj), "COLA - N4INVOICES", "REQUEST MAPEADA", "200", "0");
+
+            System.out.println("REQUEST MAPEADA");
+            System.out.println(new Gson().toJson(xmlJSONObj));
 
             List<Receivableinvoices> listaReceivableinvoices = this.obtenerReceivableinvoices(invoice);
 
@@ -56,6 +62,8 @@ public class ActiveMQClient {
         } catch (Exception e) {
 
             activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapidev.dpworld.com/amrlatmec/n4/fin/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
+
+            System.out.println("ERROR N4INVOICES");
             System.out.println(e.getMessage());
 
         }
