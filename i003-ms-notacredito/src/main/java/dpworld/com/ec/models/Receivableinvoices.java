@@ -1,6 +1,7 @@
 package dpworld.com.ec.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
@@ -79,6 +80,7 @@ public class Receivableinvoices {
 	private String SpecialInstructions;                
 	private String StructuredPaymentReference; 
 	private String ThirdPartyRegistrationNumber;
+	private String ParentInvoiceTrxType;
 	private List<Lines> Lines;
 	private List<InvoiceDFF> InvoiceDFF;
 
@@ -730,7 +732,7 @@ public class Receivableinvoices {
 		InvoiceDFF = invoiceDFF;
 	}
 
-	@JsonGetter("ParentInvoiceTrxNumber(for CM use only)")
+	@JsonProperty("ParentInvoiceTrxNumber(for CM use only)")
 	public String getParentInvoiceTrxNumber() {
 		return ParentInvoiceTrxNumber;
 	}
@@ -739,7 +741,7 @@ public class Receivableinvoices {
 		ParentInvoiceTrxNumber = parentInvoiceTrxNumber;
 	}
 
-	@JsonGetter("AmountApplied(for CM use only)")
+	@JsonProperty("AmountApplied(for CM use only)")
 	public String getAmountApplied() {
 		return AmountApplied;
 	}
@@ -748,7 +750,7 @@ public class Receivableinvoices {
 		AmountApplied = amountApplied;
 	}
 
-	@JsonGetter("ApplyDate(for CM use only)")
+	@JsonProperty("ApplyDate(for CM use only)")
 	public String getApplyDate() {
 		return ApplyDate;
 	}
@@ -756,4 +758,14 @@ public class Receivableinvoices {
 	public void setApplyDate(String applyDate) {
 		ApplyDate = applyDate;
 	}
+
+	@JsonProperty("ParentInvoiceTrxType(for CM use only)")
+	public String getParentInvoiceTrxType() {
+		return ParentInvoiceTrxType;
+	}
+
+	public void setParentInvoiceTrxType(String parentInvoiceTrxType) {
+		ParentInvoiceTrxType = parentInvoiceTrxType;
+	}
+
 }

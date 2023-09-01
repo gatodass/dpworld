@@ -90,7 +90,7 @@ public class ActiveMQClient {
             receivableinvoices.setComments("");
         }
         receivableinvoices.setTransactionDate(jsonObject.getString("create"));
-        receivableinvoices.setTransactionType(jsonObject.getString("InvoiceType"));
+        receivableinvoices.setTransactionType("");
 
         if(jsonObject.getString("Source").equals("N4")){
             receivableinvoices.setTransactionSource("EC_N4_BILLING");
@@ -99,12 +99,20 @@ public class ActiveMQClient {
         }
 
         try{
-            receivableinvoices.setParentInvoiceTrxNumber(jsonObject.getJSONObject("additional").getString("CustomsId"));
+            String numeroFacturaRecortada = this.obtenerNumeroFacturaRecortada(jsonObject.getJSONObject("additional").getString("CustomsId"));
+            receivableinvoices.setParentInvoiceTrxNumber(numeroFacturaRecortada);
+            receivableinvoices.setCrossReference(numeroFacturaRecortada);
         } catch (Exception e){
             receivableinvoices.setParentInvoiceTrxNumber("");
+            receivableinvoices.setCrossReference("");
         }
-        receivableinvoices.setAmountApplied(jsonObject.getString("total"));
-        receivableinvoices.setApplyDate(jsonObject.getString("create"));
+        try {
+            receivableinvoices.setParentInvoiceTrxType(jsonObject.getString("InvoiceType"));
+        } catch (Exception e){
+            receivableinvoices.setParentInvoiceTrxType("");
+        }
+        receivableinvoices.setAmountApplied("");
+        receivableinvoices.setApplyDate("");
         receivableinvoices.setBillToCustomerNumber(jsonObject.getString("customerId"));
         receivableinvoices.setBusinessUnit(this.obtenerBusinessUnit(jsonObject.getString("InvoiceType")));
         receivableinvoices.setAccountingDate(jsonObject.getString("create"));
@@ -362,6 +370,18 @@ public class ActiveMQClient {
         } catch (Exception e){
             return campo;
         }
+    }
+
+    private String obtenerNumeroFacturaRecortada(String campo){
+
+        try {
+            String[] parts = campo.split("-");
+            String campoRecortado = parts[2];
+            return String.valueOf(Integer.parseInt(campoRecortado));
+        } catch (Exception e){
+            return campo;
+        }
+
     }
 
 }

@@ -1,7 +1,5 @@
 package dpworld.com.ec.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import dpworld.com.ec.client.ActiveMQProducerLogger;
 import dpworld.com.ec.models.Factura;
@@ -30,9 +28,9 @@ public class FacturaServiceImpl implements IFacturaService{
 
 		try {
 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(factura), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "REQUEST N4CREDITNOTES", "200", "0");
+			activeMQProducerLogger.sendLogger(uuid, this.convertirVariablesRequest(new Gson().toJson(factura)), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "REQUEST N4CREDITNOTES", "200", "0");
 
-			logger.info("REQUEST N4CREDITNOTES: " + new Gson().toJson(factura));
+			logger.info("REQUEST N4CREDITNOTES: " + this.convertirVariablesRequest(new Gson().toJson(factura)));
 
 			var respuesta = WebClient.builder()
 					.defaultHeaders(header -> header.setBasicAuth("amrlmsapi.consumer", "LLB@D5fpzs#b"))
@@ -60,14 +58,13 @@ public class FacturaServiceImpl implements IFacturaService{
 		return factura;
 	}
 
-	private String convertirObjetToString(Object conectorAS400Entrada) {
-		ObjectMapper objectMapper = new ObjectMapper();
-		String jsonIn = "";
-		try {
-			return objectMapper.writeValueAsString(conectorAS400Entrada);
-		} catch (JsonProcessingException e) {
-			return jsonIn;
-		}
+	private String convertirVariablesRequest(String request) {
+
+		return request.replace("AmountApplied","AmountApplied(for CM use only)")
+				.replace("ApplyDate", "ApplyDate(for CM use only)")
+				.replace("ParentInvoiceTrxNumber", "ParentInvoiceTrxNumber(for CM use only)")
+				.replace("ParentInvoiceTrxType", "ParentInvoiceTrxType(for CM use only)");
+
 	}
 
 }
