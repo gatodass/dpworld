@@ -63,8 +63,13 @@ public class PagoController {
 		StopWatch watch = new StopWatch();
 		watch.restart();
 
-		String uuid = UUID.randomUUID().toString();
-		pago.setUuid(uuid);
+		String uuid;
+		if(pago.getUuid() == null){
+			uuid = UUID.randomUUID().toString();
+			pago.setUuid(uuid);
+		} else {
+			uuid = pago.getUuid();
+		}
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(pago), "/api/pago/crea", "REQUEST", "200", "0");
 

@@ -1,211 +1,119 @@
 package dpworld.com.ec.boton.pago.models;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class RequestEmision {
 
-	@NotNull(message = "El campo TipoTransaccion es requerido")
-	@Size(max=1,message="El campo TipoTransaccion es mayor a 1 caracter")
-	private String TipoTransaccion;
-	private String FechaPago;
-	private String FacturaNumero;
-	private String FechaFactura;
-	private String Hostname;
-	private String Usuario;
-	private String ip;
-	private String Localidad;
-	private String MacAdress;
-	private String IdMensaje;
-	private String Monto;
-	@Size(max=1,message="El campo IdentificacionTipo es mayor a 1 caracter")
-	private String IdentificacionTipo;
-	@Size(max=20,message="El campo IdentificacionTipo es mayor a 20 caracteres")
-	private String IdentificacionNumero;
-	@NotNull(message = "El campo BancoCodigo es requerido")
-	@Size(max=2,message="El campo BancoCodigo es mayor a 2 caracteres")
-	private String BancoCodigo;
-	private String CuentaTipo;
-	private String CuentaNumero;
-	private String TokenTransaccional;
-	private String codigoOtp;
-	private String Nombre;
+	@Size(max=20,message="El campo numeroDocumento es mayor a 20 caracteres")
+	private String numeroDocumento;
+	private String fechaHora;
+	private String secuencia;
+	private String monto;
+	@Size(max=1,message="El campo tipoIdentifica es mayor a 1 caracter")
+	private String tipoIdentifica;
+	@Size(max=20,message="El campo numeroIdentifica es mayor a 20 caracteres")
+	private String numeroIdentifica;
+	@Size(max=3,message="El campo codigoBanco es mayor a 3 caracteres")
+	private String codigoBanco;
+	@Size(max=2,message="El campo tipoCuenta es mayor a 2 caracteres")
+	private String tipoCuenta;
+	@Size(max=20,message="El campo numeroCuenta es mayor a 20 caracteres")
+	private String numeroCuenta;
+	@Size(max=5,message="El campo estado es mayor a 5 caracteres")
+	private String estado;
+	private String comentario;
 	private String empresa;
 	private String uuid;
 
-	@JsonGetter("TipoTransaccion")
-	public String getTipoTransaccion() {
-		return TipoTransaccion;
+
+	public String getNumeroDocumento() {
+		return numeroDocumento;
 	}
 
-	public void setTipoTransaccion(String tipoTransaccion) {
-		TipoTransaccion = tipoTransaccion;
+	public void setNumeroDocumento(String numeroDocumento) {
+		this.numeroDocumento = numeroDocumento;
 	}
 
-	@JsonGetter("FechaPago")
-	public String getFechaPago() {
-		return FechaPago;
+	public String getFechaHora() {
+		return fechaHora;
 	}
 
-	public void setFechaPago(String fechaPago) {
-		FechaPago = fechaPago;
+	public void setFechaHora(String fechaHora) {
+		this.fechaHora = fechaHora;
 	}
 
-	@JsonGetter("FacturaNumero")
-	public String getFacturaNumero() {
-		return FacturaNumero;
+	public String getSecuencia() {
+		return secuencia;
 	}
 
-	public void setFacturaNumero(String facturaNumero) {
-		FacturaNumero = facturaNumero;
+	public void setSecuencia(String secuencia) {
+		this.secuencia = secuencia;
 	}
 
-	@JsonGetter("FechaFactura")
-	public String getFechaFactura() {
-		return FechaFactura;
-	}
-
-	public void setFechaFactura(String fechaFactura) {
-		FechaFactura = fechaFactura;
-	}
-
-	@JsonGetter("Hostname")
-	public String getHostname() {
-		return Hostname;
-	}
-
-	public void setHostname(String hostname) {
-		Hostname = hostname;
-	}
-
-	@JsonGetter("Usuario")
-	public String getUsuario() {
-		return Usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		Usuario = usuario;
-	}
-
-	@JsonGetter("ip")
-	public String getIp() {
-		return ip;
-	}
-
-	public void setIp(String ip) {
-		this.ip = ip;
-	}
-
-	@JsonGetter("Localidad")
-	public String getLocalidad() {
-		return Localidad;
-	}
-
-	public void setLocalidad(String localidad) {
-		Localidad = localidad;
-	}
-
-	@JsonGetter("MacAdress")
-	public String getMacAdress() {
-		return MacAdress;
-	}
-
-	public void setMacAdress(String macAdress) {
-		MacAdress = macAdress;
-	}
-
-	@JsonGetter("IdMensaje")
-	public String getIdMensaje() {
-		return IdMensaje;
-	}
-
-	public void setIdMensaje(String idMensaje) {
-		IdMensaje = idMensaje;
-	}
-
-	@JsonGetter("Monto")
 	public String getMonto() {
-		return Monto;
+		return monto;
 	}
 
 	public void setMonto(String monto) {
-		Monto = monto;
+		this.monto = monto;
 	}
 
-	@JsonGetter("IdentificacionTipo")
-	public String getIdentificacionTipo() {
-		return IdentificacionTipo;
+	public String getTipoIdentifica() {
+		return tipoIdentifica;
 	}
 
-	public void setIdentificacionTipo(String identificacionTipo) {
-		IdentificacionTipo = identificacionTipo;
+	public void setTipoIdentifica(String tipoIdentifica) {
+		this.tipoIdentifica = tipoIdentifica;
 	}
 
-	@JsonGetter("IdentificacionNumero")
-	public String getIdentificacionNumero() {
-		return IdentificacionNumero;
+	public String getNumeroIdentifica() {
+		return numeroIdentifica;
 	}
 
-	public void setIdentificacionNumero(String identificacionNumero) {
-		IdentificacionNumero = identificacionNumero;
+	public void setNumeroIdentifica(String numeroIdentifica) {
+		this.numeroIdentifica = numeroIdentifica;
 	}
 
-	@JsonGetter("BancoCodigo")
-	public String getBancoCodigo() {
-		return BancoCodigo;
+	public String getCodigoBanco() {
+		return codigoBanco;
 	}
 
-	public void setBancoCodigo(String bancoCodigo) {
-		BancoCodigo = bancoCodigo;
+	public void setCodigoBanco(String codigoBanco) {
+		this.codigoBanco = codigoBanco;
 	}
 
-	@JsonGetter("CuentaTipo")
-	public String getCuentaTipo() {
-		return CuentaTipo;
+	public String getTipoCuenta() {
+		return tipoCuenta;
 	}
 
-	public void setCuentaTipo(String cuentaTipo) {
-		CuentaTipo = cuentaTipo;
+	public void setTipoCuenta(String tipoCuenta) {
+		this.tipoCuenta = tipoCuenta;
 	}
 
-	@JsonGetter("CuentaNumero")
-	public String getCuentaNumero() {
-		return CuentaNumero;
+	public String getNumeroCuenta() {
+		return numeroCuenta;
 	}
 
-	public void setCuentaNumero(String cuentaNumero) {
-		CuentaNumero = cuentaNumero;
+	public void setNumeroCuenta(String numeroCuenta) {
+		this.numeroCuenta = numeroCuenta;
 	}
 
-	@JsonGetter("TokenTransaccional")
-	public String getTokenTransaccional() {
-		return TokenTransaccional;
+	public String getEstado() {
+		return estado;
 	}
 
-	public void setTokenTransaccional(String tokenTransaccional) {
-		TokenTransaccional = tokenTransaccional;
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
-	@JsonGetter("codigoOtp")
-	public String getCodigoOtp() {
-		return codigoOtp;
+	public String getComentario() {
+		return comentario;
 	}
 
-	public void setCodigoOtp(String codigoOtp) {
-		this.codigoOtp = codigoOtp;
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
 
-	@JsonGetter("Nombre")
-	public String getNombre() {
-		return Nombre;
-	}
-
-	public void setNombre(String nombre) {
-		Nombre = nombre;
-	}
-
-	@JsonGetter("empresa")
 	public String getEmpresa() {
 		return empresa;
 	}

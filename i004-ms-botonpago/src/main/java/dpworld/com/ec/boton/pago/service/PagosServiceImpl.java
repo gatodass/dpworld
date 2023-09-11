@@ -50,12 +50,16 @@ public class PagosServiceImpl implements IPagosService {
 
 			requestEmision.setTokenTransaccional(responseToken.getToken());
 
-			if(requestEmision.getBancoCodigo().equals("30")){
+			if(requestEmision.getBancoCodigo().equals("30") || requestEmision.getBancoCodigo().equals("030")){
 
 				ResponseRealizarPagoPacifico responseRealizarPagoPacifico = realizarPagoPacifico.ejecutarPago(requestEmision, soapEndpointUrl);
 
-				if(responseRealizarPagoPacifico.getCodigo().equals("0") && requestEmision.getTipoTransaccion().equalsIgnoreCase("N")){
+				if(!responseRealizarPagoPacifico.getCodigo().equalsIgnoreCase("0")){
+					responseEmision.setCodigoRespuesta("1");
+					responseEmision.setMensajeError(responseRealizarPagoPacifico.getDescripcion());
+				}
 
+				if(responseRealizarPagoPacifico.getCodigo().equals("0") && requestEmision.getTipoTransaccion().equalsIgnoreCase("N")){
 					ejecucionCobroFactura(requestEmision, responseEmision, responseRealizarPagoPacifico);
 				}
 
@@ -74,7 +78,7 @@ public class PagosServiceImpl implements IPagosService {
 
 			if(!responseGenerarOrden.getCodigo().equalsIgnoreCase("1")){
 				responseEmision.setCodigoRespuesta("1");
-				responseEmision.setMensajeError("NO SE APLICO EL PAGO EN DPWORLD");
+				responseEmision.setMensajeError(responseGenerarOrden.getDescripcion());
 			}
 
 			return responseEmision;
@@ -86,7 +90,7 @@ public class PagosServiceImpl implements IPagosService {
 			System.err.println("i004-ms-botonpago  " + e);
 			ResponseEmision responseEmision = new ResponseEmision();
 			responseEmision.setCodigoRespuesta("1");
-			responseEmision.setMensajeError("NO SE APLICO EL PAGO EN DPWORLD");
+			responseEmision.setMensajeError(e.getMessage());
 			return responseEmision;
 
 		}
@@ -99,7 +103,7 @@ public class PagosServiceImpl implements IPagosService {
 
 		if(!responsePago.getCodigoRespuesta().equalsIgnoreCase("0")){
 			responseEmision.setCodigoRespuesta("1");
-			responseEmision.setMensajeError("NO SE APLICO EL PAGO EN DPWORLD");
+			responseEmision.setMensajeError(responsePago.getMensajeRespuesta());
 		}
 	}
 
