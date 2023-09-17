@@ -92,6 +92,8 @@ public class ActiveMQClient {
             receivableinvoices.setTransactionSource("EC_N4_BILLING");
         } else if (jsonObject.getString("Source").equals("GEKO")) {
             receivableinvoices.setTransactionSource("EC_GEKO_BILLING");
+        } else if (jsonObject.getString("Source").equals("EC_GECO")) {
+            receivableinvoices.setTransactionSource("EC_GECO");
         }
 
         receivableinvoices.setBillToCustomerNumber(jsonObject.getString("customerId"));

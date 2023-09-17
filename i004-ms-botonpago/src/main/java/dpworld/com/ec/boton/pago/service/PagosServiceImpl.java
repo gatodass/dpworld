@@ -12,6 +12,7 @@ import dpworld.com.ec.boton.pago.models.ResponsePago;
 import dpworld.com.ec.boton.pago.models.ResponseRealizarPagoPacifico;
 import dpworld.com.ec.boton.pago.models.ResponseToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -29,8 +30,8 @@ public class PagosServiceImpl implements IPagosService {
 	@Autowired
 	GenerarOrdenInterbancaria generarOrdenInterbancaria;
 
-//	private static String soapEndpointUrl = "http://localhost:8080/bpdig/empresas/dpworld/proxy/DpWorldService";
-	private static String soapEndpointUrl = "http://10.1.213.80:7779/bpdig/empresas/dpworld/proxy/DpWorldService";
+	@Value("${realizar.pago.url}")
+	private String soapEndpointUrl;
 
 	@Override
 	public ResponseEmision emitirCobro(RequestEmision requestEmision) {
@@ -120,11 +121,11 @@ public class PagosServiceImpl implements IPagosService {
 		}
 	    requestPago.setFechaFactura(fecha);
 
-	    requestPago.setFechaPago(requestEmision.getFechaPago());
+	    requestPago.setFechaPago(fecha);
 	    requestPago.setMonto(requestEmision.getMonto());
 	    requestPago.setIdentificacionNumero(requestEmision.getIdentificacionNumero());
-		requestPago.setNumeroTrx("");
-		requestPago.setComentario("");
+		requestPago.setNumeroTrx(requestEmision.getIdMensaje());
+		requestPago.setComentario("PAGO INTERBANCARIO");
 		if(responseRealizarPagoPacifico != null){
 			requestPago.setNumeroTrx(responseRealizarPagoPacifico.getNutCore());
 			requestPago.setComentario(responseRealizarPagoPacifico.getDescripcion());

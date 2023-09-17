@@ -89,6 +89,7 @@ public class ActiveMQClient {
         } catch (Exception e){
             receivableinvoices.setComments("");
         }
+        receivableinvoices.setSpecialInstructions(jsonObject.getJSONObject("additional").getString("CustomsId") + "|" + jsonObject.getJSONObject("additional").getString("InvoiceIssue"));
         receivableinvoices.setTransactionDate(jsonObject.getString("create"));
         receivableinvoices.setTransactionType("");
 
@@ -96,6 +97,8 @@ public class ActiveMQClient {
             receivableinvoices.setTransactionSource("EC_N4_BILLING");
         } else if (jsonObject.getString("Source").equals("GEKO")) {
             receivableinvoices.setTransactionSource("EC_GEKO_BILLING");
+        } else if (jsonObject.getString("Source").equals("EC_GECO")) {
+            receivableinvoices.setTransactionSource("EC_GECO");
         }
 
         try{

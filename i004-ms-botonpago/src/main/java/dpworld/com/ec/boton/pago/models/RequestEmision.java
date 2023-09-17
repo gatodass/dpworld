@@ -24,7 +24,7 @@ public class RequestEmision {
 	@Size(max=20,message="El campo IdentificacionTipo es mayor a 20 caracteres")
 	private String IdentificacionNumero;
 	@NotNull(message = "El campo BancoCodigo es requerido")
-	@Size(max=2,message="El campo BancoCodigo es mayor a 2 caracteres")
+	@Size(max=3,message="El campo BancoCodigo es mayor a 3 caracteres")
 	private String BancoCodigo;
 	private String CuentaTipo;
 	private String CuentaNumero;
