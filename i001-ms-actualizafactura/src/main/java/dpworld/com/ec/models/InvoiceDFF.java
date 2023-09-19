@@ -90,11 +90,11 @@ public class InvoiceDFF {
 		InvoiceTransactionsFlexfield_Segment6 = invoiceTransactionsFlexfield_Segment6;
 	}
 
+	@JsonGetter("InvoiceTransactionsFlexfield_Segment7")
 	public String getInvoiceTransactionsFlexfield_Segment7() {
 		return InvoiceTransactionsFlexfield_Segment7;
 	}
 
-	@JsonGetter("InvoiceTransactionsFlexfield_Segment7")
 	public void setInvoiceTransactionsFlexfield_Segment7(String invoiceTransactionsFlexfield_Segment7) {
 		InvoiceTransactionsFlexfield_Segment7 = invoiceTransactionsFlexfield_Segment7;
 	}
