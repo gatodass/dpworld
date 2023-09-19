@@ -260,91 +260,25 @@ public class ActiveMQClient {
 
         List<InvoiceLineDFF> lista = new ArrayList<>();
 
-        if(!jsonObject.getString("InvoiceType").contains("REEMBOLSO")){
+        InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
+        invoiceLineDFF.setInvoiceLinesFlexfield_Context("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment4("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment5("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment6("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment7("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment8("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment9("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment10("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment11("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment12("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment13("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment14("");
+        invoiceLineDFF.setInvoiceLinesFlexfield_Segment15("");
 
-            InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
-            invoiceLineDFF.setInvoiceLinesFlexfield_Context("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment2("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment4("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment5("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment6("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment7("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment8("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment9("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment10("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment11("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment12("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment13("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment14("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment15("");
-
-            lista.add(invoiceLineDFF);
-
-            return lista;
-        }
-
-        JSONObject reembolsos = jsonObject.getJSONObject("reembolsos");
-
-        var invoicesTipo = reembolsos.get("invoices");
-
-        if(invoicesTipo instanceof JSONArray){
-
-            JSONArray invoices = reembolsos.getJSONArray("invoices");
-
-            for (int i = 0; i < invoices.length(); i++) {
-
-                JSONObject invoice = invoices.getJSONObject(i);
-
-                InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
-
-                invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("01");
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment2(invoice.getString("identificacionProveedorReembolso"));
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment4(invoice.getString("estabDocReembolso"));
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment5(invoice.getString("ptoEmiDocReembolso"));
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment6(invoice.getString("secuencialDocReembolso"));
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment7(invoice.getString("numeroautorizacionDocReemb"));
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment8(invoice.getString("fechaEmisionDocReembolso"));
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment9(invoice.getString("codPaisPagoProveedorReembolso"));
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment10("");
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment11("");
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment12("");
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment13("");
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment14("");
-                invoiceLineDFF.setInvoiceLinesFlexfield_Segment15("");
-
-                lista.add(invoiceLineDFF);
-            }
-        }
-
-        if(invoicesTipo instanceof JSONObject){
-
-            JSONObject invoice = reembolsos.getJSONObject("invoices");
-
-            InvoiceLineDFF invoiceLineDFF = new InvoiceLineDFF();
-
-            invoiceLineDFF.setInvoiceLinesFlexfield_Context("Ecuador");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment1("01");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment2(invoice.getString("identificacionProveedorReembolso"));
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment3("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment4(invoice.getString("estabDocReembolso"));
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment5(invoice.getString("ptoEmiDocReembolso"));
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment6(invoice.getString("secuencialDocReembolso"));
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment7(invoice.getString("numeroautorizacionDocReemb"));
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment8(invoice.getString("fechaEmisionDocReembolso"));
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment9(invoice.getString("codPaisPagoProveedorReembolso"));
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment10("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment11("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment12("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment13("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment14("");
-            invoiceLineDFF.setInvoiceLinesFlexfield_Segment15("");
-
-            lista.add(invoiceLineDFF);
-        }
+        lista.add(invoiceLineDFF);
 
         return lista;
 
