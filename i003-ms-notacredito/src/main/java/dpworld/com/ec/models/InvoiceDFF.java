@@ -11,6 +11,7 @@ public class InvoiceDFF {
 	private String InvoiceTransactionsFlexfield_Segment4;
 	private String InvoiceTransactionsFlexfield_Segment5;
 	private String InvoiceTransactionsFlexfield_Segment6;
+	private String InvoiceTransactionsFlexfield_Segment7;
 	private String InvoiceTransactionsFlexfield_Segment8;
 	private String InvoiceTransactionsFlexfield_Segment9;
 	private String InvoiceTransactionsFlexfield_Segment10;
@@ -24,7 +25,7 @@ public class InvoiceDFF {
 	private String InvoiceTransactionsFlexfield_Date_Segment3;
 	private String InvoiceTransactionsFlexfield_Date_Segment4;
 	private String InvoiceTransactionsFlexfield_Date_Segment5;
-	private String InvoiceTransactionsFlexfield_Number_Segment1;
+	//private String InvoiceTransactionsFlexfield_Number_Segment1;
 
 	@JsonGetter("InvoiceTransactionsFlexfield_Context")
 	public String getInvoiceTransactionsFlexfield_Context() {
@@ -87,6 +88,14 @@ public class InvoiceDFF {
 
 	public void setInvoiceTransactionsFlexfield_Segment6(String invoiceTransactionsFlexfield_Segment6) {
 		InvoiceTransactionsFlexfield_Segment6 = invoiceTransactionsFlexfield_Segment6;
+	}
+
+	public String getInvoiceTransactionsFlexfield_Segment7() {
+		return InvoiceTransactionsFlexfield_Segment7;
+	}
+	@JsonGetter("InvoiceTransactionsFlexfield_Segment7")
+	public void setInvoiceTransactionsFlexfield_Segment7(String invoiceTransactionsFlexfield_Segment7) {
+		InvoiceTransactionsFlexfield_Segment7 = invoiceTransactionsFlexfield_Segment7;
 	}
 
 	@JsonGetter("InvoiceTransactionsFlexfield_Segment8")
@@ -206,12 +215,12 @@ public class InvoiceDFF {
 		InvoiceTransactionsFlexfield_Date_Segment5 = invoiceTransactionsFlexfield_Date_Segment5;
 	}
 
-	@JsonGetter("InvoiceTransactionsFlexfield_Number_Segment1")
-	public String getInvoiceTransactionsFlexfield_Number_Segment1() {
-		return InvoiceTransactionsFlexfield_Number_Segment1;
-	}
-
-	public void setInvoiceTransactionsFlexfield_Number_Segment1(String invoiceTransactionsFlexfield_Number_Segment1) {
-		InvoiceTransactionsFlexfield_Number_Segment1 = invoiceTransactionsFlexfield_Number_Segment1;
-	}
+//	@JsonGetter("InvoiceTransactionsFlexfield_Number_Segment1")
+//	public String getInvoiceTransactionsFlexfield_Number_Segment1() {
+//		return InvoiceTransactionsFlexfield_Number_Segment1;
+//	}
+//
+//	public void setInvoiceTransactionsFlexfield_Number_Segment1(String invoiceTransactionsFlexfield_Number_Segment1) {
+//		InvoiceTransactionsFlexfield_Number_Segment1 = invoiceTransactionsFlexfield_Number_Segment1;
+//	}
 }

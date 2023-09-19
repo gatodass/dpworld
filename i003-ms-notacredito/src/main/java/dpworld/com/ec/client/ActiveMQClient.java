@@ -210,6 +210,7 @@ public class ActiveMQClient {
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment4("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment5("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Segment6("");
+        invoiceDFF.setInvoiceTransactionsFlexfield_Segment7(jsonObject.getString("draftId"));
         try{
             invoiceDFF.setInvoiceTransactionsFlexfield_Segment8(this.recortarPalabra(additional.getString("vesselArrival")));
         } catch (Exception e){
@@ -248,7 +249,7 @@ public class ActiveMQClient {
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment3("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment4("");
         invoiceDFF.setInvoiceTransactionsFlexfield_Date_Segment5("");
-        invoiceDFF.setInvoiceTransactionsFlexfield_Number_Segment1(jsonObject.getString("draftId"));
+        //invoiceDFF.setInvoiceTransactionsFlexfield_Number_Segment1(jsonObject.getString("draftId"));
 
         lista.add(invoiceDFF);
 
