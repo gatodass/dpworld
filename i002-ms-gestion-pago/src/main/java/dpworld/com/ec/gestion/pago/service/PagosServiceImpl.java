@@ -113,6 +113,8 @@ public class PagosServiceImpl implements IPagosService {
 		StopWatch watch = new StopWatch();
 		watch.restart();
 
+		pago.setComentario("PAGO REALIZADO - " + pago.getFacturaNumero());
+
 		String soapRequest = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" "
 				+ "xmlns:i007=\"http://www.dpworld.com/I007_GestionFactura\">"
 				+ "<soapenv:Header/><soapenv:Body><i007:cobrarFactura>" + "<i007:tipoTransaccion>"
