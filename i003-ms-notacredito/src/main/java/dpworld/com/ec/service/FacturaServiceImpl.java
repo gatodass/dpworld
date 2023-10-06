@@ -8,6 +8,7 @@ import org.apache.activemq.util.StopWatch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -21,6 +22,12 @@ public class FacturaServiceImpl implements IFacturaService{
 	@Autowired
 	ActiveMQProducerLogger activeMQProducerLogger;
 
+	@Value("${dpworld.url.n4}")
+	private String urlN4;
+
+	@Value("${dpworld.url.geko}")
+	private String urlGeko;
+
 	public Factura facturaCobrar(Factura factura, String uuid) {
 
 		StopWatch watch = new StopWatch();
@@ -28,7 +35,13 @@ public class FacturaServiceImpl implements IFacturaService{
 
 		try {
 
-			activeMQProducerLogger.sendLogger(uuid, this.convertirVariablesRequest(new Gson().toJson(factura)), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "REQUEST N4CREDITNOTES", "200", "0");
+			String url = urlN4;
+
+			if(!factura.getReceivableinvoices().get(0).getSource().equals("N4")){
+				url = urlGeko;
+			}
+
+			activeMQProducerLogger.sendLogger(uuid, this.convertirVariablesRequest(new Gson().toJson(factura)), url, "REQUEST N4CREDITNOTES", "200", "0");
 
 			logger.info("REQUEST N4CREDITNOTES: " + this.convertirVariablesRequest(new Gson().toJson(factura)));
 
@@ -37,13 +50,13 @@ public class FacturaServiceImpl implements IFacturaService{
 					.defaultHeaders(httpHeaders -> httpHeaders.setContentType(MediaType.APPLICATION_JSON))
 					.build()
 					.post()
-					.uri("https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice")
+					.uri(url)
 					.body(Mono.just(factura), Factura.class)
 					.retrieve()
 					.bodyToMono(Response[].class)
 					.block();
 
-			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "RESPONSE", "200", String.valueOf(watch.taken()));
+			activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(respuesta), url, "RESPONSE", "200", String.valueOf(watch.taken()));
 
 			logger.info("RESPONSE: " + new Gson().toJson(respuesta));
 
