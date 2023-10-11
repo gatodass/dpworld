@@ -34,7 +34,7 @@ public class RequestEmision {
 	private String empresa;
 	private String uuid;
 
-	@JsonGetter("tipoTransaccion")
+	@JsonGetter("TipoTransaccion")
 	public String getTipoTransaccion() {
 		return TipoTransaccion;
 	}
@@ -43,7 +43,7 @@ public class RequestEmision {
 		TipoTransaccion = tipoTransaccion;
 	}
 
-	@JsonGetter("fechaPago")
+	@JsonGetter("FechaPago")
 	public String getFechaPago() {
 		return FechaPago;
 	}
@@ -52,7 +52,7 @@ public class RequestEmision {
 		FechaPago = fechaPago;
 	}
 
-	@JsonGetter("facturaNumero")
+	@JsonGetter("FacturaNumero")
 	public String getFacturaNumero() {
 		return FacturaNumero;
 	}
@@ -61,7 +61,7 @@ public class RequestEmision {
 		FacturaNumero = facturaNumero;
 	}
 
-	@JsonGetter("fechaFactura")
+	@JsonGetter("FechaFactura")
 	public String getFechaFactura() {
 		return FechaFactura;
 	}
@@ -70,7 +70,7 @@ public class RequestEmision {
 		FechaFactura = fechaFactura;
 	}
 
-	@JsonGetter("hostname")
+	@JsonGetter("Hostname")
 	public String getHostname() {
 		return Hostname;
 	}
@@ -79,7 +79,7 @@ public class RequestEmision {
 		Hostname = hostname;
 	}
 
-	@JsonGetter("usuario")
+	@JsonGetter("Usuario")
 	public String getUsuario() {
 		return Usuario;
 	}
@@ -97,7 +97,7 @@ public class RequestEmision {
 		this.ip = ip;
 	}
 
-	@JsonGetter("localidad")
+	@JsonGetter("Localidad")
 	public String getLocalidad() {
 		return Localidad;
 	}
@@ -106,7 +106,7 @@ public class RequestEmision {
 		Localidad = localidad;
 	}
 
-	@JsonGetter("macAdress")
+	@JsonGetter("MacAdress")
 	public String getMacAdress() {
 		return MacAdress;
 	}
@@ -115,7 +115,7 @@ public class RequestEmision {
 		MacAdress = macAdress;
 	}
 
-	@JsonGetter("idMensaje")
+	@JsonGetter("IdMensaje")
 	public String getIdMensaje() {
 		return IdMensaje;
 	}
@@ -124,7 +124,7 @@ public class RequestEmision {
 		IdMensaje = idMensaje;
 	}
 
-	@JsonGetter("monto")
+	@JsonGetter("Monto")
 	public String getMonto() {
 		return Monto;
 	}
@@ -133,7 +133,7 @@ public class RequestEmision {
 		Monto = monto;
 	}
 
-	@JsonGetter("identificacionTipo")
+	@JsonGetter("IdentificacionTipo")
 	public String getIdentificacionTipo() {
 		return IdentificacionTipo;
 	}
@@ -142,7 +142,7 @@ public class RequestEmision {
 		IdentificacionTipo = identificacionTipo;
 	}
 
-	@JsonGetter("identificacionNumero")
+	@JsonGetter("IdentificacionNumero")
 	public String getIdentificacionNumero() {
 		return IdentificacionNumero;
 	}
@@ -151,7 +151,7 @@ public class RequestEmision {
 		IdentificacionNumero = identificacionNumero;
 	}
 
-	@JsonGetter("bancoCodigo")
+	@JsonGetter("BancoCodigo")
 	public String getBancoCodigo() {
 		return BancoCodigo;
 	}
@@ -160,7 +160,7 @@ public class RequestEmision {
 		BancoCodigo = bancoCodigo;
 	}
 
-	@JsonGetter("cuentaTipo")
+	@JsonGetter("CuentaTipo")
 	public String getCuentaTipo() {
 		return CuentaTipo;
 	}
@@ -169,7 +169,7 @@ public class RequestEmision {
 		CuentaTipo = cuentaTipo;
 	}
 
-	@JsonGetter("cuentaNumero")
+	@JsonGetter("CuentaNumero")
 	public String getCuentaNumero() {
 		return CuentaNumero;
 	}
@@ -178,7 +178,7 @@ public class RequestEmision {
 		CuentaNumero = cuentaNumero;
 	}
 
-	@JsonGetter("tokenTransaccional")
+	@JsonGetter("TokenTransaccional")
 	public String getTokenTransaccional() {
 		return TokenTransaccional;
 	}
@@ -196,7 +196,7 @@ public class RequestEmision {
 		this.codigoOtp = codigoOtp;
 	}
 
-	@JsonGetter("nombre")
+	@JsonGetter("Nombre")
 	public String getNombre() {
 		return Nombre;
 	}
