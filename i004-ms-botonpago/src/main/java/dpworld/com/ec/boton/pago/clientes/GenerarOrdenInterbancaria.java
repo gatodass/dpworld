@@ -113,15 +113,15 @@ public class GenerarOrdenInterbancaria {
 
 			ResponseGenerarOrden responseGenerarOrden = new ResponseGenerarOrden();
 
-			responseGenerarOrden.setCodigo(doc.getElementsByTagName("res:codigo").item(0).getTextContent());
-		    responseGenerarOrden.setDescripcion(doc.getElementsByTagName("res:descripcion").item(0).getTextContent());
-		    responseGenerarOrden.setDuracionTarea(doc.getElementsByTagName("res:duracionTarea").item(0).getTextContent());
-		    responseGenerarOrden.setIdMensaje(doc.getElementsByTagName("res:idMensaje").item(0).getTextContent());
-		    responseGenerarOrden.setTipo(doc.getElementsByTagName("res:tipo").item(0).getTextContent());
-		    responseGenerarOrden.setCodigoRetornoCore(doc.getElementsByTagName("res:codigoRetornoCore").item(0).getTextContent());
-		    responseGenerarOrden.setMensajeRetornoCore(doc.getElementsByTagName("res:codigoMensajeCore").item(0).getTextContent());
-		    responseGenerarOrden.setNutCore(doc.getElementsByTagName("res:nutCore").item(0).getTextContent());
-		    responseGenerarOrden.setFechaHoraCore(doc.getElementsByTagName("res:fechaHoraCore").item(0).getTextContent());
+			responseGenerarOrden.setCodigo(doc.getElementsByTagName("ns4:codigo").item(0).getTextContent());
+		    responseGenerarOrden.setDescripcion(doc.getElementsByTagName("ns4:descripcion").item(0).getTextContent());
+		    responseGenerarOrden.setDuracionTarea(doc.getElementsByTagName("ns4:duracionTarea").item(0).getTextContent());
+		    responseGenerarOrden.setIdMensaje(doc.getElementsByTagName("ns4:idMensaje").item(0).getTextContent());
+		    responseGenerarOrden.setTipo(doc.getElementsByTagName("ns4:tipo").item(0).getTextContent());
+		    responseGenerarOrden.setCodigoRetornoCore(doc.getElementsByTagName("ns4:codigoRetornoCore").item(0).getTextContent());
+		    responseGenerarOrden.setMensajeRetornoCore(doc.getElementsByTagName("ns4:codigoMensajeCore").item(0).getTextContent());
+		    responseGenerarOrden.setNutCore(doc.getElementsByTagName("ns4:nutCore").item(0).getTextContent());
+		    responseGenerarOrden.setFechaHoraCore(doc.getElementsByTagName("ns4:fechaHoraCore").item(0).getTextContent());
 
 			return responseGenerarOrden;
 
