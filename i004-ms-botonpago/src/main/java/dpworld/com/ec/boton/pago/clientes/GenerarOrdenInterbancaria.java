@@ -190,7 +190,7 @@ public class GenerarOrdenInterbancaria {
 	private String obtenerNombreEmpresa(String empresa){
 		switch (empresa){
 			case "6204":
-				return "DPWORDLD";
+				return "DPWORLD";
 			case "6210":
 				return "CENTROLOGD";
 			case "6224":
@@ -198,7 +198,7 @@ public class GenerarOrdenInterbancaria {
 			case "6209":
 				return "DURANPORT";
 			default:
-				return "DPWORDLD";
+				return "DPWORLD";
 		}
 	}
 
