@@ -74,6 +74,7 @@ public class GenerarOrdenInterbancaria {
 				"                <nombreTercero>" + requestEmision.getNombre() + "</nombreTercero>\n" +
 				"                <numeroCuenta>" + requestEmision.getCuentaNumero() + "</numeroCuenta>\n" +
 				"                <numeroIdentificacion>" + requestEmision.getIdentificacionNumero() + "</numeroIdentificacion>\n" +
+				"                <referencia>" + "Pago Interbancario" + "</referencia>\n" +
 				"                <servicio>" + "CI" + "</servicio>\n" +
 				"                <tipoActividad>" + this.obtenerTipoActividad(requestEmision.getCuentaTipo()) + "</tipoActividad>\n" +
 				"                <tipoCuenta>" + requestEmision.getCuentaTipo() + "</tipoCuenta>\n" +
