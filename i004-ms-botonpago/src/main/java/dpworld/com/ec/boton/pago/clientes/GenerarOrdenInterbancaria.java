@@ -97,11 +97,11 @@ public class GenerarOrdenInterbancaria {
 
 		logger.info("RESPONSE GENERAR ORDEN PAGO: " + responseF);
 
-		responseF = responseF.substring(responseF.indexOf("<wes:generarOrdenResponse>"),
+		responseF = responseF.substring(responseF.indexOf("<tns:generarOrdenResponse>"),
 				responseF.indexOf("</soapenv:Body>"));
 
 		responseF = responseF.substring(responseF.indexOf("<return>"),
-				responseF.indexOf("</wes:generarOrdenResponse>"));
+				responseF.indexOf("</tns:generarOrdenResponse>"));
 
 		try {
 
