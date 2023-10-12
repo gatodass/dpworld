@@ -67,7 +67,7 @@ public class GenerarOrdenInterbancaria {
 				"                    <ent:referencia>Pago Interbancario</ent:referencia>\n" +
 				"                    <ent:tipoCuenta>" + requestEmision.getCuentaTipo() + "</ent:tipoCuenta>\n" +
 				"                </formasPago>\n" +
-				"                <identificacionCodigoServicio>" + "" + "</identificacionCodigoServicio>\n" +
+				"                <identificacionCodigoServicio>" + requestEmision.getFacturaNumero() + "</identificacionCodigoServicio>\n" +
 				"                <identificacionServicio>" + requestEmision.getIdentificacionNumero() + "</identificacionServicio>\n" +
 				"                <moneda>USD</moneda>\n" +
 				"                <nombreEmpresa>" + this.obtenerNombreEmpresa(requestEmision.getEmpresa()) + "</nombreEmpresa>\n" +
