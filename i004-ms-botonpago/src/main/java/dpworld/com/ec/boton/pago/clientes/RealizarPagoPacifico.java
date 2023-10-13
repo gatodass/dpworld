@@ -161,10 +161,10 @@ public class RealizarPagoPacifico {
 	}
 
 	private String obtenerServicioTipo(String tipoTransaccion){
-		if(tipoTransaccion.equalsIgnoreCase("P")){
-			return "01";
+		if(tipoTransaccion.equalsIgnoreCase("N")){
+			return "NOPORTUARIO";
 		}
-		return "02";
+		return "PORTUARIO";
 	}
 
 	private String obtenerNombreEmpresa(String tipoTransaccion){
