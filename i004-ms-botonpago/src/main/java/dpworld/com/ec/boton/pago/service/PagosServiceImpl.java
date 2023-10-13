@@ -78,7 +78,7 @@ public class PagosServiceImpl implements IPagosService {
 
 			ResponseGenerarOrden responseGenerarOrden = generarOrdenInterbancaria.ejecutarOrdenInterbancaria(requestEmision, soapEndpointUrl);
 
-			if(!responseGenerarOrden.getCodigo().equalsIgnoreCase("1")){
+			if(!responseGenerarOrden.getCodigo().equalsIgnoreCase("0000")){
 				responseEmision.setCodigoRespuesta("1");
 				responseEmision.setMensajeError(responseGenerarOrden.getDescripcion());
 			}
