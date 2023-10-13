@@ -68,8 +68,8 @@ public class PagosServiceImpl implements IPagosService {
 
 			}
 
-//			if(requestEmision.getLocalidad().equalsIgnoreCase("Interbank")){
-			if(requestEmision.getLocalidad().equalsIgnoreCase("1")){
+			if(requestEmision.getLocalidad().equalsIgnoreCase("Interbank")){
+//			if(requestEmision.getLocalidad().equalsIgnoreCase("1")){
 
 				ejecucionCobroFactura(requestEmision, responseEmision, null);
 
