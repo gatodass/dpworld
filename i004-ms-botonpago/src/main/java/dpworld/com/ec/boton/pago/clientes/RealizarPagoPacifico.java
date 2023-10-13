@@ -80,11 +80,8 @@ public class RealizarPagoPacifico {
 
 		logger.info("RESPONSE REALIZAR PAGO PACIFICO " + responseF);
 
-		responseF = responseF.substring(responseF.indexOf("<wes:realizarPagoResponse>"),
-				responseF.indexOf("</soapenv:Body>"));
-
 		responseF = responseF.substring(responseF.indexOf("<return>"),
-				responseF.indexOf("</wes:realizarPagoResponse>"));
+				responseF.indexOf("</tns:realizarPagoResponse>"));
 
 		try {
 
@@ -96,15 +93,15 @@ public class RealizarPagoPacifico {
 
 			ResponseRealizarPagoPacifico responseRealizarPagoPacifico = new ResponseRealizarPagoPacifico();
 
-			responseRealizarPagoPacifico.setCodigo(doc.getElementsByTagName("res:codigo").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setDescripcion(doc.getElementsByTagName("res:descripcion").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setDuracionTarea(doc.getElementsByTagName("res:duracionTarea").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setIdMensaje(doc.getElementsByTagName("res:idMensaje").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setTipo(doc.getElementsByTagName("res:tipo").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setCodigoRetornoCore(doc.getElementsByTagName("res:codigoRetornoCore").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setMensajeRetornoCore(doc.getElementsByTagName("res:codigoMensajeCore").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setNutCore(doc.getElementsByTagName("res:nutCore").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setFechaHoraCore(doc.getElementsByTagName("res:fechaHoraCore").item(0).getTextContent());
+			responseRealizarPagoPacifico.setCodigo(doc.getElementsByTagName("ns2:codigo").item(0).getTextContent());
+		    responseRealizarPagoPacifico.setDescripcion(doc.getElementsByTagName("ns2:descripcion").item(0).getTextContent());
+		    responseRealizarPagoPacifico.setDuracionTarea(doc.getElementsByTagName("ns2:duracionTarea").item(0).getTextContent());
+		    responseRealizarPagoPacifico.setIdMensaje(doc.getElementsByTagName("ns2:idMensaje").item(0).getTextContent());
+		    responseRealizarPagoPacifico.setTipo(doc.getElementsByTagName("ns2:tipo").item(0).getTextContent());
+		    responseRealizarPagoPacifico.setCodigoRetornoCore("");
+		    responseRealizarPagoPacifico.setMensajeRetornoCore("");
+		    responseRealizarPagoPacifico.setNutCore("");
+		    responseRealizarPagoPacifico.setFechaHoraCore("");
 
 			return responseRealizarPagoPacifico;
 

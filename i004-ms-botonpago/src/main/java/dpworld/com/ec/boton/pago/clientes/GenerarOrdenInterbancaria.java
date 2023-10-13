@@ -97,9 +97,6 @@ public class GenerarOrdenInterbancaria {
 
 		logger.info("RESPONSE GENERAR ORDEN PAGO: " + responseF);
 
-		responseF = responseF.substring(responseF.indexOf("<tns:generarOrdenResponse>"),
-				responseF.indexOf("</soapenv:Body>"));
-
 		responseF = responseF.substring(responseF.indexOf("<return>"),
 				responseF.indexOf("</tns:generarOrdenResponse>"));
 
@@ -118,10 +115,10 @@ public class GenerarOrdenInterbancaria {
 		    responseGenerarOrden.setDuracionTarea(doc.getElementsByTagName("ns4:duracionTarea").item(0).getTextContent());
 		    responseGenerarOrden.setIdMensaje(doc.getElementsByTagName("ns4:idMensaje").item(0).getTextContent());
 		    responseGenerarOrden.setTipo(doc.getElementsByTagName("ns4:tipo").item(0).getTextContent());
-		    responseGenerarOrden.setCodigoRetornoCore(doc.getElementsByTagName("ns4:codigoRetornoCore").item(0).getTextContent());
-		    responseGenerarOrden.setMensajeRetornoCore(doc.getElementsByTagName("ns4:codigoMensajeCore").item(0).getTextContent());
-		    responseGenerarOrden.setNutCore(doc.getElementsByTagName("ns4:nutCore").item(0).getTextContent());
-		    responseGenerarOrden.setFechaHoraCore(doc.getElementsByTagName("ns4:fechaHoraCore").item(0).getTextContent());
+		    responseGenerarOrden.setCodigoRetornoCore(doc.getElementsByTagName("ns1:codigoRetornoCore").item(0).getTextContent());
+		    responseGenerarOrden.setMensajeRetornoCore(doc.getElementsByTagName("ns1:codigoMensajeCore").item(0).getTextContent());
+		    responseGenerarOrden.setNutCore(doc.getElementsByTagName("ns1:nutCore").item(0).getTextContent());
+		    responseGenerarOrden.setFechaHoraCore(doc.getElementsByTagName("ns1:fechaHoraCore").item(0).getTextContent());
 
 			return responseGenerarOrden;
 
