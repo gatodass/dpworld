@@ -93,15 +93,15 @@ public class RealizarPagoPacifico {
 
 			ResponseRealizarPagoPacifico responseRealizarPagoPacifico = new ResponseRealizarPagoPacifico();
 
-			responseRealizarPagoPacifico.setCodigo(doc.getElementsByTagName("ns2:codigo").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setDescripcion(doc.getElementsByTagName("ns2:descripcion").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setDuracionTarea(doc.getElementsByTagName("ns2:duracionTarea").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setIdMensaje(doc.getElementsByTagName("ns2:idMensaje").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setTipo(doc.getElementsByTagName("ns2:tipo").item(0).getTextContent());
-		    responseRealizarPagoPacifico.setCodigoRetornoCore("");
-		    responseRealizarPagoPacifico.setMensajeRetornoCore("");
-		    responseRealizarPagoPacifico.setNutCore("");
-		    responseRealizarPagoPacifico.setFechaHoraCore("");
+			responseRealizarPagoPacifico.setCodigo(doc.getElementsByTagName("ns14:codigo").item(0).getTextContent());
+		    responseRealizarPagoPacifico.setDescripcion(doc.getElementsByTagName("ns14:descripcion").item(0).getTextContent());
+		    responseRealizarPagoPacifico.setDuracionTarea(doc.getElementsByTagName("ns14:duracionTarea").item(0).getTextContent());
+		    responseRealizarPagoPacifico.setIdMensaje(doc.getElementsByTagName("ns14:idMensaje").item(0).getTextContent());
+		    responseRealizarPagoPacifico.setTipo(doc.getElementsByTagName("ns14:tipo").item(0).getTextContent());
+			responseRealizarPagoPacifico.setCodigoRetornoCore(doc.getElementsByTagName("ns10:codigoRetornoCore").item(0).getTextContent());
+			responseRealizarPagoPacifico.setMensajeRetornoCore(doc.getElementsByTagName("ns10:codigoMensajeCore").item(0).getTextContent());
+			responseRealizarPagoPacifico.setNutCore(doc.getElementsByTagName("ns10:nutCore").item(0).getTextContent());
+			responseRealizarPagoPacifico.setFechaHoraCore(doc.getElementsByTagName("ns10:fechaHoraCore").item(0).getTextContent());
 
 			return responseRealizarPagoPacifico;
 
