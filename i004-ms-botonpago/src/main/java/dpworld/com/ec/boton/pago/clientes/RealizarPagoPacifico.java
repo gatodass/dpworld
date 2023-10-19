@@ -44,7 +44,7 @@ public class RealizarPagoPacifico {
 				"      <wes:realizarPago>\n" +
 				"         <peticion>\n" +
 				"            <pet:agencia>0</pet:agencia>\n" +
-				"            <pet:canal>WEB</pet:canal>\n" +
+				"            <pet:canal>INT</pet:canal>\n" +
 				"            <pet:fechaHora>" + requestEmision.getFechaPago() + "</pet:fechaHora>\n" +
 				"            <pet:hostName>" + requestEmision.getHostname() + "</pet:hostName>\n" +
 				"            <pet:idMensaje>" + requestEmision.getIdMensaje() + "</pet:idMensaje>         \n" +
