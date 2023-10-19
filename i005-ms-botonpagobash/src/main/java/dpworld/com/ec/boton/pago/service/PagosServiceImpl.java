@@ -127,9 +127,9 @@ public class PagosServiceImpl implements IPagosService {
 		requestBotonPago.setMonto(requestEmision.getMonto());
 		requestBotonPago.setIdentificacionTipo(requestEmision.getTipoIdentifica());
 		requestBotonPago.setIdentificacionNumero(requestEmision.getNumeroIdentifica());
-		requestBotonPago.setBancoCodigo("30");
-		requestBotonPago.setCuentaTipo("Corriente");
-		requestBotonPago.setCuentaNumero("7923546");
+		requestBotonPago.setBancoCodigo(requestEmision.getCodigoBanco());
+		requestBotonPago.setCuentaTipo(requestEmision.getTipoCuenta());
+		requestBotonPago.setCuentaNumero(requestEmision.getNumeroCuenta());
 		requestBotonPago.setCodigoOtp("");
 		requestBotonPago.setNombre("");
 		requestBotonPago.setEmpresa(requestEmision.getEmpresa());
