@@ -53,7 +53,7 @@ public class RealizarPagoPacifico {
 				"            <pet:localidad>" + requestEmision.getLocalidad() + "</pet:localidad>\n" +
 				"            <pet:macAddress>" + requestEmision.getMacAdress() + "</pet:macAddress>\n" +
 				"            <pet:token>" + requestEmision.getTokenTransaccional() + "</pet:token>\n" +
-				"            <codigoBanco>" + requestEmision.getMacAdress() + "</codigoBanco>\n" +
+				"            <codigoBanco>" + requestEmision.getBancoCodigo() + "</codigoBanco>\n" +
 				"            <codigoOTP>" + requestEmision.getCodigoOtp() + "</codigoOTP>\n" +
 				"            <identificacion>" + requestEmision.getIdentificacionNumero() + "</identificacion>\n" +
 				"            <monto>" + requestEmision.getMonto() + "</monto>\n" +
@@ -65,6 +65,9 @@ public class RealizarPagoPacifico {
 				"            <tipoCuenta>" + requestEmision.getCuentaTipo() + "</tipoCuenta>\n" +
 				"            <tipoIdentificacion>" + requestEmision.getIdentificacionTipo() + "</tipoIdentificacion>\n" +
 				"            <tipoServicio>" +  this.obtenerServicioTipo(requestEmision.getTipoTransaccion()) + "</tipoServicio>\n" +
+				"            <valorBaseImponible>" +  requestEmision.getMonto() + "</valorBaseImponible>\n" +
+				"            <valorIVABienes>" +  "0" + "</valorIVABienes>\n" +
+				"            <valorIVAServicios>" +  "0" + "</valorIVAServicios>\n" +
 				"         </peticion>\n" +
 				"      </wes:realizarPago>\n" +
 				"   </soapenv:Body>\n" +
