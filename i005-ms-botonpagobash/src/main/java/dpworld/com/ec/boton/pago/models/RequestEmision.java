@@ -15,7 +15,6 @@ public class RequestEmision {
 	private String numeroIdentifica;
 	@Size(max=3,message="El campo codigoBanco es mayor a 3 caracteres")
 	private String codigoBanco;
-	@Size(max=2,message="El campo tipoCuenta es mayor a 2 caracteres")
 	private String tipoCuenta;
 	@Size(max=20,message="El campo numeroCuenta es mayor a 20 caracteres")
 	private String numeroCuenta;
