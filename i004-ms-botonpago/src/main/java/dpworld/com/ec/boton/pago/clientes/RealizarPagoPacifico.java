@@ -96,7 +96,7 @@ public class RealizarPagoPacifico {
 
 			ResponseRealizarPagoPacifico responseRealizarPagoPacifico = new ResponseRealizarPagoPacifico();
 
-			if(doc.getElementsByTagName("ns14:codigo") != null){
+			if(doc.getElementsByTagName("ns14:codigo").item(0) != null){
 				responseRealizarPagoPacifico.setCodigo(doc.getElementsByTagName("ns14:codigo").item(0).getTextContent());
 				responseRealizarPagoPacifico.setDescripcion(doc.getElementsByTagName("ns14:descripcion").item(0).getTextContent());
 				responseRealizarPagoPacifico.setDuracionTarea(doc.getElementsByTagName("ns14:duracionTarea").item(0).getTextContent());
