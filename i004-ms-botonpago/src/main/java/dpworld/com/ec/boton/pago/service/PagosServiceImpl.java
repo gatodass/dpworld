@@ -130,6 +130,12 @@ public class PagosServiceImpl implements IPagosService {
 		if(responseRealizarPagoPacifico != null){
 			requestPago.setNumeroTrx(responseRealizarPagoPacifico.getNutCore());
 			requestPago.setComentario(responseRealizarPagoPacifico.getDescripcion());
+
+			//TODO MOMENTANEAMENTE HASTA SABER QUE ENVIAR POR ERIC
+			if(responseRealizarPagoPacifico.getNutCore().isEmpty() || responseRealizarPagoPacifico.getNutCore().isBlank()){
+				requestPago.setNumeroTrx(requestEmision.getIdMensaje());
+			}
+
 		}
 	    requestPago.setEmpresa(requestEmision.getEmpresa());
 	    requestPago.setUuid(requestEmision.getUuid());
