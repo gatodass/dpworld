@@ -90,8 +90,13 @@ public class PagoController {
 		StopWatch watch = new StopWatch();
 		watch.restart();
 
-		String uuid = UUID.randomUUID().toString();
-		reverso.setUuid(uuid);
+		String uuid;
+		if(reverso.getUuid() == null){
+			uuid = UUID.randomUUID().toString();
+			reverso.setUuid(uuid);
+		} else {
+			uuid = reverso.getUuid();
+		}
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(reverso), "/api/pago/reverso", "REQUEST", "200", "0");
 

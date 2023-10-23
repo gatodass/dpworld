@@ -3,6 +3,7 @@ package dpworld.com.ec.boton.pago.service;
 import dpworld.com.ec.boton.pago.clientes.CobroFactura;
 import dpworld.com.ec.boton.pago.clientes.GenerarOrdenInterbancaria;
 import dpworld.com.ec.boton.pago.clientes.RealizarPagoPacifico;
+import dpworld.com.ec.boton.pago.clientes.ReversoCobroFactura;
 import dpworld.com.ec.boton.pago.clientes.TokenPacifico;
 import dpworld.com.ec.boton.pago.models.RequestEmision;
 import dpworld.com.ec.boton.pago.models.RequestPago;
@@ -11,12 +12,16 @@ import dpworld.com.ec.boton.pago.models.ResponseGenerarOrden;
 import dpworld.com.ec.boton.pago.models.ResponsePago;
 import dpworld.com.ec.boton.pago.models.ResponseRealizarPagoPacifico;
 import dpworld.com.ec.boton.pago.models.ResponseToken;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PagosServiceImpl implements IPagosService {
+
+	Logger logger = LoggerFactory.getLogger(PagosServiceImpl.class);
 
 	@Autowired
 	TokenPacifico tokenPacifico;
@@ -26,6 +31,9 @@ public class PagosServiceImpl implements IPagosService {
 
 	@Autowired
 	CobroFactura cobroFactura;
+
+	@Autowired
+	ReversoCobroFactura reversoCobroFactura;
 
 	@Autowired
 	GenerarOrdenInterbancaria generarOrdenInterbancaria;
@@ -101,11 +109,32 @@ public class PagosServiceImpl implements IPagosService {
 
 	private void ejecucionCobroFactura(RequestEmision requestEmision, ResponseEmision responseEmision, ResponseRealizarPagoPacifico responseRealizarPagoPacifico) throws Exception {
 
-		ResponsePago responsePago = cobroFactura.ejecutarCobroFactura(this.armarPago(requestEmision, responseRealizarPagoPacifico));
+		try{
 
-		if(!responsePago.getCodigoRespuesta().equalsIgnoreCase("0")){
+			ResponsePago responsePago = cobroFactura.ejecutarCobroFactura(this.armarPago(requestEmision, responseRealizarPagoPacifico));
+
+			if(!responsePago.getCodigoRespuesta().equalsIgnoreCase("0")){
+
+				responseEmision.setCodigoRespuesta("1");
+				responseEmision.setMensajeError(responsePago.getMensajeRespuesta());
+
+				try {
+					reversoCobroFactura.reversoCobro(requestEmision, requestEmision.getUuid(), responseRealizarPagoPacifico);
+				} catch (Exception e){
+					logger.error(e.getMessage());
+				}
+			}
+
+		} catch (Exception e){
+
 			responseEmision.setCodigoRespuesta("1");
-			responseEmision.setMensajeError(responsePago.getMensajeRespuesta());
+			responseEmision.setMensajeError("OCURRIO UN ERROR: " + e.getMessage() + ". SE REALIZÓ EL REVERSO");
+
+			try {
+				reversoCobroFactura.reversoCobro(requestEmision, requestEmision.getUuid(), responseRealizarPagoPacifico);
+			} catch (Exception ex){
+				logger.error(ex.getMessage());
+			}
 		}
 	}
 
