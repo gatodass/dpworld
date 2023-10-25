@@ -185,18 +185,13 @@ public class GenerarOrdenInterbancaria {
 	}
 
 	private String obtenerNombreEmpresa(String empresa){
-		switch (empresa){
-			case "6204":
-				return "DPWORLD";
-			case "6210":
-				return "CENTROLOGD";
-			case "6224":
-				return "DP WORLD LOG";
-			case "6209":
-				return "DURANPORT";
-			default:
-				return "DPWORLD";
+		if(empresa.equals("6167")){
+			return "DPWORLD";
 		}
+		if(empresa.equals("6175")){
+			return "DP WORLD LOG";
+		}
+		return "";
 	}
 
 	private String obtenerIdMensaje(String fechaPago){

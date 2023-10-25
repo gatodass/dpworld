@@ -57,7 +57,7 @@ public class RealizarPagoPacifico {
 				"            <codigoOTP>" + requestEmision.getCodigoOtp() + "</codigoOTP>\n" +
 				"            <identificacion>" + requestEmision.getIdentificacionNumero() + "</identificacion>\n" +
 				"            <monto>" + requestEmision.getMonto() + "</monto>\n" +
-				"            <nombreEmpresa>" + this.obtenerNombreEmpresa(requestEmision.getTipoTransaccion()) + "</nombreEmpresa>\n" +
+				"            <nombreEmpresa>" + this.obtenerNombreEmpresa(requestEmision.getTipoTransaccion(), requestEmision.getEmpresa()) + "</nombreEmpresa>\n" +
 				"            <numeroCuentaDebito>" + requestEmision.getCuentaNumero() + "</numeroCuentaDebito>\n" +
 				"            <numeroDocumento>" + requestEmision.getFacturaNumero() + "</numeroDocumento>\n" +
 				"            <producto>" + "4" + "</producto>\n" +
@@ -182,11 +182,17 @@ public class RealizarPagoPacifico {
 		return "PORTUARIO";
 	}
 
-	private String obtenerNombreEmpresa(String tipoTransaccion){
+	private String obtenerNombreEmpresa(String tipoTransaccion, String empresa){
 		if(tipoTransaccion.equalsIgnoreCase("P")){
 			return "CAE";
 		}
-		return "DPWORLD";
+		if(empresa.equals("6167")){
+			return "DPWORLD";
+		}
+		if(empresa.equals("6175")){
+			return "DP WORLD LOG";
+		}
+		return "";
 	}
 
 	private String obtenerServicio(String tipoTransaccion){
