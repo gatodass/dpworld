@@ -41,13 +41,13 @@ public class PagoController {
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(requestEmision), "/api/emision", "REQUEST", "200", "0");
 
-		logger.info("REQUEST: " + new Gson().toJson(requestEmision));
+		logger.info("REQUEST BPB: " + new Gson().toJson(requestEmision));
 
 		ResponseEmision responseEmision = iPagosService.emitirCobro(requestEmision);
 
 		activeMQProducerLogger.sendLogger(uuid, new Gson().toJson(responseEmision), "/api/pago/consulta", "RESPONSE", "200", String.valueOf(watch.taken()));
 
-		logger.info("RESPONSE: " + new Gson().toJson(responseEmision));
+		logger.info("RESPONSE BPB: " + new Gson().toJson(responseEmision));
 
 		return responseEmision;
 	}
