@@ -125,7 +125,7 @@ public class PagosServiceImpl implements IPagosService {
 
 		requestBotonPago.setIdMensaje(mensaje);
 		requestBotonPago.setMonto(requestEmision.getMonto());
-		requestBotonPago.setIdentificacionTipo(requestEmision.getTipoIdentifica());
+		requestBotonPago.setIdentificacionTipo(this.obtenerTipoIdentificacion(requestEmision.getTipoIdentifica()));
 		requestBotonPago.setIdentificacionNumero(requestEmision.getNumeroIdentifica());
 		requestBotonPago.setBancoCodigo("030");
 		requestBotonPago.setCuentaTipo("Corriente");
@@ -137,6 +137,21 @@ public class PagosServiceImpl implements IPagosService {
 
 		return requestBotonPago;
 
+	}
+
+	private String obtenerTipoIdentificacion(String tipoIdentificacion){
+
+		if(tipoIdentificacion.equals("C")){
+			return "Cedula";
+		}
+		if(tipoIdentificacion.equals("R")){
+			return "Ruc";
+		}
+		if(tipoIdentificacion.equals("P")){
+			return "Pasaporte";
+		}
+
+		return "";
 	}
 
 }
