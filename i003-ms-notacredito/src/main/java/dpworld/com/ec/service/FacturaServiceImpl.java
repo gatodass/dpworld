@@ -46,6 +46,9 @@ public class FacturaServiceImpl implements IFacturaService{
 			logger.info("REQUEST N4CREDITNOTES: " + this.convertirVariablesRequest(new Gson().toJson(factura)));
 
 			var respuesta = WebClient.builder()
+					//DESARROLLO
+					//.defaultHeaders(header -> header.setBasicAuth("amrlmsapi.consumer", "LLB@D5fpzs#b"))
+					//PRODUCCION
 					.defaultHeaders(header -> header.setBasicAuth("amrlmsapi.consumer", "LLB@D5fpzs#b"))
 					.defaultHeaders(httpHeaders -> httpHeaders.setContentType(MediaType.APPLICATION_JSON))
 					.build()

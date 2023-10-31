@@ -33,10 +33,18 @@ public class PagosServiceImpl implements IPagosService {
 	@Autowired
 	ActiveMQProducerLogger activeMQProducerLogger;
 
+	/*
 	private static String soapEndpointUrlConsulta = "https://fapiuat.dpworld.com/amrlatmec/fin/bdp/GetARInvoice";
 	private static String soapEndpointUrlPago = "https://fapiuat.dpworld.com/amrlatmec/fin/bdp/CreateApplyReceipt";
 	private static String soapEndpointUrlReverso = "https://fapiuat.dpworld.com/amrlatmec/fin/bdp/ReverseReceipt";
-
+	 */
+	//PRODUCCION
+	private static String soapEndpointUrlConsulta = "https://fapi.dpworld.com/amrlatmec/fin/bdp/GetARInvoice";
+	private static String soapEndpointUrlPago = "https://fapi.dpworld.com/amrlatmec/fin/bdp/CreateApplyReceipt";
+	private static String soapEndpointUrlReverso = "https://fapi.dpworld.com/amrlatmec/fin/bdp/ReverseReceipt";
+	
+	
+	
 	@Override
 	public ConsultaResponse facturaCobrar(Consulta consulta) {
 		// TODO Auto-generated method stub

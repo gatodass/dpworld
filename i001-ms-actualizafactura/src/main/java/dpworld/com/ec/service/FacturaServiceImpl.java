@@ -47,7 +47,10 @@ public class FacturaServiceImpl implements IFacturaService{
 			logger.info("REQUEST N4INVOICES: " + new Gson().toJson(factura));
 
 			var respuesta = WebClient.builder()
-					.defaultHeaders(header -> header.setBasicAuth("amrlmsapi.consumer", "LLB@D5fpzs#b"))
+					//DESARROLLO
+					//.defaultHeaders(header -> header.setBasicAuth("amrlmsapi.consumer", "LLB@D5fpzs#b"))
+					//PRODUCCION
+					.defaultHeaders(header -> header.setBasicAuth("amrltm.ecapiconsumer", "TPRDg2f7b#VW"))
 					.defaultHeaders(httpHeaders -> httpHeaders.setContentType(MediaType.APPLICATION_JSON))
 					.build()
 					.post()
@@ -64,7 +67,7 @@ public class FacturaServiceImpl implements IFacturaService{
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), "https://fapiuat.dpworld.com/amrlatmec/fin/n4/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
+			activeMQProducerLogger.sendLogger(uuid, e.getMessage(), " https://host:port/amrlatmec/fin/n4/CreateARInvoice", "ERROR N4INVOICES", "400", String.valueOf(watch.taken()));
 
 			logger.error("ERROR N4INVOICES: " + e.getMessage());
 
