@@ -49,7 +49,7 @@ public class FacturaServiceImpl implements IFacturaService{
 					//DESARROLLO
 					//.defaultHeaders(header -> header.setBasicAuth("amrlmsapi.consumer", "LLB@D5fpzs#b"))
 					//PRODUCCION
-					.defaultHeaders(header -> header.setBasicAuth("amrlmsapi.consumer", "LLB@D5fpzs#b"))
+					.defaultHeaders(header -> header.setBasicAuth("amrltm.ecapiconsumer", "TPRDg2f7b#VW"))
 					.defaultHeaders(httpHeaders -> httpHeaders.setContentType(MediaType.APPLICATION_JSON))
 					.build()
 					.post()
