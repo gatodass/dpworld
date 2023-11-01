@@ -135,7 +135,11 @@ public class GenerarOrdenInterbancaria {
 	}
 
 	private static String getBasicAuthHeader() {
-		String credentials = "zmsapi.consumer:Dubai@2o21$";
+		//DESARROLLO
+		//String credentials = "zmsapi.consumer:Dubai@2o21$";
+
+		//PRODUCCION
+		String credentials = "amrltm.ecapiconsumer:TPRDg2f7b#VW";
 
 		byte[] message = credentials.getBytes(StandardCharsets.UTF_8);
 		return Base64.getEncoder().encodeToString(message);

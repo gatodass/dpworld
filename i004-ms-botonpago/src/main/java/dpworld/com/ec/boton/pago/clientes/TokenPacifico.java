@@ -37,13 +37,15 @@ public class TokenPacifico {
 
 		StopWatch watch = new StopWatch();
 		watch.restart();
-
+//DESARRROLLO CLAVE TOKEN CLAVE TOKEN USER USRDPWORLD PASS BPdpworld19
+		
+		//PRODUCCION CLAVE TOKEN USER USRDPWORLD PASS Pacifico2019
 		String soapRequest = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:wes=\"http://western.ifc.servicios.western.empresas.externos.bpe/\">\n" +
 				"   <soapenv:Header/>\n" +
 				"   <soapenv:Body>\n" +
 				"      <wes:autenticacionExterna>\n" +
 				"         <peticion>\n" +
-				"            <clave>BPdpworld19</clave>\n" +
+				"            <clave>Pacifico2019</clave>\n" +
 				"            <idUsuario>USRDPWORLD</idUsuario>\n" +
 				"            <maquina>00-50-56-8E-39-E7</maquina>\n" +
 				"         </peticion>\n" +
@@ -98,8 +100,13 @@ public class TokenPacifico {
 	}
 
 	private static String getBasicAuthHeader() {
-		String credentials = "zmsapi.consumer:Dubai@2o21$";
+		//
+		//DESARROLLO
+		//String credentials = "zmsapi.consumer:Dubai@2o21$";
 
+		//PRODUCCION
+		String credentials = "amrltm.ecapiconsumer:TPRDg2f7b#VW";
+		
 		byte[] message = credentials.getBytes(StandardCharsets.UTF_8);
 		return Base64.getEncoder().encodeToString(message);
 	}
