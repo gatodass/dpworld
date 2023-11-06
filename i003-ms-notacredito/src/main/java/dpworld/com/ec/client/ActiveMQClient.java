@@ -233,7 +233,7 @@ public class ActiveMQClient {
             invoiceDFF.setInvoiceTransactionsFlexfield_Segment11("");
         }
         try{
-            invoiceDFF.setInvoiceTransactionsFlexfield_Segment12(this.recortarPalabra(additional.getString("Notes")));
+            invoiceDFF.setInvoiceTransactionsFlexfield_Segment12(this.recortarPalabra150(additional.getString("Notes")));
         } catch (Exception e){
             invoiceDFF.setInvoiceTransactionsFlexfield_Segment12("");
         }
@@ -255,6 +255,14 @@ public class ActiveMQClient {
 
         return lista;
 
+    }
+
+    private String recortarPalabra150(String campo) {
+        try {
+            return campo.substring(0, 150);
+        } catch (Exception e){
+            return campo;
+        }
     }
 
     private List<InvoiceLineDFF> obtenerInvoiceLineDFF(JSONObject jsonObject){
