@@ -125,12 +125,12 @@ public class PagosServiceImpl implements IPagosService {
 
 		requestBotonPago.setIdMensaje(mensaje);
 		requestBotonPago.setMonto(requestEmision.getMonto());
-		requestBotonPago.setIdentificacionTipo(this.obtenerTipoIdentificacion(requestEmision.getTipoIdentifica()));
-		requestBotonPago.setIdentificacionNumero(requestEmision.getNumeroIdentifica());
+		requestBotonPago.setIdentificacionTipo("R");
+		requestBotonPago.setIdentificacionNumero("0992702583001");
 		requestBotonPago.setBancoCodigo("030");
 		requestBotonPago.setCuentaTipo("Corriente");
-		requestBotonPago.setCuentaNumero("99929716"); //TODO CUENTA EN DESARROLLO 
-		//requestBotonPago.setCuentaNumero("7923546"); //TODO CUENTA EN PRODUCCION 7923546
+		//requestBotonPago.setCuentaNumero("99929716"); //TODO CUENTA EN DESARROLLO
+		requestBotonPago.setCuentaNumero("7923546"); //TODO CUENTA EN PRODUCCION 7923546
 		requestBotonPago.setCodigoOtp("");
 		requestBotonPago.setNombre("");
 		requestBotonPago.setEmpresa(requestEmision.getEmpresa());
